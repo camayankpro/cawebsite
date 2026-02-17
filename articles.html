@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles & Tax Insights | Agarwal Mayank & Company, CA</title>
+    <meta name="description" content="Expert articles on GST, Income Tax, Business Registration, and Financial Planning by Agarwal Mayank & Company, Chartered Accountants, Hapur.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
+
+        /* NAVBAR */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 10px 50px;
+        }
+        .navbar-content {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .navbar-brand { display: flex; align-items: center; gap: 15px; }
+        .navbar-logo { font-size: 1.3rem; font-weight: 700; color: #3949AB; }
+        .navbar-logo span { color: #FF9800; }
+        .navbar-subtitle { font-size: 0.75rem; color: #666; font-weight: 500; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #FF9800; }
+        .burger-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .burger-menu span { display: block; width: 25px; height: 3px; background: #333; border-radius: 3px; transition: all 0.3s; }
+
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(135deg, #3949AB 0%, #1a237e 100%);
+            padding: 120px 50px 60px;
+            text-align: center;
+        }
+        .page-hero .label {
+            color: #FF9800; font-weight: 600; font-size: 0.85rem;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .page-hero h1 { color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .page-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+        /* ARTICLES GRID */
+        .articles-section { max-width: 1200px; margin: 0 auto; padding: 60px 50px; }
+        .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+        .article-card {
+            background: white; border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column;
+        }
+        .article-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(57,73,171,0.15); }
+
+        .article-card-image {
+            background: linear-gradient(135deg, #3949AB, #1a237e);
+            padding: 30px 25px; position: relative; overflow: hidden;
+        }
+        .article-card-image::after {
+            content: ''; position: absolute; bottom: -20px; right: -20px;
+            width: 100px; height: 100px; border-radius: 50%;
+            background: rgba(255,152,0,0.15);
+        }
+        .article-tag {
+            display: inline-block; background: #FF9800; color: white;
+            font-size: 0.72rem; font-weight: 600; padding: 4px 12px;
+            border-radius: 50px; letter-spacing: 1px; text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .article-card-image h2 { color: white; font-size: 1.05rem; font-weight: 700; line-height: 1.4; }
+
+        .article-card-body { padding: 20px 25px; flex: 1; display: flex; flex-direction: column; }
+        .article-meta { display: flex; gap: 15px; margin-bottom: 12px; font-size: 0.78rem; color: #888; }
+        .article-meta span { display: flex; align-items: center; gap: 4px; }
+        .article-excerpt { color: #555; font-size: 0.88rem; line-height: 1.7; flex: 1; margin-bottom: 20px; }
+        .read-more {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #3949AB; font-weight: 600; font-size: 0.88rem;
+            text-decoration: none; transition: gap 0.3s;
+        }
+        .read-more:hover { gap: 12px; color: #FF9800; }
+        .read-more::after { content: '→'; }
+
+        /* FOOTER */
+        .footer { background: #1a237e; color: white; padding: 50px; margin-top: 20px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
+        .footer h3 { color: #FF9800; font-size: 1rem; margin-bottom: 15px; }
+        .footer p, .footer a { color: rgba(255,255,255,0.8); font-size: 0.88rem; line-height: 1.8; text-decoration: none; display: block; }
+        .footer a:hover { color: #FF9800; }
+        .footer-bottom { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+
+        @media (max-width: 968px) {
+            .navbar { padding: 10px 20px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 90px; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+            .nav-links.open { display: flex; }
+            .burger-menu { display: flex; }
+            .page-hero { padding: 100px 20px 40px; }
+            .page-hero h1 { font-size: 1.8rem; }
+            .articles-section { padding: 40px 20px; }
+            .articles-grid { grid-template-columns: 1fr; }
+            .footer { padding: 40px 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="navbar-brand">
+            <div class="navbar-text">
+                <div class="navbar-logo">Agarwal Mayank <span>&</span> Company</div>
+                <div class="navbar-subtitle">Chartered Accountants | Hapur, UP</div>
+            </div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+        <div class="burger-menu" id="burgerMenu">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="label">Knowledge Hub</div>
+    <h1>Articles & Tax Insights</h1>
+    <p>Expert guidance on GST, Income Tax, Business Registration and Financial Planning — written by our CA team.</p>
+</div>
+
+<!-- ARTICLES GRID -->
+<div class="articles-section">
+    <div class="articles-grid">
+
+        <div class="article-card">
+            <div class="article-card-image">
+                <span class="article-tag">GST</span>
+                <h2>GST Filing Complete Guide for Small Businesses 2024-25</h2>
+            </div>
+            <div class="article-card-body">
+                <div class="article-meta">
+                    <span>📅 February 2025</span>
+                    <span>⏱ 8 min read</span>
+                </div>
+                <p class="article-excerpt">Everything you need to know about GST filing — who needs to register, what documents are required, and how to file returns step by step.</p>
+                <a href="article-gst-filing-guide.html" class="read-more">Read Article</a>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-image">
+                <span class="article-tag">Income Tax</span>
+                <h2>Top 10 Tax Saving Tips for Salaried Employees in 2025</h2>
+            </div>
+            <div class="article-card-body">
+                <div class="article-meta">
+                    <span>📅 January 2025</span>
+                    <span>⏱ 6 min read</span>
+                </div>
+                <p class="article-excerpt">Discover legal and effective ways to reduce your income tax liability using deductions under Section 80C, 80D, HRA, and more.</p>
+                <a href="article-tax-saving-tips.html" class="read-more">Read Article</a>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <div class="article-card-image">
+                <span class="article-tag">Business</span>
+                <h2>How to Register Your Business in India — Complete 2025 Guide</h2>
+            </div>
+            <div class="article-card-body">
+                <div class="article-meta">
+                    <span>📅 January 2025</span>
+                    <span>⏱ 10 min read</span>
+                </div>
+                <p class="article-excerpt">A step-by-step guide to choosing the right business structure and completing registration — from Proprietorship to Private Limited Company.</p>
+                <a href="article-business-registration.html" class="read-more">Read Article</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <h3>Agarwal Mayank & Company</h3>
+            <p>Chartered Accountants providing comprehensive financial and business solutions since 2013.</p>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#services">Services</a>
+            <a href="articles.html">Articles</a>
+            <a href="index.html#contact">Contact Us</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>1097, Surya Vihar, Delhi Road<br>Hapur - 245101, UP</p>
+            <p>📞 +91-9045222870</p>
+            <p id="footerEmail"></p>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2025 Agarwal Mayank & Company. All Rights Reserved.</div>
+</footer>
+
+<script>
+    // Email protection
+    (function() {
+        const u = 'camayankpro', d = 'gmail', t = 'com';
+        const e = u + '@' + d + '.' + t;
+        const el = document.getElementById('footerEmail');
+        if (el) el.innerHTML = '✉️ <a href="mailto:' + e + '" style="color:rgba(255,255,255,0.8)">' + e + '</a>';
+    })();
+
+    // Burger menu
+    document.getElementById('burgerMenu').addEventListener('click', function() {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+</script>
+</body>
+</html>
