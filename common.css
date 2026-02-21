@@ -38,6 +38,41 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 .nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s ease; }
 .nav-links a:hover,
 .nav-links a.nav-active { color: #FF9800; }
+
+/* ── ARTICLES NAV HIGHLIGHT ───────────────────────────────── */
+.nav-articles-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(135deg, #FF9800, #e65100);
+    color: #fff !important;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.4);
+    transition: all 0.25s ease !important;
+    position: relative;
+    text-decoration: none !important;
+}
+.nav-articles-link::before {
+    content: '✦';
+    font-size: 0.65rem;
+    opacity: 0.9;
+}
+.nav-articles-link:hover {
+    background: linear-gradient(135deg, #e65100, #bf360c) !important;
+    box-shadow: 0 4px 14px rgba(255, 152, 0, 0.55);
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+/* Mobile: full-width pill inside the open menu */
+@media (max-width: 968px) {
+    .nav-articles-link {
+        display: inline-flex;
+        padding: 8px 20px;
+    }
+}
 .burger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
 .burger-menu span { width: 25px; height: 3px; background: #3949AB; transition: all 0.3s ease; }
 .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
@@ -195,9 +230,7 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════════
-   ADD THIS to common.css (paste at the end)
-   ═══════════════════════════════════════════════════════════════════════ */
+/* ═══ ADD TO END OF common.css ═══ */
 
 /* Desktop nav button */
 .nav-cta-btn {
@@ -216,40 +249,31 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
     transition: background 0.25s ease, transform 0.2s ease;
     flex-shrink: 0;
 }
-.nav-cta-btn:hover {
-    background: #e65100;
-    transform: translateY(-1px);
-    color: #fff !important;
-}
-.navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-@media (max-width: 768px) {
-    .nav-cta-btn { display: none; }
-}
+.nav-cta-btn:hover { background: #e65100; transform: translateY(-1px); color: #fff !important; }
+.navbar-actions { display: flex; align-items: center; gap: 14px; }
+@media (max-width: 768px) { .nav-cta-btn { display: none; } }
 
-/* Mobile sticky bottom bar */
-.mobile-cta-bar { display: none; }
-
+/* Mobile floating pill — bottom-left, mirrors WhatsApp at bottom-right */
+.mobile-cta-pill { display: none; }
 @media (max-width: 768px) {
-    .mobile-cta-bar {
+    .mobile-cta-pill {
         display: flex;
         position: fixed;
-        bottom: 0; left: 0; right: 0;
+        bottom: 20px;
+        left: 20px;
         z-index: 999;
-        background: #FF9800;
-        color: #fff;
-        text-decoration: none;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 14px 20px;
+        gap: 7px;
+        background: #FF9800;
+        color: #fff !important;
+        text-decoration: none !important;
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        font-size: 1rem;
-        box-shadow: 0 -4px 16px rgba(230, 81, 0, 0.35);
+        font-size: 0.78rem;
+        padding: 0 14px;
+        height: 50px;
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(255, 152, 0, 0.45);
+        white-space: nowrap;
     }
-    body { padding-bottom: 56px; }
 }
