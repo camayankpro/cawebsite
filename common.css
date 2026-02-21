@@ -298,12 +298,12 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 .reveal-stagger > *:nth-child(4)  { transition-delay: 0.24s; }
 .reveal-stagger > *:nth-child(5)  { transition-delay: 0.32s; }
 .reveal-stagger > *:nth-child(6)  { transition-delay: 0.40s; }
-.reveal-stagger > *:nth-child(7)  { transition-delay: 0.48s; }
-.reveal-stagger > *:nth-child(8)  { transition-delay: 0.56s; }
-.reveal-stagger > *:nth-child(9)  { transition-delay: 0.64s; }
-.reveal-stagger > *:nth-child(10) { transition-delay: 0.72s; }
-.reveal-stagger > *:nth-child(11) { transition-delay: 0.80s; }
-.reveal-stagger > *:nth-child(12) { transition-delay: 0.88s; }
+.reveal-stagger > *:nth-child(7)  { transition-delay: 0.28s; }
+.reveal-stagger > *:nth-child(8)  { transition-delay: 0.30s; }
+.reveal-stagger > *:nth-child(9)  { transition-delay: 0.30s; }
+.reveal-stagger > *:nth-child(10) { transition-delay: 0.30s; }
+.reveal-stagger > *:nth-child(11) { transition-delay: 0.30s; }
+.reveal-stagger > *:nth-child(12) { transition-delay: 0.30s; }
 .reveal-stagger.visible > * { opacity: 1; transform: none; }
 
 /* ── Navbar scroll shadow ── */
@@ -344,9 +344,7 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 
 /* Content blocks scroll-reveal — assigned via JS in common.js */
 
-.back-link { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
-.toc       { opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s; }
-.back-link.visible, .toc.visible { opacity: 1; transform: none; }
+/* back-link and toc: no animation — load instantly */
 /* CTA / mini-cta hover */
 .cta a, .mini-cta a {
     transition: background 0.2s ease, transform 0.2s ease !important;

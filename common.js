@@ -225,7 +225,7 @@
 (function () {
     function initAnimations() {
         /* ── Scroll reveal ── */
-        var els = document.querySelectorAll('.reveal, .reveal-stagger, .stat-item, .back-link, .toc');
+        var els = document.querySelectorAll('.reveal, .reveal-stagger, .stat-item');
   if ('IntersectionObserver' in window) {
             var io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (e) {
@@ -234,7 +234,7 @@
                         io.unobserve(e.target);
                     }
                 });
-            }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+            }, { threshold: 0, rootMargin: '50px 0px 50px 0px' });
             els.forEach(function (el) { io.observe(el); });
         } else {
             els.forEach(function (el) { el.classList.add('visible'); });
