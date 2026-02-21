@@ -193,3 +193,43 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 @media (max-width: 480px) {
     .navbar { padding: 10px 15px; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ADD THIS to common.css — Contact Us nav button styles
+   Paste at the END of your existing common.css
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.nav-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FF9800;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 9px 20px;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+.nav-cta-btn:hover {
+    background: #e65100;
+    transform: translateY(-1px);
+    color: #fff !important;
+}
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+@media (max-width: 768px) {
+    .nav-cta-btn {
+        font-size: 0.75rem;
+        padding: 7px 13px;
+    }
+}
+

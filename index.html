@@ -166,7 +166,7 @@
         .hero {
             background: linear-gradient(135deg, #3949AB 0%, #303F9F 100%);
             position: relative;
-            padding: 150px 50px 80px;
+            padding: 80px 50px 80px;
             overflow: hidden;
             margin-top: 70px;
         }
@@ -368,7 +368,7 @@
         /* About Section */
         .about {
             background: #F5F5F9;
-            padding: 80px 50px;
+            padding: 50px 50px;
             position: relative;
         }
 
@@ -543,7 +543,7 @@
         /* CTA Banner */
         .cta-banner {
             background: linear-gradient(135deg, #3949AB 0%, #303F9F 100%);
-            padding: 60px 50px;
+            padding: 30px 50px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -589,7 +589,7 @@
         /* Contact Form Section */
         .contact-form-section {
             background: linear-gradient(135deg, #3949AB 0%, #303F9F 100%);
-            padding: 80px 50px;
+            padding: 50px 50px;
             position: relative;
             overflow: hidden;
         }
@@ -737,6 +737,10 @@
             .burger-menu {
                 display: flex;
             }
+            .nav-cta-btn {
+                font-size: 0.78rem;
+                padding: 8px 14px;
+            }
 
             .navbar {
                 padding: 10px 30px;
@@ -795,7 +799,7 @@
             }
 
             .hero {
-                padding-top: 100px;
+                padding-top: 50px;
             }
 
             .hero-buttons {
@@ -888,7 +892,35 @@
             .summary-item:nth-child(2n) { border-right: none; }
             .summary-item:nth-child(n+3) { border-top: 1.5px solid #e8ecff; }
         }
-    </style>
+    
+        /* ── Contact Us Nav Button ── */
+        .nav-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FF9800;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 9px 20px;
+            border-radius: 50px;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.2s ease;
+            flex-shrink: 0;
+        }
+        .nav-cta-btn:hover {
+            background: #e65100;
+            transform: translateY(-1px);
+            color: #fff !important;
+        }
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+</style>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -980,12 +1012,14 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="articles.html">Articles</a></li>
-                <li><a href="#contact">Contact Us</a></li>
             </ul>
-            <div class="burger-menu" id="burgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="navbar-actions">
+                <a href="https://wa.me/919045222870?text=Hello!%20I%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me." target="_blank" class="nav-cta-btn">📞 Contact Us</a>
+                <div class="burger-menu" id="burgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>

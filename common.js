@@ -177,3 +177,36 @@
   };
 
 })();
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ADD THIS to common.js — injects "Contact Us" button into navbar
+   Works whether common.js builds nav via innerHTML or DOM methods
+   ═══════════════════════════════════════════════════════════════════════ */
+
+(function addNavCTAButton() {
+    function inject() {
+        var burger = document.getElementById('burgerMenu');
+        if (!burger) return;
+
+        // Wrap burger + new button in a .navbar-actions container
+        var actions = document.createElement('div');
+        actions.className = 'navbar-actions';
+
+        var btn = document.createElement('a');
+        btn.className = 'nav-cta-btn';
+        btn.href = 'https://wa.me/919045222870?text=Hello!%20I%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me.';
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+        btn.innerHTML = '&#128222; Contact Us';
+
+        burger.parentNode.insertBefore(actions, burger);
+        actions.appendChild(btn);
+        actions.appendChild(burger);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', inject);
+    } else {
+        inject();
+    }
+})();
