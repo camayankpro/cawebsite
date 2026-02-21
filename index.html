@@ -1281,22 +1281,22 @@
 
         <!-- Services Summary Strip -->
         <div class="services-summary-strip reveal-stagger">
-            <div class="summary-item"><div class="summary-icon">📋</div><div class="summary-label">GST Services</div></div>
-            <div class="summary-item"><div class="summary-icon">💰</div><div class="summary-label">Income Tax</div></div>
-            <div class="summary-item"><div class="summary-icon">📒</div><div class="summary-label">Accounting</div></div>
-            <div class="summary-item"><div class="summary-icon">🔍</div><div class="summary-label">Audit & Assurance</div></div>
-            <div class="summary-item"><div class="summary-icon">🏢</div><div class="summary-label">Business Setup</div></div>
-            <div class="summary-item"><div class="summary-icon">📁</div><div class="summary-label">ROC Compliance</div></div>
-            <div class="summary-item"><div class="summary-icon">⚖️</div><div class="summary-label">Legal &amp; IP</div></div>
-            <div class="summary-item"><div class="summary-icon">📊</div><div class="summary-label">Financial Advisory</div></div>
-            <div class="summary-item"><div class="summary-icon">🚀</div><div class="summary-label">Start-up Advisory</div></div>
-            <div class="summary-item"><div class="summary-icon">👥</div><div class="summary-label">Payroll &amp; Labour</div></div>
-            <div class="summary-item"><div class="summary-icon">🔐</div><div class="summary-label">Digital Signature</div></div>
-            <div class="summary-item"><div class="summary-icon">🏭</div><div class="summary-label">Industry Services</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-gst')" style="cursor:pointer"><div class="summary-icon">📋</div><div class="summary-label">GST Services</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-income-tax')" style="cursor:pointer"><div class="summary-icon">💰</div><div class="summary-label">Income Tax</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-accounting')" style="cursor:pointer"><div class="summary-icon">📒</div><div class="summary-label">Accounting</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-audit')" style="cursor:pointer"><div class="summary-icon">🔍</div><div class="summary-label">Audit & Assurance</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-business-setup')" style="cursor:pointer"><div class="summary-icon">🏢</div><div class="summary-label">Business Setup</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-roc')" style="cursor:pointer"><div class="summary-icon">📁</div><div class="summary-label">ROC Compliance</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-legal')" style="cursor:pointer"><div class="summary-icon">⚖️</div><div class="summary-label">Legal &amp; IP</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-financial')" style="cursor:pointer"><div class="summary-icon">📊</div><div class="summary-label">Financial Advisory</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-startup')" style="cursor:pointer"><div class="summary-icon">🚀</div><div class="summary-label">Start-up Advisory</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-payroll')" style="cursor:pointer"><div class="summary-icon">👥</div><div class="summary-label">Payroll &amp; Labour</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-digital')" style="cursor:pointer"><div class="summary-icon">🔐</div><div class="summary-label">Digital Signature</div></div>
+            <div class="summary-item" onclick="scrollToCard('card-industry')" style="cursor:pointer"><div class="summary-icon">🏭</div><div class="summary-label">Industry Services</div></div>
         </div>
 
         <div class="services-grid reveal-stagger">
-            <div class="service-card">
+            <div class="service-card" id="card-gst">
                 <div class="sc-head"><span class="sc-icon">📋</span><h3>GST Services</h3></div>
                 <p class="service-description">Complete GST compliance and advisory services for your business</p>
                 <ul>
@@ -1313,7 +1313,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-income-tax">
                 <div class="sc-head"><span class="sc-icon">💰</span><h3>Income Tax Services</h3></div>
                 <p class="service-description">Expert tax planning and compliance for individuals and businesses</p>
                 <ul>
@@ -1330,7 +1330,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-accounting">
                 <div class="sc-head"><span class="sc-icon">📒</span><h3>Accounting & Bookkeeping</h3></div>
                 <p class="service-description">Professional accounting services to keep your finances organized</p>
                 <ul>
@@ -1345,7 +1345,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-audit">
                 <div class="sc-head"><span class="sc-icon">🔍</span><h3>Audit & Assurance</h3></div>
                 <p class="service-description">Independent and reliable audit services for complete peace of mind</p>
                 <ul>
@@ -1360,7 +1360,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-business-setup">
                 <div class="sc-head"><span class="sc-icon">🏢</span><h3>Business Setup & Registration</h3></div>
                 <p class="service-description">Complete assistance in setting up your business entity</p>
                 <ul>
@@ -1379,7 +1379,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-roc">
                 <div class="sc-head"><span class="sc-icon">📁</span><h3>ROC & Corporate Compliance</h3></div>
                 <p class="service-description">Ensure full compliance with corporate regulations</p>
                 <ul>
@@ -1395,7 +1395,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-legal">
                 <div class="sc-head"><span class="sc-icon">⚖️</span><h3>Legal & Intellectual Property</h3></div>
                 <p class="service-description">Protect your brand and intellectual assets</p>
                 <ul>
@@ -1411,7 +1411,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-financial">
                 <div class="sc-head"><span class="sc-icon">📊</span><h3>Financial Advisory</h3></div>
                 <p class="service-description">Strategic financial guidance for business growth</p>
                 <ul>
@@ -1425,7 +1425,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-startup">
                 <div class="sc-head"><span class="sc-icon">🚀</span><h3>Start-up & Business Advisory</h3></div>
                 <p class="service-description">Comprehensive support for startups and growing businesses</p>
                 <ul>
@@ -1437,7 +1437,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-payroll">
                 <div class="sc-head"><span class="sc-icon">👥</span><h3>Payroll & Labour Law</h3></div>
                 <p class="service-description">Complete payroll and labour compliance management</p>
                 <ul>
@@ -1448,7 +1448,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-digital">
                 <div class="sc-head"><span class="sc-icon">🔐</span><h3>Digital Signature & Documentation</h3></div>
                 <p class="service-description">Secure digital documentation services</p>
                 <ul>
@@ -1461,7 +1461,7 @@
                 <a href="articles.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:#3949AB;font-size:0.78rem;font-weight:600;text-decoration:none;">View all guides &rarr;</a>
             </div>
 
-            <div class="service-card">
+            <div class="service-card" id="card-industry">
                 <div class="sc-head"><span class="sc-icon">🏭</span><h3>Specialized Industry Services</h3></div>
                 <p class="service-description">Industry-specific compliance solutions</p>
                 <ul>
@@ -1856,6 +1856,20 @@
         document.addEventListener('DOMContentLoaded', init);
     } else { init(); }
 })();
+</script>
+
+
+<script>
+function scrollToCard(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var navHeight = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 80;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    el.style.transition = 'box-shadow 0.3s ease';
+    el.style.boxShadow = '0 0 0 3px #FF9800';
+    setTimeout(function() { el.style.boxShadow = ''; }, 1500);
+}
 </script>
 
 </body>
