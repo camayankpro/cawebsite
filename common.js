@@ -179,29 +179,42 @@
 })();
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ADD THIS to common.js — injects "Contact Us" button into navbar
-   Works whether common.js builds nav via innerHTML or DOM methods
+   ADD THIS to common.js (paste at the end)
+   Injects: desktop nav button + mobile sticky bottom bar
    ═══════════════════════════════════════════════════════════════════════ */
 
-(function addNavCTAButton() {
+(function injectContactUI() {
+    var WA_LINK = 'https://wa.me/919045222870?text=Hello!%20I%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me.';
+
     function inject() {
+        /* 1. Desktop nav button — wraps burger with navbar-actions */
         var burger = document.getElementById('burgerMenu');
-        if (!burger) return;
+        if (burger && !document.querySelector('.navbar-actions')) {
+            var actions = document.createElement('div');
+            actions.className = 'navbar-actions';
 
-        // Wrap burger + new button in a .navbar-actions container
-        var actions = document.createElement('div');
-        actions.className = 'navbar-actions';
+            var navBtn = document.createElement('a');
+            navBtn.className = 'nav-cta-btn';
+            navBtn.href = WA_LINK;
+            navBtn.target = '_blank';
+            navBtn.rel = 'noopener noreferrer';
+            navBtn.innerHTML = '&#128222; Contact Us';
 
-        var btn = document.createElement('a');
-        btn.className = 'nav-cta-btn';
-        btn.href = 'https://wa.me/919045222870?text=Hello!%20I%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me.';
-        btn.target = '_blank';
-        btn.rel = 'noopener noreferrer';
-        btn.innerHTML = '&#128222; Contact Us';
+            burger.parentNode.insertBefore(actions, burger);
+            actions.appendChild(navBtn);
+            actions.appendChild(burger);
+        }
 
-        burger.parentNode.insertBefore(actions, burger);
-        actions.appendChild(btn);
-        actions.appendChild(burger);
+        /* 2. Mobile sticky bottom bar */
+        if (!document.querySelector('.mobile-cta-bar')) {
+            var bar = document.createElement('a');
+            bar.className = 'mobile-cta-bar';
+            bar.href = WA_LINK;
+            bar.target = '_blank';
+            bar.rel = 'noopener noreferrer';
+            bar.innerHTML = '<span>&#128222;</span><span>Contact Us on WhatsApp</span>';
+            document.body.appendChild(bar);
+        }
     }
 
     if (document.readyState === 'loading') {

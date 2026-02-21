@@ -737,10 +737,6 @@
             .burger-menu {
                 display: flex;
             }
-            .nav-cta-btn {
-                font-size: 0.78rem;
-                padding: 8px 14px;
-            }
 
             .navbar {
                 padding: 10px 30px;
@@ -893,7 +889,7 @@
             .summary-item:nth-child(n+3) { border-top: 1.5px solid #e8ecff; }
         }
     
-        /* ── Contact Us Nav Button ── */
+        /* ── Contact Us Nav Button (desktop only) ── */
         .nav-cta-btn {
             display: inline-flex;
             align-items: center;
@@ -919,6 +915,39 @@
             display: flex;
             align-items: center;
             gap: 14px;
+        }
+        /* Hide nav button on mobile — sticky bar takes over */
+        @media (max-width: 768px) {
+            .nav-cta-btn { display: none; }
+        }
+
+        /* ── Sticky Bottom Bar (mobile only) ── */
+        .mobile-cta-bar {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-cta-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                background: #FF9800;
+                color: #fff;
+                text-decoration: none;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 14px 20px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 0 -4px 16px rgba(230, 81, 0, 0.35);
+                letter-spacing: 0.3px;
+            }
+            /* Push page content up so it doesn't hide behind bar */
+            body { padding-bottom: 56px; }
         }
 </style>
     <script type="application/ld+json">
@@ -1580,5 +1609,14 @@
         });
     </script>
 
+
+    <!-- Sticky mobile bottom CTA bar -->
+    <a href="https://wa.me/919045222870?text=Hello!%20I%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me."
+       target="_blank"
+       class="mobile-cta-bar"
+       rel="noopener noreferrer">
+        <span>📞</span>
+        <span>Contact Us on WhatsApp</span>
+    </a>
 </body>
 </html>

@@ -196,10 +196,10 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
 
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ADD THIS to common.css — Contact Us nav button styles
-   Paste at the END of your existing common.css
+   ADD THIS to common.css (paste at the end)
    ═══════════════════════════════════════════════════════════════════════ */
 
+/* Desktop nav button */
 .nav-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -227,9 +227,29 @@ body { font-family: 'Poppins', sans-serif; color: #333; background: #f5f7fa; }
     gap: 14px;
 }
 @media (max-width: 768px) {
-    .nav-cta-btn {
-        font-size: 0.75rem;
-        padding: 7px 13px;
-    }
+    .nav-cta-btn { display: none; }
 }
 
+/* Mobile sticky bottom bar */
+.mobile-cta-bar { display: none; }
+
+@media (max-width: 768px) {
+    .mobile-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 999;
+        background: #FF9800;
+        color: #fff;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 20px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 -4px 16px rgba(230, 81, 0, 0.35);
+    }
+    body { padding-bottom: 56px; }
+}
