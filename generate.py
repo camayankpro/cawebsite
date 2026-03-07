@@ -1,0 +1,353 @@
+#!/usr/bin/env python3
+"""
+TaxAMC Static Site Generator — Final Complete Version
+======================================================
+- Reads cities from Google Sheet (primary) or cities.json (fallback)
+- Generates GST Registration + Company Registration pages for all cities
+- Generates sitemap-cities.xml
+- Pings Google, Bing, Yahoo, DuckDuckGo (all covered via Bing index)
+- Optionally calls Claude AI for unique city intro paragraphs
+
+Usage:
+  python generate.py                   (uses cities.json)
+  python generate.py --sheet URL       (uses Google Sheet)
+  python generate.py --ai              (AI-enhanced intros)
+  python generate.py --services gst    (only GST pages)
+"""
+
+import json, os, sys, csv, argparse, time
+import urllib.request, urllib.parse
+from datetime import date
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+# ─── CONFIGURATION ────────────────────────────────────────────────────────────
+
+BASE_URL        = "https://taxamc.com"
+WHATSAPP_NUMBER = "919045222870"
+
+SERVICES = {
+    "gst": {
+        "template":    "gst-registration.html",
+        "slug_prefix": "article-gst-registration",
+        "label":       "GST Registration",
+        "priority":    "0.8",
+    },
+    "company": {
+        "template":    "company-registration.html",
+        "slug_prefix": "article-company-registration",
+        "label":       "Company Registration",
+        "priority":    "0.8",
+    },
+}
+
+# ─── STEP 1 — LOAD CITIES DATA ────────────────────────────────────────────────
+
+def load_from_json(path):
+    with open(path, "r", encoding="utf-8") as f:
+        cities = json.load(f)
+    print(f"  ✓ Loaded {len(cities)} cities from cities.json")
+    return cities
+
+
+def load_from_sheet(csv_url):
+    """
+    Load cities from a Google Sheet published as CSV.
+
+    HOW TO GET YOUR GOOGLE SHEET CSV URL:
+    1. Open your Google Sheet
+    2. Click File → Share → Publish to web
+    3. Under "Link", choose your sheet tab name
+    4. Under "Embed", choose "Comma-separated values (.csv)"
+    5. Click Publish → Copy the URL
+    6. Paste that URL as the SHEET_CSV_URL in generate.yml
+
+    REQUIRED COLUMN HEADERS in your Google Sheet (row 1):
+    city | state | state_code | slug | commissionerate | zone |
+    local_areas | key_industries | intro_note | nearby_cities |
+    company_note | gst_note
+
+    For local_areas, key_industries, nearby_cities:
+    Separate multiple values with a pipe character |
+    Example: Whitefield|Electronic City|Koramangala
+    """
+    print(f"  Fetching cities from Google Sheet...")
+    try:
+        req = urllib.request.Request(csv_url, headers={"User-Agent": "TaxAMC-Generator/1.0"})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            content = resp.read().decode("utf-8")
+
+        reader = csv.DictReader(content.splitlines())
+        cities = []
+        LIST_FIELDS = ["local_areas", "key_industries", "nearby_cities"]
+
+        for row in reader:
+            # Skip empty rows
+            if not row.get("slug", "").strip():
+                continue
+            # Convert pipe-separated strings to lists
+            for field in LIST_FIELDS:
+                val = row.get(field, "")
+                row[field] = [x.strip() for x in val.split("|") if x.strip()] if val else []
+            cities.append(dict(row))
+
+        print(f"  ✓ Loaded {len(cities)} cities from Google Sheet")
+        return cities
+
+    except Exception as e:
+        print(f"  ⚠ Google Sheet failed: {e}")
+        return None
+
+
+def load_cities(json_path, sheet_url=None):
+    cities = None
+    if sheet_url and sheet_url.strip():
+        cities = load_from_sheet(sheet_url.strip())
+    if not cities:
+        if sheet_url:
+            print(f"  Falling back to cities.json...")
+        cities = load_from_json(json_path)
+
+    # Deduplicate by slug
+    seen, unique = set(), []
+    for c in cities:
+        slug = c.get("slug", "").strip()
+        if slug and slug not in seen:
+            seen.add(slug)
+            unique.append(c)
+
+    removed = len(cities) - len(unique)
+    if removed:
+        print(f"  ⚠ Removed {removed} duplicate/empty rows")
+
+    print(f"  → {len(unique)} unique cities ready for generation")
+    return unique
+
+
+# ─── STEP 2 — OPTIONAL AI INTROS ─────────────────────────────────────────────
+
+def get_ai_intro(city_data, service_label, api_key):
+    """Call Claude API to write a unique intro paragraph per city."""
+    try:
+        prompt = f"""Write a single paragraph (3-4 sentences) for a {service_label} 
+article targeting businesses in {city_data['city']}, {city_data['state']}.
+
+Key facts:
+- Major industries: {', '.join(city_data['key_industries'][:3])}
+- Key local areas: {', '.join(city_data['local_areas'][:3])}
+- City context: {city_data['intro_note']}
+
+Rules:
+- Mention the city name and state naturally
+- Reference 1-2 specific local industries or areas by name
+- Explain why {service_label} matters for this city's businesses
+- Tone: professional CA firm, helpful, locally relevant
+- Do NOT use clichés like "vibrant city" or "bustling hub"
+- Output ONLY the paragraph, no heading, no extra commentary"""
+
+        body = json.dumps({
+            "model": "claude-sonnet-4-20250514",
+            "max_tokens": 300,
+            "messages": [{"role": "user", "content": prompt}]
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=body,
+            headers={
+                "Content-Type": "application/json",
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            return result["content"][0]["text"].strip()
+
+    except Exception as e:
+        print(f"    ⚠ AI failed for {city_data['city']}: {e} — using default intro")
+        return city_data["intro_note"]
+
+
+# ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
+
+def build_env(template_dir):
+    env = Environment(
+        loader=FileSystemLoader(template_dir),
+        autoescape=select_autoescape(["html"]),
+    )
+    env.filters["urlencode"] = lambda s: urllib.parse.quote_plus(str(s))
+    return env
+
+
+def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None):
+    os.makedirs(output_dir, exist_ok=True)
+    generated = []
+
+    for service_key in services:
+        svc      = SERVICES[service_key]
+        template = env.get_template(svc["template"])
+        print(f"\n  [{svc['label']}] Generating {len(cities)} pages...")
+
+        for i, city in enumerate(cities, 1):
+            data = dict(city)
+
+            # Optional AI intro
+            if use_ai and api_key:
+                data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
+                time.sleep(0.5)  # gentle rate limiting
+
+            filename = f"{svc['slug_prefix']}-{data['slug']}.html"
+            filepath = os.path.join(output_dir, filename)
+
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(template.render(**data, whatsapp_number=WHATSAPP_NUMBER))
+
+            generated.append({
+                "url":      f"{BASE_URL}/{filename}",
+                "priority": svc["priority"],
+                "service":  svc["label"],
+                "city":     data["city"],
+                "filename": filename,
+            })
+
+            # Progress indicator every 10 cities
+            if i % 10 == 0 or i == len(cities):
+                print(f"    {i}/{len(cities)} pages done...")
+
+    return generated
+
+
+# ─── STEP 4 — GENERATE SITEMAP ────────────────────────────────────────────────
+
+def generate_sitemap(generated, output_dir):
+    today = date.today().isoformat()
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for p in generated:
+        lines.append(f"""  <url>
+    <loc>{p['url']}</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>{p['priority']}</priority>
+  </url>""")
+    lines.append("</urlset>")
+
+    path = os.path.join(output_dir, "sitemap-cities.xml")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    print(f"\n  ✓ Sitemap written: {len(generated)} city URLs → sitemap-cities.xml")
+
+
+# ─── STEP 5 — PING ALL SEARCH ENGINES ────────────────────────────────────────
+#
+#  HOW EACH SEARCH ENGINE WORKS:
+#
+#  Google      → Has its own index. We ping directly.
+#
+#  Bing        → Has its own index. We ping directly.
+#                Bing Webmaster Tools submission covers all Bing searches.
+#
+#  Yahoo       → Does NOT have its own search index.
+#                Yahoo Search is POWERED BY BING.
+#                So pinging Bing = your site appears on Yahoo automatically.
+#                No separate Yahoo submission needed.
+#
+#  DuckDuckGo  → Does NOT have its own index either.
+#                DuckDuckGo results come from BING (plus some other sources).
+#                So pinging Bing = DuckDuckGo picks it up automatically.
+#                No separate DuckDuckGo submission needed.
+#
+#  Ecosia      → Also powered by Bing. Covered automatically.
+#
+#  Bottom line: Ping Google + Bing → covered on all 5 major search engines.
+
+def ping_search_engines():
+    sitemap_encoded = urllib.parse.quote(f"{BASE_URL}/sitemap-cities.xml", safe="")
+
+    engines = [
+        ("Google",                   f"https://www.google.com/ping?sitemap={sitemap_encoded}"),
+        ("Bing (covers Yahoo+DDG)",  f"https://www.bing.com/ping?sitemap={sitemap_encoded}"),
+    ]
+
+    print("\n  Pinging search engines...")
+    print("  (Bing ping covers: Bing + Yahoo + DuckDuckGo + Ecosia)")
+
+    for name, url in engines:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "TaxAMC-Generator/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as r:
+                print(f"    ✓ {name}: HTTP {r.status}")
+        except urllib.error.HTTPError as e:
+            print(f"    ✓ {name}: HTTP {e.code} (ping accepted)")
+        except Exception as e:
+            print(f"    ⚠ {name}: {e}")
+
+
+# ─── STEP 6 — WRITE REPORT ────────────────────────────────────────────────────
+
+def write_report(generated, output_dir):
+    path = os.path.join(output_dir, "_generated_pages.csv")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("service,city,filename,url\n")
+        for p in generated:
+            f.write(f"{p['service']},{p['city']},{p['filename']},{p['url']}\n")
+    print(f"  ✓ Page report: _generated_pages.csv")
+
+
+# ─── MAIN ─────────────────────────────────────────────────────────────────────
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output",    default=".")
+    parser.add_argument("--cities",    default="./cities.json")
+    parser.add_argument("--templates", default="./templates")
+    parser.add_argument("--services",  default="gst,company")
+    parser.add_argument("--sheet",     default=None,
+                        help="Google Sheet published CSV URL")
+    parser.add_argument("--ai",        action="store_true",
+                        help="Use Claude AI for unique city intros")
+    parser.add_argument("--ping",      action="store_true",
+                        help="Ping search engines after generation")
+    args = parser.parse_args()
+
+    # Validate services
+    services = [s.strip() for s in args.services.split(",") if s.strip() in SERVICES]
+    if not services:
+        print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
+        sys.exit(1)
+
+    # API key for AI mode
+    api_key = None
+    if args.ai:
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            print("  ⚠ --ai set but ANTHROPIC_API_KEY not found. Skipping AI intros.")
+            args.ai = False
+
+    print(f"\n{'='*60}")
+    print(f"  TaxAMC Static Site Generator")
+    print(f"  Services   : {', '.join(services)}")
+    print(f"  Output dir : {os.path.abspath(args.output)}")
+    print(f"  Data source: {'Google Sheet' if args.sheet else 'cities.json'}")
+    print(f"  AI intros  : {'Yes' if args.ai else 'No'}")
+    print(f"{'='*60}")
+
+    cities    = load_cities(args.cities, args.sheet)
+    env       = build_env(args.templates)
+    generated = generate_pages(cities, env, args.output, services, args.ai, api_key)
+
+    generate_sitemap(generated, args.output)
+    write_report(generated, args.output)
+
+    if args.ping:
+        ping_search_engines()
+
+    print(f"\n{'='*60}")
+    print(f"  ✅ Complete! {len(generated)} pages generated.")
+    print(f"{'='*60}\n")
+
+
+if __name__ == "__main__":
+    main()

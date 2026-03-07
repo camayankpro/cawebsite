@@ -1,0 +1,171 @@
+name: TaxAMC — Generate City Pages
+
+# ════════════════════════════════════════════════════════════
+#  WHEN DOES THIS RUN?
+# ════════════════════════════════════════════════════════════
+on:
+
+  # 1. Automatically when you push changes to any of these files
+  push:
+    branches: [ main ]
+    paths:
+      - 'cities.json'
+      - 'templates/**'
+      - 'generate.py'
+
+  # 2. Automatically on the 1st of every month at 9:00 AM IST
+  #    Keeps sitemap dates fresh so Google recrawls regularly
+  schedule:
+    - cron: '30 3 1 * *'
+
+  # 3. Manually from GitHub → Actions tab → "Run workflow" button
+  #    Use this when you update your Google Sheet and want to regenerate
+  workflow_dispatch:
+    inputs:
+      services:
+        description: 'Which pages to generate? (gst,company or just gst or just company)'
+        required: false
+        default: 'gst,company'
+      use_ai:
+        description: 'Use AI for unique city intros? (true or false)'
+        required: false
+        default: 'false'
+
+# ════════════════════════════════════════════════════════════
+#  GOOGLE SHEET SETUP (read carefully)
+# ════════════════════════════════════════════════════════════
+#
+#  To use Google Sheet as your cities database instead of cities.json:
+#
+#  Step 1 — Create a Google Sheet with these EXACT column headers in row 1:
+#    city | state | state_code | slug | commissionerate | zone |
+#    local_areas | key_industries | intro_note | nearby_cities |
+#    company_note | gst_note
+#
+#  Step 2 — For local_areas, key_industries, nearby_cities columns:
+#    Separate multiple values with a pipe |
+#    Example in a cell: Whitefield|Electronic City|Koramangala
+#
+#  Step 3 — Publish the sheet as CSV:
+#    File → Share → Publish to web
+#    → Select your sheet tab → Select "Comma-separated values (.csv)"
+#    → Click Publish → Copy the URL shown
+#
+#  Step 4 — Save that URL as a GitHub Secret:
+#    Your repo → Settings → Secrets and variables → Actions
+#    → New repository secret
+#    → Name:  SHEET_CSV_URL
+#    → Value: paste the Google Sheet CSV URL
+#    → Click "Add secret"
+#
+#  That's it! The workflow will automatically read from your Google Sheet.
+#  When you add a new row in the sheet → click "Run workflow" below → done.
+#
+# ════════════════════════════════════════════════════════════
+#  BING WEBMASTER TOOLS SETUP (covers Yahoo + DuckDuckGo)
+# ════════════════════════════════════════════════════════════
+#
+#  Yahoo and DuckDuckGo both use Bing's search index.
+#  Submitting your sitemap to Bing covers all three automatically.
+#
+#  Step 1 — Go to: https://www.bing.com/webmasters
+#  Step 2 — Sign in with a Microsoft account (free)
+#  Step 3 — Click "Add a site" → enter https://taxamc.com
+#  Step 4 — Verify ownership (easiest: add the HTML meta tag to your index.html)
+#  Step 5 — Go to "Sitemaps" → Submit → type: sitemap-cities.xml → Submit
+#
+#  After this, every ping to Bing in this workflow also refreshes
+#  your pages on Yahoo and DuckDuckGo. No further action needed.
+#
+#  OPTIONAL — Save your Bing API key for programmatic submission:
+#    Settings → API Access → Generate API Key
+#    Save as GitHub Secret named: BING_API_KEY
+#
+# ════════════════════════════════════════════════════════════
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ── 1. Download your repository ──────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 2. Install Python ─────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── 3. Install required Python libraries ─────────────
+      - name: Install dependencies
+        run: pip install jinja2
+
+      # ── 4. Run the generator ──────────────────────────────
+      - name: Generate city pages
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          CMD="python generate.py"
+          CMD="$CMD --output ."
+          CMD="$CMD --cities cities.json"
+          CMD="$CMD --templates templates"
+          CMD="$CMD --services ${{ github.event.inputs.services || 'gst,company' }}"
+          CMD="$CMD --ping"
+
+          # Use Google Sheet if the secret is set
+          SHEET="${{ secrets.SHEET_CSV_URL }}"
+          if [ -n "$SHEET" ]; then
+            echo "📊 Google Sheet URL found — reading cities from sheet"
+            CMD="$CMD --sheet \"$SHEET\""
+          else
+            echo "📄 No Google Sheet URL set — using cities.json"
+          fi
+
+          # Enable AI intros if requested
+          if [ "${{ github.event.inputs.use_ai }}" = "true" ]; then
+            CMD="$CMD --ai"
+          fi
+
+          echo "Running: $CMD"
+          eval $CMD
+
+      # ── 5. Also ping Bing with API key if available ───────
+      - name: Ping Bing Webmaster API (covers Yahoo + DuckDuckGo)
+        run: |
+          BING_KEY="${{ secrets.BING_API_KEY }}"
+          if [ -n "$BING_KEY" ]; then
+            echo "Submitting sitemap to Bing Webmaster API..."
+            curl -s -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitSitemap?apikey=${BING_KEY}" \
+              -H "Content-Type: application/json; charset=utf-8" \
+              -d "{\"siteUrl\":\"https://taxamc.com\",\"sitemap\":\"https://taxamc.com/sitemap-cities.xml\"}"
+            echo ""
+            echo "✓ Bing API submission done (covers Yahoo + DuckDuckGo)"
+          else
+            echo "No BING_API_KEY secret set — skipping API submission"
+            echo "(Bing was already pinged via URL ping in the generator)"
+          fi
+
+      # ── 6. Commit all generated files back to your repo ───
+      - name: Commit and push generated pages
+        run: |
+          git config --local user.email "generator@taxamc.com"
+          git config --local user.name "TaxAMC Generator Bot"
+
+          git add article-gst-registration-*.html      2>/dev/null || true
+          git add article-company-registration-*.html  2>/dev/null || true
+          git add sitemap-cities.xml                   2>/dev/null || true
+          git add _generated_pages.csv                 2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "✓ No changes detected — all pages already up to date."
+          else
+            HTML_COUNT=$(git diff --staged --name-only | grep -c "\.html$" || echo "0")
+            git commit -m "🤖 Auto-generated ${HTML_COUNT} city pages [$(date '+%d %b %Y')]"
+            git push
+            echo "✅ Committed and pushed ${HTML_COUNT} updated pages."
+          fi
