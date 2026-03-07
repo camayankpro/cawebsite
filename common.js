@@ -1,3 +1,36 @@
+/* ── GA4 — Google Analytics 4 ───────────────────────────────
+   Measurement ID: G-DNF0748CLY
+   Tracks: page views + WhatsApp clicks (as 'whatsapp_click' event)
+   ─────────────────────────────────────────────────────────── */
+(function () {
+  var GA_ID = 'G-DNF0748CLY';
+
+  // Inject gtag.js
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+
+  // Init
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+
+  // Track every WhatsApp link click as a Lead event
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a[href*="wa.me"]');
+    if (!el) return;
+    var page = window.location.pathname.split('/').pop() || 'index.html';
+    gtag('event', 'whatsapp_click', {
+      event_category: 'Lead',
+      event_label: page,
+      page_location: window.location.href
+    });
+  });
+})();
+
 // Auto-inject missing SEO meta tags
 (function() {
   if (!document.querySelector('meta[name="language"]')) {
