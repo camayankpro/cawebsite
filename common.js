@@ -1,3 +1,13 @@
+// Auto-inject missing SEO meta tags
+(function() {
+  if (!document.querySelector('meta[name="language"]')) {
+    var m = document.createElement('meta');
+    m.setAttribute('http-equiv', 'content-language');
+    m.setAttribute('content', 'en-IN');
+    document.head.appendChild(m);
+  }
+})();
+
 /* ============================================================
    common.js — Agarwal Mayank & Company
    Place just before </body>. Injects navbar, WA float, footer,
