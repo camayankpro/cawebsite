@@ -123,10 +123,20 @@ def load_cities(json_path, sheet_url=None):
     return unique
 
 
-# ─── STEP 2 — OPTIONAL AI INTROS ─────────────────────────────────────────────
+# ─── STEP 2 — OPTIONAL AI INTROS (Google Gemini — Free Tier) ─────────────────
+#
+#  HOW TO SET UP (free, no credit card needed):
+#  1. Go to aistudio.google.com
+#  2. Sign in with your Google account
+#  3. Click "Get API key" → "Create API key" → copy the key
+#  4. Go to your GitHub repo → Settings → Secrets → Actions
+#  5. Add new secret → Name: GEMINI_API_KEY → paste key → Save
+#  6. When running the workflow, set "Use AI for unique city intros?" to true
+#
+#  Free limits: 15 requests/minute, 1500 requests/day — more than enough.
 
 def get_ai_intro(city_data, service_label, api_key):
-    """Call Claude API to write a unique intro paragraph per city."""
+    """Call Google Gemini API (free) to write a unique intro paragraph per city."""
     try:
         prompt = f"""Write a single paragraph (3-4 sentences) for a {service_label} 
 article targeting businesses in {city_data['city']}, {city_data['state']}.
@@ -145,26 +155,23 @@ Rules:
 - Output ONLY the paragraph, no heading, no extra commentary"""
 
         body = json.dumps({
-            "model": "claude-sonnet-4-20250514",
-            "max_tokens": 300,
-            "messages": [{"role": "user", "content": prompt}]
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
         }).encode("utf-8")
 
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+
         req = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
+            url,
             data=body,
-            headers={
-                "Content-Type": "application/json",
-                "x-api-key": api_key,
-                "anthropic-version": "2023-06-01"
-            }
+            headers={"Content-Type": "application/json"}
         )
         with urllib.request.urlopen(req, timeout=30) as resp:
             result = json.loads(resp.read().decode("utf-8"))
-            return result["content"][0]["text"].strip()
+            return result["candidates"][0]["content"]["parts"][0]["text"].strip()
 
     except Exception as e:
-        print(f"    ⚠ AI failed for {city_data['city']}: {e} — using default intro")
+        print(f"    ⚠ Gemini failed for {city_data['city']}: {e} — using default intro")
         return city_data["intro_note"]
 
 
@@ -318,12 +325,12 @@ def main():
         print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
         sys.exit(1)
 
-    # API key for AI mode
+    # API key for AI mode (Google Gemini — free)
     api_key = None
     if args.ai:
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
-            print("  ⚠ --ai set but ANTHROPIC_API_KEY not found. Skipping AI intros.")
+            print("  ⚠ --ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
             args.ai = False
 
     print(f"\n{'='*60}")
