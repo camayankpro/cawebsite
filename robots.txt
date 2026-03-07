@@ -6,6 +6,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://taxamc.com/sitemap.xml
+Sitemap: https://taxamc.com/sitemap-cities.xml
 
 # Crawl-delay (be polite to servers)
 Crawl-delay: 1
