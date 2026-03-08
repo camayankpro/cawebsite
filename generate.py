@@ -25,6 +25,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 BASE_URL        = "https://taxamc.com"
 WHATSAPP_NUMBER = "919045222870"
 
+
 SERVICES = {
     # ── Original 5 ──────────────────────────────────────────────────────────
     "gst": {
@@ -297,7 +298,7 @@ Rules:
             "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
         }).encode("utf-8")
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
         req = urllib.request.Request(
             url,
@@ -331,7 +332,9 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
     for service_key in services:
         svc      = SERVICES[service_key]
         template = env.get_template(svc["template"])
-        print(f"\n  [{svc['label']}] Generating {len(cities)} pages...")
+        written  = 0
+        skipped  = 0
+        print(f"\n  [{svc['label']}] Checking {len(cities)} pages...")
 
         for i, city in enumerate(cities, 1):
             data = dict(city)
@@ -343,9 +346,27 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
 
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
+            new_html = template.render(**data, whatsapp_number=WHATSAPP_NUMBER)
+
+            # Skip writing if file already exists and content is identical.
+            # Only pages whose template or city data changed get rewritten —
+            # so git only commits the truly updated files.
+            if os.path.isfile(filepath):
+                with open(filepath, "r", encoding="utf-8") as f:
+                    if f.read() == new_html:
+                        generated.append({
+                            "url":      f"{BASE_URL}/{filename}",
+                            "priority": svc["priority"],
+                            "service":  svc["label"],
+                            "city":     data["city"],
+                            "filename": filename,
+                        })
+                        skipped += 1
+                        continue  # unchanged — skip write
 
             with open(filepath, "w", encoding="utf-8") as f:
-                f.write(template.render(**data, whatsapp_number=WHATSAPP_NUMBER))
+                f.write(new_html)
+            written += 1
 
             generated.append({
                 "url":      f"{BASE_URL}/{filename}",
@@ -357,7 +378,7 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
 
             # Progress indicator every 10 cities
             if i % 10 == 0 or i == len(cities):
-                print(f"    {i}/{len(cities)} pages done...")
+                print(f"    {i}/{len(cities)} — written: {written}, skipped (unchanged): {skipped}")
 
     return generated
 
