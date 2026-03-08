@@ -275,10 +275,10 @@ def load_cities(json_path, sheet_url=None):
 #  Free limits: 15 requests/minute, 1500 requests/day — more than enough.
 
 def get_ai_intro(city_data, service_label, api_key):
-    """Call Google Gemini API (free) to write a unique intro paragraph per city."""
-    try:
-        prompt = f"""Write a single paragraph (3-4 sentences) for a {service_label} 
-article targeting businesses in {city_data['city']}, {city_data['state']}.
+    """Call Google Gemini API (free) to write a unique intro paragraph per city.
+    Retries up to 3 times on 429 (rate limit) with exponential backoff.
+    """
+    prompt = f"""Write a single paragraph (3-4 sentences) for a {service_label} article targeting businesses in {city_data['city']}, {city_data['state']}.
 
 Key facts:
 - Major industries: {', '.join(city_data['key_industries'][:3])}
@@ -293,25 +293,44 @@ Rules:
 - Do NOT use clichés like "vibrant city" or "bustling hub"
 - Output ONLY the paragraph, no heading, no extra commentary"""
 
-        body = json.dumps({
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
-        }).encode("utf-8")
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
+    }).encode("utf-8")
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
-        req = urllib.request.Request(
-            url,
-            data=body,
-            headers={"Content-Type": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
-            return result["candidates"][0]["content"]["parts"][0]["text"].strip()
+    MAX_RETRIES = 4
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            req = urllib.request.Request(
+                url,
+                data=body,
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                result = json.loads(resp.read().decode("utf-8"))
+                return result["candidates"][0]["content"]["parts"][0]["text"].strip()
 
-    except Exception as e:
-        print(f"    ⚠ Gemini failed for {city_data['city']}: {e} — using default intro")
-        return city_data["intro_note"]
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                # Rate limit hit — wait and retry with exponential backoff
+                wait = 15 * (2 ** (attempt - 1))   # 15s, 30s, 60s, 120s
+                print(f"    ⏳ Gemini rate limit for {city_data['city']} "
+                      f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
+                time.sleep(wait)
+                if attempt == MAX_RETRIES:
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} retries — using default intro")
+                    return city_data["intro_note"]
+            else:
+                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
+                return city_data["intro_note"]
+
+        except Exception as e:
+            print(f"    ⚠ Gemini failed for {city_data['city']}: {e} — using default intro")
+            return city_data["intro_note"]
+
+    return city_data["intro_note"]
 
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
@@ -342,7 +361,7 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             # Optional AI intro
             if use_ai and api_key:
                 data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
-                time.sleep(0.5)  # gentle rate limiting
+                time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
 
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
