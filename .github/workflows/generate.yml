@@ -23,9 +23,9 @@ on:
   workflow_dispatch:
     inputs:
       services:
-        description: 'Which pages to generate? (gst,company or just gst or just company)'
+        description: 'Which services to generate? Comma-separated, e.g. gst,itr or leave blank for all 24'
         required: false
-        default: 'gst,company'
+        default: ''
       use_ai:
         description: 'Use AI for unique city intros? (true or false)'
         required: false
@@ -114,7 +114,14 @@ jobs:
           CMD="$CMD --output ."
           CMD="$CMD --cities cities.json"
           CMD="$CMD --templates templates"
-          CMD="$CMD --services ${{ github.event.inputs.services || 'gst,company' }}"
+
+          # If a specific services list was provided via manual trigger, use it.
+          # Otherwise omit --services entirely so generate.py uses its own default (all 24).
+          SVCS="${{ github.event.inputs.services }}"
+          if [ -n "$SVCS" ]; then
+            CMD="$CMD --services \"$SVCS\""
+          fi
+
           CMD="$CMD --ping"
 
           # Use Google Sheet if the secret is set
@@ -156,8 +163,8 @@ jobs:
           git config --local user.email "generator@taxamc.com"
           git config --local user.name "TaxAMC Generator Bot"
 
-          git add article-gst-registration-*.html      2>/dev/null || true
-          git add article-company-registration-*.html  2>/dev/null || true
+          # Add ALL generated article pages (covers all 24 services × 74 cities)
+          git add article-*.html                       2>/dev/null || true
           git add sitemap-cities.xml                   2>/dev/null || true
           git add _generated_pages.csv                 2>/dev/null || true
 

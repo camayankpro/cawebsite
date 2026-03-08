@@ -448,7 +448,17 @@ def main():
     parser.add_argument("--output",    default=".")
     parser.add_argument("--cities",    default="./cities.json")
     parser.add_argument("--templates", default="./templates")
-    parser.add_argument("--services",  default="gst,company,itr,trademark,msme,llp,partnership,roc,iec,gst-return,tds,gst-cancellation,gst-notice,business-loan,itr-freelancers,itr-doctors,ecommerce-gst,capital-gains,itr-creators,restaurant-gst,export-lut,gst-pharma,accounting-it,tds-contractors")
+    # --services accepts EITHER:
+    #   a single comma-separated string:  --services gst,itr,company
+    #   or space-separated tokens:        --services gst itr company
+    #   or a mix:                         --services gst,itr company
+    # This makes it robust against shell quoting differences in CI/CD environments.
+    ALL_SERVICES = ("gst,company,itr,trademark,msme,llp,partnership,roc,iec,"
+                    "gst-return,tds,gst-cancellation,gst-notice,business-loan,"
+                    "itr-freelancers,itr-doctors,ecommerce-gst,capital-gains,"
+                    "itr-creators,restaurant-gst,export-lut,gst-pharma,"
+                    "accounting-it,tds-contractors")
+    parser.add_argument("--services", nargs="+", default=[ALL_SERVICES])
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
@@ -457,8 +467,9 @@ def main():
                         help="Ping search engines after generation")
     args = parser.parse_args()
 
-    # Validate services
-    services = [s.strip() for s in args.services.split(",") if s.strip() in SERVICES]
+    # Flatten nargs list (handles both "gst,itr" and "gst" "itr" or mix)
+    raw = ",".join(args.services)
+    services = [s.strip() for s in raw.split(",") if s.strip() in SERVICES]
     if not services:
         print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
         sys.exit(1)
