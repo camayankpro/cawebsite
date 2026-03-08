@@ -26,6 +26,7 @@ BASE_URL        = "https://taxamc.com"
 WHATSAPP_NUMBER = "919045222870"
 
 SERVICES = {
+    # ── Original 5 ──────────────────────────────────────────────────────────
     "gst": {
         "template":    "gst-registration.html",
         "slug_prefix": "article-gst-registration",
@@ -37,6 +38,143 @@ SERVICES = {
         "slug_prefix": "article-company-registration",
         "label":       "Company Registration",
         "priority":    "0.8",
+    },
+    "itr": {
+        "template":    "itr-filing.html",
+        "slug_prefix": "article-itr-filing",
+        "label":       "ITR Filing",
+        "priority":    "0.8",
+    },
+    "trademark": {
+        "template":    "trademark-registration.html",
+        "slug_prefix": "article-trademark-registration",
+        "label":       "Trademark Registration",
+        "priority":    "0.8",
+    },
+    "msme": {
+        "template":    "msme-registration.html",
+        "slug_prefix": "article-msme-registration",
+        "label":       "MSME Registration",
+        "priority":    "0.8",
+    },
+    # ── Batch 1 ─────────────────────────────────────────────────────────────
+    "llp": {
+        "template":    "llp-registration.html",
+        "slug_prefix": "article-llp-registration",
+        "label":       "LLP Registration",
+        "priority":    "0.8",
+    },
+    "partnership": {
+        "template":    "partnership-registration.html",
+        "slug_prefix": "article-partnership-registration",
+        "label":       "Partnership Firm Registration",
+        "priority":    "0.8",
+    },
+    "roc": {
+        "template":    "roc-filing.html",
+        "slug_prefix": "article-roc-filing",
+        "label":       "ROC Annual Filing",
+        "priority":    "0.8",
+    },
+    "iec": {
+        "template":    "iec-registration.html",
+        "slug_prefix": "article-iec-registration",
+        "label":       "IEC Registration",
+        "priority":    "0.8",
+    },
+    # ── Batch 2 ─────────────────────────────────────────────────────────────
+    "gst-return": {
+        "template":    "gst-return-filing.html",
+        "slug_prefix": "article-gst-return-filing",
+        "label":       "GST Return Filing",
+        "priority":    "0.8",
+    },
+    "tds": {
+        "template":    "tds-filing.html",
+        "slug_prefix": "article-tds-filing",
+        "label":       "TDS Return Filing",
+        "priority":    "0.8",
+    },
+    "gst-cancellation": {
+        "template":    "gst-cancellation.html",
+        "slug_prefix": "article-gst-cancellation",
+        "label":       "GST Cancellation",
+        "priority":    "0.7",
+    },
+    "gst-notice": {
+        "template":    "gst-notice-reply.html",
+        "slug_prefix": "article-gst-notice-reply",
+        "label":       "GST Notice Reply",
+        "priority":    "0.7",
+    },
+    # ── Batch 3 ─────────────────────────────────────────────────────────────
+    "business-loan": {
+        "template":    "business-loan-docs.html",
+        "slug_prefix": "article-business-loan-docs",
+        "label":       "Business Loan Documentation",
+        "priority":    "0.7",
+    },
+    "itr-freelancers": {
+        "template":    "itr-freelancers.html",
+        "slug_prefix": "article-itr-freelancers",
+        "label":       "ITR for Freelancers",
+        "priority":    "0.7",
+    },
+    "itr-doctors": {
+        "template":    "itr-doctors.html",
+        "slug_prefix": "article-itr-doctors",
+        "label":       "Tax for Doctors",
+        "priority":    "0.7",
+    },
+    "ecommerce-gst": {
+        "template":    "ecommerce-gst.html",
+        "slug_prefix": "article-ecommerce-gst",
+        "label":       "GST for Online Sellers",
+        "priority":    "0.7",
+    },
+    # ── Batch 4 ─────────────────────────────────────────────────────────────
+    "capital-gains": {
+        "template":    "capital-gains.html",
+        "slug_prefix": "article-capital-gains",
+        "label":       "Capital Gains Tax",
+        "priority":    "0.7",
+    },
+    "itr-creators": {
+        "template":    "itr-creators.html",
+        "slug_prefix": "article-itr-creators",
+        "label":       "ITR for YouTubers & Creators",
+        "priority":    "0.7",
+    },
+    "restaurant-gst": {
+        "template":    "restaurant-gst.html",
+        "slug_prefix": "article-restaurant-gst",
+        "label":       "GST for Restaurants",
+        "priority":    "0.7",
+    },
+    "export-lut": {
+        "template":    "export-lut.html",
+        "slug_prefix": "article-export-lut",
+        "label":       "GST LUT for Exporters",
+        "priority":    "0.7",
+    },
+    # ── Batch 5 ─────────────────────────────────────────────────────────────
+    "gst-pharma": {
+        "template":    "pharma-gst.html",
+        "slug_prefix": "article-gst-pharma",
+        "label":       "GST for Pharma",
+        "priority":    "0.7",
+    },
+    "accounting-it": {
+        "template":    "startup-accounting.html",
+        "slug_prefix": "article-accounting-it",
+        "label":       "Accounting for IT Companies",
+        "priority":    "0.7",
+    },
+    "tds-contractors": {
+        "template":    "tds-contractors.html",
+        "slug_prefix": "article-tds-contractors",
+        "label":       "TDS for Contractors",
+        "priority":    "0.7",
     },
 }
 
@@ -310,7 +448,7 @@ def main():
     parser.add_argument("--output",    default=".")
     parser.add_argument("--cities",    default="./cities.json")
     parser.add_argument("--templates", default="./templates")
-    parser.add_argument("--services",  default="gst,company")
+    parser.add_argument("--services",  default="gst,company,itr,trademark,msme,llp,partnership,roc,iec,gst-return,tds,gst-cancellation,gst-notice,business-loan,itr-freelancers,itr-doctors,ecommerce-gst,capital-gains,itr-creators,restaurant-gst,export-lut,gst-pharma,accounting-it,tds-contractors")
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
