@@ -360,15 +360,38 @@ def build_env(template_dir):
     return env
 
 
+def load_ai_log(output_dir):
+    """Load the set of filenames that already received an AI intro."""
+    path = os.path.join(output_dir, "_ai_intros.json")
+    if os.path.isfile(path):
+        with open(path, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+    return set()
+
+
+def save_ai_log(output_dir, ai_done):
+    """Persist the set of filenames that received an AI intro."""
+    path = os.path.join(output_dir, "_ai_intros.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(sorted(ai_done), f, indent=2)
+
+
 def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None, force_ai=False):
     os.makedirs(output_dir, exist_ok=True)
     generated = []
+
+    # Load the log of pages that already got AI intros.
+    # --force-ai skips pages already in this log so each run only
+    # processes pages not yet done — picking up where yesterday left off.
+    ai_done = load_ai_log(output_dir)
+    ai_new   = set()   # pages that get AI intros in this run
 
     for service_key in services:
         svc      = SERVICES[service_key]
         template = env.get_template(svc["template"])
         written  = 0
         skipped  = 0
+        ai_skipped = 0
         print(f"\n  [{svc['label']}] Checking {len(cities)} pages...")
 
         for i, city in enumerate(cities, 1):
@@ -377,15 +400,20 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
 
-            # Call Gemini when:
-            #   --ai:       only for new pages (file doesn't exist yet)
-            #   --force-ai: for ALL pages, including existing ones (refreshes intros)
+            # Decide whether to call Gemini:
+            #   --ai:       only for pages that don't exist yet
+            #   --force-ai: for pages not yet in the AI log (resumes across days)
             should_call_ai = api_key and (
-                (use_ai and not os.path.isfile(filepath)) or force_ai
+                (use_ai     and not os.path.isfile(filepath)) or
+                (force_ai   and filename not in ai_done)
             )
             if should_call_ai:
                 data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
+                if not getattr(get_ai_intro, "_quota_exhausted", False):
+                    ai_new.add(filename)
                 time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
+            elif force_ai and filename in ai_done:
+                ai_skipped += 1  # already has AI intro — skip
 
             new_html = template.render(**data, whatsapp_number=WHATSAPP_NUMBER)
 
@@ -419,7 +447,20 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
 
             # Progress indicator every 10 cities
             if i % 10 == 0 or i == len(cities):
-                print(f"    {i}/{len(cities)} — written: {written}, skipped (unchanged): {skipped}")
+                ai_info = f", ai_done: {ai_skipped}" if force_ai else ""
+                print(f"    {i}/{len(cities)} — written: {written}, skipped: {skipped}{ai_info}")
+
+    # Save updated AI log
+    if ai_new:
+        ai_done.update(ai_new)
+        save_ai_log(output_dir, ai_done)
+        print(f"\n  ✓ AI log updated: {len(ai_done)} pages total have AI intros ({len(ai_new)} new this run)")
+    elif force_ai:
+        remaining = 1776 - len(ai_done)
+        if remaining > 0:
+            print(f"\n  ℹ AI log: {len(ai_done)}/1776 pages done. {remaining} remaining — run again tomorrow.")
+        else:
+            print(f"\n  ✓ All 1776 pages have AI intros.")
 
     return generated
 

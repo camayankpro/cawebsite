@@ -173,6 +173,7 @@ jobs:
           git add article-*.html                       2>/dev/null || true
           git add sitemap-cities.xml                   2>/dev/null || true
           git add _generated_pages.csv                 2>/dev/null || true
+          git add _ai_intros.json                      2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "✓ No changes detected — all pages already up to date."
