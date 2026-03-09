@@ -278,6 +278,10 @@ def get_ai_intro(city_data, service_label, api_key):
     """Call Google Gemini API (free) to write a unique intro paragraph per city.
     Retries up to 3 times on 429 (rate limit) with exponential backoff.
     """
+    # If daily quota was exhausted earlier in this run, skip API call immediately
+    if getattr(get_ai_intro, "_quota_exhausted", False):
+        return city_data["intro_note"]
+
     prompt = f"""Write a single paragraph (3-4 sentences) for a {service_label} article targeting businesses in {city_data['city']}, {city_data['state']}.
 
 Key facts:
@@ -300,7 +304,7 @@ Rules:
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
-    MAX_RETRIES = 4
+    MAX_RETRIES = 3
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             req = urllib.request.Request(
@@ -310,17 +314,29 @@ Rules:
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
+                get_ai_intro._consecutive_429s = 0   # reset on success
                 return result["candidates"][0]["content"]["parts"][0]["text"].strip()
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                # Rate limit hit — wait and retry with exponential backoff
-                wait = 15 * (2 ** (attempt - 1))   # 15s, 30s, 60s, 120s
+                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
+
+                # After 3 consecutive 429s across any cities, daily quota is likely
+                # exhausted — stop calling Gemini for the entire rest of this run.
+                if get_ai_intro._consecutive_429s >= 3:
+                    print(f"    ⚠ Gemini daily quota likely exhausted after "
+                          f"{get_ai_intro._consecutive_429s} consecutive rate limits. "
+                          f"Switching to default intros for all remaining pages.")
+                    get_ai_intro._quota_exhausted = True
+                    return city_data["intro_note"]
+
+                # Per-minute rate limit — short wait then retry
+                wait = 20 * attempt   # 20s, 40s, 60s
                 print(f"    ⏳ Gemini rate limit for {city_data['city']} "
                       f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} retries — using default intro")
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
                     return city_data["intro_note"]
             else:
                 print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
@@ -358,13 +374,16 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
         for i, city in enumerate(cities, 1):
             data = dict(city)
 
-            # Optional AI intro
-            if use_ai and api_key:
+            filename = f"{svc['slug_prefix']}-{data['slug']}.html"
+            filepath = os.path.join(output_dir, filename)
+
+            # Only call Gemini if the file doesn't already exist.
+            # This prevents calling the API 1,776 times on re-runs
+            # where most pages are already up to date.
+            if use_ai and api_key and not os.path.isfile(filepath):
                 data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
                 time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
 
-            filename = f"{svc['slug_prefix']}-{data['slug']}.html"
-            filepath = os.path.join(output_dir, filename)
             new_html = template.render(**data, whatsapp_number=WHATSAPP_NUMBER)
 
             # Skip writing if file already exists and content is identical.
