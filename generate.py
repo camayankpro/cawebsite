@@ -360,7 +360,7 @@ def build_env(template_dir):
     return env
 
 
-def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None):
+def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None, force_ai=False):
     os.makedirs(output_dir, exist_ok=True)
     generated = []
 
@@ -377,10 +377,13 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
 
-            # Only call Gemini if the file doesn't already exist.
-            # This prevents calling the API 1,776 times on re-runs
-            # where most pages are already up to date.
-            if use_ai and api_key and not os.path.isfile(filepath):
+            # Call Gemini when:
+            #   --ai:       only for new pages (file doesn't exist yet)
+            #   --force-ai: for ALL pages, including existing ones (refreshes intros)
+            should_call_ai = api_key and (
+                (use_ai and not os.path.isfile(filepath)) or force_ai
+            )
+            if should_call_ai:
                 data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
                 time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
 
@@ -521,7 +524,9 @@ def main():
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
-                        help="Use Claude AI for unique city intros")
+                        help="Use Gemini AI for unique city intros (skips existing pages)")
+    parser.add_argument("--force-ai",  action="store_true",
+                        help="Use Gemini AI for ALL pages, including existing ones (to refresh intros)")
     parser.add_argument("--ping",      action="store_true",
                         help="Ping search engines after generation")
     args = parser.parse_args()
@@ -535,23 +540,23 @@ def main():
 
     # API key for AI mode (Google Gemini — free)
     api_key = None
-    if args.ai:
+    if args.ai or args.force_ai:
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
-            print("  ⚠ --ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
-            args.ai = False
+            print("  ⚠ --ai/--force-ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
+            args.ai = args.force_ai = False
 
     print(f"\n{'='*60}")
     print(f"  TaxAMC Static Site Generator")
     print(f"  Services   : {', '.join(services)}")
     print(f"  Output dir : {os.path.abspath(args.output)}")
     print(f"  Data source: {'Google Sheet' if args.sheet else 'cities.json'}")
-    print(f"  AI intros  : {'Yes' if args.ai else 'No'}")
+    print(f"  AI intros  : {'Force (all pages)' if args.force_ai else 'Yes (new pages only)' if args.ai else 'No'}")
     print(f"{'='*60}")
 
     cities    = load_cities(args.cities, args.sheet)
     env       = build_env(args.templates)
-    generated = generate_pages(cities, env, args.output, services, args.ai, api_key)
+    generated = generate_pages(cities, env, args.output, services, args.ai, api_key, force_ai=args.force_ai)
 
     generate_sitemap(generated, args.output)
     write_report(generated, args.output)

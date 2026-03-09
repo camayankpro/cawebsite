@@ -27,7 +27,11 @@ on:
         required: false
         default: ''
       use_ai:
-        description: 'Use AI for unique city intros? (true or false)'
+        description: 'Use AI for unique city intros? New pages only (true or false)'
+        required: false
+        default: 'false'
+      force_ai:
+        description: 'Force AI intros on ALL pages including existing ones? (true or false)'
         required: false
         default: 'false'
 
@@ -134,7 +138,9 @@ jobs:
           fi
 
           # Enable AI intros if requested
-          if [ "${{ github.event.inputs.use_ai }}" = "true" ]; then
+          if [ "${{ github.event.inputs.force_ai }}" = "true" ]; then
+            CMD="$CMD --force-ai"
+          elif [ "${{ github.event.inputs.use_ai }}" = "true" ]; then
             CMD="$CMD --ai"
           fi
 
