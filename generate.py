@@ -304,7 +304,9 @@ Rules:
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
-    MAX_RETRIES = 3
+    # Per-minute limit: wait up to 5 minutes with increasing delays
+    # Daily quota: if STILL failing after 5 long retries, give up for the whole run
+    MAX_RETRIES = 5
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             req = urllib.request.Request(
@@ -321,22 +323,23 @@ Rules:
             if e.code == 429:
                 get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
 
-                # After 3 consecutive 429s across any cities, daily quota is likely
-                # exhausted — stop calling Gemini for the entire rest of this run.
-                if get_ai_intro._consecutive_429s >= 3:
-                    print(f"    ⚠ Gemini daily quota likely exhausted after "
+                # Only declare daily quota exhausted after 10 consecutive 429s
+                # across different cities — this rules out per-minute bursts
+                if get_ai_intro._consecutive_429s >= 10:
+                    print(f"    ⚠ Gemini daily quota exhausted after "
                           f"{get_ai_intro._consecutive_429s} consecutive rate limits. "
                           f"Switching to default intros for all remaining pages.")
                     get_ai_intro._quota_exhausted = True
                     return city_data["intro_note"]
 
-                # Per-minute rate limit — short wait then retry
-                wait = 20 * attempt   # 20s, 40s, 60s
+                # Per-minute rate limit — wait longer before retrying
+                # 30s → 60s → 90s → 120s → 120s
+                wait = min(30 * attempt, 120)
                 print(f"    ⏳ Gemini rate limit for {city_data['city']} "
                       f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} attempts — using default intro")
                     return city_data["intro_note"]
             else:
                 print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
