@@ -110,6 +110,7 @@
           '<a href="index.html#services">Services</a>' +
           '<a href="articles.html">Articles</a>' +
           '<a href="index.html#contact">Contact Us</a>' +
+          '<a href="disclaimer.html">Disclaimer</a>' +
         '</div>' +
         '<div class="footer-section">' +
           '<h3>Contact Us</h3>' +
@@ -123,7 +124,7 @@
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
-        '<p>Copyright &copy; 2026 Agarwal Mayank &amp; Company | Chartered Accountants | All Rights Reserved.</p>' +
+        '<p>Copyright &copy; 2026 Agarwal Mayank &amp; Company | Chartered Accountants | All Rights Reserved. | <a href="disclaimer.html" style="color:rgba(255,255,255,0.7);text-decoration:underline;">Disclaimer</a></p>' +
       '</div>' +
     '</footer>';
 
