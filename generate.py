@@ -352,6 +352,36 @@ Rules:
     return city_data["intro_note"]
 
 
+
+def check_gemini_quota(api_key):
+    """
+    Make a single minimal test call to Gemini before starting the run.
+    Returns True if quota is available, False if exhausted (429).
+    Fails fast — no retries — so we don't waste time.
+    """
+    print("  Checking Gemini API quota...")
+    body = json.dumps({
+        "contents": [{"parts": [{"text": "Say OK"}]}],
+        "generationConfig": {"maxOutputTokens": 5}
+    }).encode("utf-8")
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    try:
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print("  ✓ Gemini quota available — proceeding with AI intros")
+            return True
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            print(f"  ✗ Gemini quota exhausted (HTTP 429).")
+            print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
+            print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
+            return False
+        print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
+        return False
+    except Exception as e:
+        print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
+        return False
+
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
 
 def build_env(template_dir):
@@ -589,6 +619,10 @@ def main():
         if not api_key:
             print("  ⚠ --ai/--force-ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
             args.ai = args.force_ai = False
+        elif not check_gemini_quota(api_key):
+            # Quota exhausted — disable AI and continue generating pages without intros
+            args.ai = args.force_ai = False
+            api_key = None
 
     print(f"\n{'='*60}")
     print(f"  TaxAMC Static Site Generator")
