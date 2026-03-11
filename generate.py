@@ -355,9 +355,15 @@ Rules:
 
 def check_gemini_quota(api_key):
     """
-    Make a single minimal test call to Gemini before starting the run.
-    Returns True if quota is available, False if exhausted (429).
-    Fails fast — no retries — so we don't waste time.
+    Make a minimal test call to Gemini before starting the run.
+    Returns True if quota is available, False only if DAILY quota is exhausted.
+
+    Gemini uses HTTP 429 for two distinct situations:
+      - Per-minute rate limit (RATE_LIMIT_EXCEEDED)  → retryable, wait and retry
+      - Daily quota exhausted (RESOURCE_EXHAUSTED)   → not retryable today
+
+    We read the response body to tell them apart, and retry up to 3 times
+    (with 20s waits) on per-minute limits before giving up.
     """
     print("  Checking Gemini API quota...")
     body = json.dumps({
@@ -365,22 +371,42 @@ def check_gemini_quota(api_key):
         "generationConfig": {"maxOutputTokens": 5}
     }).encode("utf-8")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
-    try:
-        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            print("  ✓ Gemini quota available — proceeding with AI intros")
-            return True
-    except urllib.error.HTTPError as e:
-        if e.code == 429:
-            print(f"  ✗ Gemini quota exhausted (HTTP 429).")
-            print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
-            print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
+
+    for attempt in range(1, 4):  # up to 3 attempts
+        try:
+            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                print("  ✓ Gemini quota available — proceeding with AI intros")
+                return True
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                # Read the error body to distinguish rate-limit vs daily quota
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
+                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
+                    # Daily quota genuinely exhausted — no point retrying
+                    print(f"  ✗ Gemini daily quota exhausted (HTTP 429 / RESOURCE_EXHAUSTED).")
+                    print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
+                    print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
+                    return False
+                else:
+                    # Per-minute rate limit — wait and retry
+                    if attempt < 3:
+                        print(f"  ⏳ Gemini per-minute rate limit hit (attempt {attempt}/3). Waiting 20s...")
+                        time.sleep(20)
+                        continue
+                    else:
+                        print(f"  ✗ Gemini rate limit persists after 3 attempts — proceeding without AI intros.")
+                        return False
+            else:
+                print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
+                return False
+        except Exception as e:
+            print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
             return False
-        print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
-        return False
-    except Exception as e:
-        print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
-        return False
+    return False
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
 
