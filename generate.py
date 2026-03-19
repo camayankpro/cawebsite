@@ -304,9 +304,9 @@ Rules:
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
-    # Per-minute limit: wait up to 5 minutes with increasing delays
-    # Daily quota: if STILL failing after 5 long retries, give up for the whole run
-    MAX_RETRIES = 5
+    # Per-minute limit: 2 retries max — if still failing, move on
+    # throttle sleep after success prevents hitting limit in first place
+    MAX_RETRIES = 2
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             req = urllib.request.Request(
@@ -317,6 +317,7 @@ Rules:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
                 get_ai_intro._consecutive_429s = 0   # reset on success
+                time.sleep(5)  # throttle: stay under 15 req/min free tier limit
                 return result["candidates"][0]["content"]["parts"][0]["text"].strip()
 
         except urllib.error.HTTPError as e:
@@ -332,14 +333,16 @@ Rules:
                     get_ai_intro._quota_exhausted = True
                     return city_data["intro_note"]
 
-                # Per-minute rate limit — wait longer before retrying
-                # 30s → 60s → 90s → 120s → 120s
-                wait = min(30 * attempt, 120)
+                # Per-minute rate limit — short wait then retry
+                wait = 20 * attempt  # 20s, 40s
+
                 print(f"    ⏳ Gemini rate limit for {city_data['city']} "
                       f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} attempts — using default intro")
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
+                    # Reset consecutive counter so next city gets a fresh try
+                    get_ai_intro._consecutive_429s = 0
                     return city_data["intro_note"]
             else:
                 print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
@@ -467,6 +470,10 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
                 (force_ai   and filename not in ai_done)
             )
             if should_call_ai:
+                # First-ever call in this run: pause 10s to ensure a clean rate-limit window
+                if not getattr(get_ai_intro, "_first_call_done", False):
+                    get_ai_intro._first_call_done = True
+                    time.sleep(10)
                 data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
                 if not getattr(get_ai_intro, "_quota_exhausted", False):
                     ai_new.add(filename)
