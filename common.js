@@ -74,25 +74,31 @@
   var navEl = document.getElementById('site-nav');
   if (navEl) navEl.outerHTML = NAV_HTML;
 
-  /* ── WA FLOAT ───────────────────────────────────────────── */
-  var WA_HTML =
-    '<a href="https://wa.me/919045222870?text=Hello!%20I%20need%20CA%20services" ' +
-       'class="wa-float" target="_blank">' +
-      '<svg viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 ' +
-      '0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 ' +
-      '8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 ' +
-      '0-4.908-0.646-7.07-1.87l-0.507-0.292-5.245 1.407 1.417-5.26-0.321-0.523c-1.321-2.156-2.021-4.625-2.021-7.195 ' +
-      '0-7.444 6.056-13.5 13.5-13.5s13.5 6.056 13.5 13.5c0 7.444-6.056 13.5-13.5 13.5z' +
-      'M21.803 19.275c-0.297-0.149-1.757-0.867-2.03-0.967-0.272-0.099-0.47-0.149-0.669 ' +
-      '0.148s-0.768 0.967-0.941 1.166c-0.173 0.198-0.347 0.223-0.644 0.074-0.297-0.149-1.255-0.462-2.39-1.475-0.883-0.788-1.48-1.761-1.653-2.059s-0.018-0.458 ' +
-      '0.13-0.606c0.134-0.133 0.297-0.347 0.446-0.521s0.198-0.297 0.297-0.495c0.099-0.198 ' +
-      '0.05-0.372-0.025-0.521s-0.669-1.611-0.916-2.206c-0.242-0.579-0.487-0.5-0.669-0.51-0.173-0.008-0.372-0.01-0.571-0.01s-0.52 ' +
-      '0.074-0.793 0.372c-0.272 0.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 ' +
-      '3.074c0.149 0.198 2.095 3.2 5.076 4.487 0.709 0.306 1.263 0.489 1.694 ' +
-      '0.626 0.712 0.226 1.36 0.194 1.872 0.118 0.571-0.085 1.757-0.719 2.006-1.413 ' +
-      '0.248-0.694 0.248-1.289 0.173-1.413s-0.272-0.198-0.571-0.347z"/></svg>' +
-    '</a>';
-  document.body.insertAdjacentHTML('afterbegin', WA_HTML);
+  /* ── CONTACT CLUSTER (WhatsApp + Call + Email) ──────────── */
+  var CLUSTER_CSS =
+    '<style>' +
+    '.contact-cluster{position:fixed;bottom:28px;right:28px;display:flex;flex-direction:column;gap:12px;z-index:999}' +
+    '.contact-cluster a{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}' +
+    '.contact-cluster a:hover{transform:scale(1.12);box-shadow:0 6px 20px rgba(0,0,0,.35)}' +
+    '.contact-cluster a svg{width:26px;height:26px;fill:#fff}' +
+    '.cc-wa{background:#25D366}.cc-call{background:#3949AB}.cc-mail{background:#FF9800}' +
+    '@media(max-width:600px){.contact-cluster{bottom:16px;right:16px;gap:10px}.contact-cluster a{width:48px;height:48px}.contact-cluster a svg{width:22px;height:22px}}' +
+    '</style>';
+  document.head.insertAdjacentHTML('beforeend', CLUSTER_CSS);
+
+  var CLUSTER_HTML =
+    '<div class="contact-cluster">' +
+      '<a href="https://wa.me/919045222870?text=Hello!%20I%20need%20CA%20services" class="cc-wa" target="_blank" title="WhatsApp Us">' +
+        '<svg viewBox="0 0 32 32"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.737 5.607 2.137 8.048L0 32l7.933-2.127A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.467a13.43 13.43 0 01-7.07-1.87l-.507-.292-5.245 1.407 1.417-5.26-.321-.523A13.43 13.43 0 012.5 16C2.5 8.556 8.556 2.5 16 2.5S29.5 8.556 29.5 16 23.444 29.467 16 29.467zm7.803-10.192c-.297-.149-1.757-.867-2.03-.967-.272-.099-.47-.149-.669.148s-.768.967-.941 1.166c-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059s-.018-.458.13-.606c.134-.133.297-.347.446-.521s.198-.297.297-.495c.099-.198.05-.372-.025-.521s-.669-1.611-.916-2.206c-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01s-.52.074-.793.372c-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.757-.719 2.006-1.413.248-.694.248-1.289.173-1.413s-.272-.198-.571-.347z"/></svg>' +
+      '</a>' +
+      '<a href="tel:+919045222870" class="cc-call" title="Call Us">' +
+        '<svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C9.4 21 3 14.6 3 7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>' +
+      '</a>' +
+      '<a href="mailto:contact@taxamc.com?subject=CA%20Services%20Enquiry&body=Hello%2C%0A%0AI%20am%20interested%20in%20your%20CA%20services.%0A%0AMy%20contact%20number%20is%20____" class="cc-mail" title="Email Us">' +
+        '<svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>' +
+      '</a>' +
+    '</div>';
+  document.body.insertAdjacentHTML('afterbegin', CLUSTER_HTML);
 
   /* ── FOOTER ─────────────────────────────────────────────── */
   var FOOTER_HTML =
@@ -172,7 +178,7 @@
   /* ── EMAIL PROTECTION ────────────────────────────────────── */
   var emailEl = document.getElementById('emailLink');
   if (emailEl) {
-    var u = 'camayankpro', d = 'gmail', t = 'com';
+    var u = 'contact', d = 'taxamc', t = 'com';
     emailEl.href = 'mailto:' + u + '@' + d + '.' + t;
     emailEl.textContent = u + '@' + d + '.' + t;
   }
@@ -298,4 +304,20 @@
     } else {
         initAnimations();
     }
+})();
+
+
+/* ── FAQ ACCORDION ───────────────────────────────────────── */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-question');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      // close all in same list
+      var list = item.closest('.faq-list');
+      if(list) list.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
 })();

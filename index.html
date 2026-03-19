@@ -8,8 +8,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="favicon-512.png">
-    <title>Chartered Accountant in Hapur | GST, Income Tax & Audit Services</title>
-    <meta name="description" content="Chartered Accountancy Firm in Hapur providing GST, Income Tax, Audit, ROC, and Business Advisory Services">
+    <title>CA in Hapur | GST, ITR, Audit, DSC, Trademark</title>
+    <meta property="og:site_name" content="Agarwal Mayank &amp; Company">
+    <meta name="application-name" content="Agarwal Mayank &amp; Company">
+    <meta name="description" content="Chartered Accountant in Hapur — TaxAMC offers GST, ITR Filing, Audit, Company Registration &amp; Trademark. Expert CA firm in Hapur, UP. 100% online. WhatsApp now.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -148,39 +150,39 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
+        /* Floating Contact Cluster */
+        .contact-cluster {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            bottom: 28px;
+            right: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             z-index: 999;
+        }
+        .contact-cluster a {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
-        .whatsapp-float:hover {
-            background-color: #20BA5A;
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        .contact-cluster a:hover {
+            transform: scale(1.12);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
         }
-
-        .whatsapp-float svg {
-            width: 35px;
-            height: 35px;
+        .contact-cluster a svg {
+            width: 26px;
+            height: 26px;
             fill: white;
         }
+        .cc-wa  { background-color: #25D366; }
+        .cc-call{ background-color: #3949AB; }
+        .cc-mail{ background-color: #FF9800; }
 
         /* Hero Section */
         .hero {
@@ -822,16 +824,18 @@
                 flex-direction: column;
             }
 
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
+            .contact-cluster {
+                bottom: 16px;
+                right: 16px;
+                gap: 10px;
             }
-
-            .whatsapp-float svg {
-                width: 30px;
-                height: 30px;
+            .contact-cluster a {
+                width: 48px;
+                height: 48px;
+            }
+            .contact-cluster a svg {
+                width: 22px;
+                height: 22px;
             }
 
             /* Additional mobile fixes for alignment */
@@ -954,7 +958,62 @@
                 white-space: nowrap;
             }
         }
-</style>
+
+        /* ── FAQ ACCORDION ───────────────────────────────────── */
+        .faq-list { margin: 0; padding: 0; }
+        .faq-item { border-bottom: 1px solid #e0e0e0; }
+        .faq-item:first-child { border-top: 1px solid #e0e0e0; }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a1a2e;
+            gap: 12px;
+            user-select: none;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+        }
+        .faq-question:hover { color: #3949AB; }
+        .faq-arrow {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            background: #f0f2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .faq-arrow svg {
+            width: 10px;
+            height: 6px;
+            fill: #3949AB;
+            display: block;
+        }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.25s ease;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.75;
+            padding: 0 4px;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 600px;
+            padding-bottom: 16px;
+        }
+        </style>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -967,7 +1026,7 @@
       "logo": "https://taxamc.com/favicon-512.png",
       "image": "https://taxamc.com/favicon-512.png",
       "telephone": "+91-9045222870",
-      "email": "camayankpro@gmail.com",
+      "email": "contact@taxamc.com",
       "foundingDate": "2020",
       "address": {
         "@type": "PostalAddress",
@@ -1211,17 +1270,73 @@
 }
 </style>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://taxamc.com/#website",
+      "url": "https://taxamc.com",
+      "name": "TaxAMC",
+      "alternateName": "Agarwal Mayank & Company",
+      "description": "CA firm in Hapur offering GST, ITR, Audit, Company Registration and more.",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://taxamc.com/#business"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which is the best CA in Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "TaxAMC (Agarwal Mayank & Company) is a qualified Chartered Accountant firm based in Hapur, UP. We are ICAI-registered and provide GST, ITR, audit, company registration, trademark, and all CA services — fully online with transparent fees." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find a CA near me in Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You can reach TaxAMC directly on WhatsApp at +91-9045222870 or email contact@taxamc.com. We are based in Hapur and serve all clients 100% online — so distance is never a barrier for anyone in Hapur or nearby cities." }
+        },
+        {
+          "@type": "Question",
+          "name": "What CA services are available in Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "TaxAMC provides all CA services in Hapur including GST registration, GST return filing, ITR filing, company registration, LLP registration, trademark registration, MSME registration, TDS return filing, ROC compliance, audit, DSC, and business advisory." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get CA services online from Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. TaxAMC operates 100% online. Share documents via WhatsApp, we handle all filing and compliance work, and keep you updated at every step. You never need to visit any government office or our office." }
+        },
+        {
+          "@type": "Question",
+          "name": "What are CA fees in Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "TaxAMC charges transparent, affordable professional fees with no hidden charges. Fees depend on the specific service. WhatsApp us for an instant quote — GST registration, ITR filing, company registration, and most other services have fixed, upfront pricing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does TaxAMC serve clients outside Hapur?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. While we are based in Hapur, we serve clients from Pilkhuwa, Garhmukteshwar, Ghaziabad, Meerut, Delhi, Mumbai, Bangalore and across India — all fully online." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919045222870?text=Hello!%20I'm%20interested%20in%20your%20CA%20services"
-       class="whatsapp-float"
-       target="_blank"
-       title="Chat on WhatsApp">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.245 1.407 1.417-5.26-0.321-0.523c-1.321-2.156-2.021-4.625-2.021-7.195 0-7.444 6.056-13.5 13.5-13.5s13.5 6.056 13.5 13.5c0 7.444-6.056 13.5-13.5 13.5zM21.803 19.275c-0.297-0.149-1.757-0.867-2.03-0.967-0.272-0.099-0.47-0.149-0.669 0.148s-0.768 0.967-0.941 1.166c-0.173 0.198-0.347 0.223-0.644 0.074-0.297-0.149-1.255-0.462-2.39-1.475-0.883-0.788-1.48-1.761-1.653-2.059s-0.018-0.458 0.13-0.606c0.134-0.133 0.297-0.347 0.446-0.521s0.198-0.297 0.297-0.495c0.099-0.198 0.050-0.372-0.025-0.521s-0.669-1.611-0.916-2.206c-0.242-0.579-0.487-0.5-0.669-0.51-0.173-0.008-0.372-0.010-0.571-0.010s-0.52 0.074-0.793 0.372c-0.272 0.297-1.040 1.016-1.040 2.479s1.065 2.876 1.213 3.074c0.149 0.198 2.095 3.2 5.076 4.487 0.709 0.306 1.263 0.489 1.694 0.626 0.712 0.226 1.36 0.194 1.872 0.118 0.571-0.085 1.757-0.719 2.006-1.413 0.248-0.694 0.248-1.289 0.173-1.413s-0.272-0.198-0.571-0.347z"/>
-        </svg>
-    </a>
+    <!-- Floating Contact Cluster -->
+    <div class="contact-cluster">
+        <a href="https://wa.me/919045222870?text=Hello!%20I%20need%20CA%20services" class="cc-wa" target="_blank" title="WhatsApp Us">
+            <svg viewBox="0 0 32 32"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.737 5.607 2.137 8.048L0 32l7.933-2.127A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.467a13.43 13.43 0 01-7.07-1.87l-.507-.292-5.245 1.407 1.417-5.26-.321-.523A13.43 13.43 0 012.5 16C2.5 8.556 8.556 2.5 16 2.5S29.5 8.556 29.5 16 23.444 29.467 16 29.467zm7.803-10.192c-.297-.149-1.757-.867-2.03-.967-.272-.099-.47-.149-.669.148s-.768.967-.941 1.166c-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059s-.018-.458.13-.606c.134-.133.297-.347.446-.521s.198-.297.297-.495c.099-.198.05-.372-.025-.521s-.669-1.611-.916-2.206c-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01s-.52.074-.793.372c-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.757-.719 2.006-1.413.248-.694.248-1.289.173-1.413s-.272-.198-.571-.347z"/></svg>
+        </a>
+        <a href="tel:+919045222870" class="cc-call" title="Call Us">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C9.4 21 3 14.6 3 7c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        </a>
+        <a href="mailto:contact@taxamc.com?subject=CA%20Services%20Enquiry&body=Hello%2C%0A%0AI%20am%20interested%20in%20your%20CA%20services.%20Please%20contact%20me.%0A%0AMy%20contact%20number%20is%20____" class="cc-mail" title="Email Us">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
 
     <!-- Top Navigation Bar -->
     <nav class="navbar">
@@ -1254,14 +1369,14 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Chartered Accountancy Firm</h1>
-                <p class="hero-subtitle">Professional CA Services Serving India Digitally</p>
+                <h1>Chartered Accountant in Hapur</h1>
+                <p class="hero-subtitle">CA Firm in Hapur, Uttar Pradesh — GST, ITR, Audit & More</p>
                 <div class="hero-credentials">
                     <p>✓ Qualified Chartered Accountants</p>
                     <p>✓ Digitally Serving India</p>
                     <p>✓ Providing Services in Taxation, Audit & Business Advisory</p>
                 </div>
-                <p>Based in Hapur, Uttar Pradesh, we provide comprehensive financial services including GST, Income Tax, Audit, Company Incorporation, ROC Compliance, and Strategic Business Advisory across India.</p>
+                <p>Agarwal Mayank &amp; Company is a Chartered Accountant firm based in Hapur, UP. Whether you need a CA in Hapur for GST registration, ITR filing, company registration, audit, or trademark — we handle it all. Serving clients across India, fully online.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">Book a Consultation</a>
                     <a href="#services" class="btn-outline">Our Services</a>
@@ -1547,6 +1662,27 @@
     </section>
 
     <!-- Contact Form Section -->
+
+    <!-- Local SEO + FAQ Section -->
+    <section style="background:#f5f7fa;padding:60px 20px;">
+        <div style="max-width:900px;margin:0 auto;">
+            <div class="section-label">CA SERVICES IN HAPUR</div>
+            <h2 class="section-title">Chartered Accountant in Hapur & Nearby Areas</h2>
+            <p style="color:#555;line-height:1.8;margin-bottom:24px;">As a CA firm physically located in Hapur, Uttar Pradesh, we serve clients across <strong>Pilkhuwa</strong>, <strong>Dhaulana</strong>, <strong>Simbhaoli</strong>, <strong>Garhmukteshwar</strong>, <strong>Babugarh</strong>, <strong>Hapur City</strong>, and the wider Hapur district. Whether you are looking for a <strong>CA in Hapur</strong> for GST registration, a <strong>Hapur CA</strong> for ITR filing, or a <strong>Chartered Accountant near Hapur</strong> for company registration, audit, trademark, or DSC — TaxAMC handles everything online. No office visit needed. Clients from <strong>Ghaziabad, Meerut, Bulandshahr, Amroha</strong> and across India are also served digitally.</p>
+
+            <h2 style="font-size:1.3rem;font-weight:700;color:#1a1a2e;margin:32px 0 20px;">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+                <div class="faq-item"><button class="faq-question"><span>Which is the best CA in Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">TaxAMC (Agarwal Mayank &amp; Company) is a qualified Chartered Accountant firm based in Hapur, UP. We are ICAI-registered and provide GST, ITR, audit, company registration, trademark, and all CA services — fully online with transparent fees.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>How do I find a CA near me in Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">You can reach TaxAMC directly on WhatsApp at +91-9045222870 or email contact@taxamc.com. We are based in Hapur and serve all clients 100% online — so distance is never a barrier for anyone in Hapur or nearby cities.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>What CA services are available in Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">TaxAMC provides all CA services in Hapur including GST registration, GST return filing, ITR filing, company registration, LLP registration, trademark registration, MSME registration, TDS return filing, ROC compliance, audit, DSC, and business advisory.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Can I get CA services online from Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">Yes. TaxAMC operates 100% online. Share documents via WhatsApp, we handle all filing and compliance work, and keep you updated at every step. You never need to visit any government office or our office.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>What are CA fees in Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">TaxAMC charges transparent, affordable professional fees with no hidden charges. Fees depend on the specific service. WhatsApp us for an instant quote — GST registration, ITR filing, company registration, and most other services have fixed, upfront pricing.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Does TaxAMC serve clients outside Hapur?</span><span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span></button><div class="faq-answer">Yes. While we are based in Hapur, we serve clients from Pilkhuwa, Garhmukteshwar, Ghaziabad, Meerut, Delhi, Mumbai, Bangalore and across India — all fully online. Our 592 city-specific service pages cover GST, ITR, company registration and more for 74 cities across India.</div></div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact-form-section" id="contact">
         <div class="contact-form-container">
             <h2>Request a Call Back</h2>
@@ -1776,7 +1912,7 @@
             var engaged = false;
             var cf = document.getElementById('contactForm');
             if (cf) cf.addEventListener('submit', function () { engaged = true; });
-            var wa = document.querySelector('.whatsapp-float');
+            var wa = document.querySelector('.cc-wa');
             if (wa) wa.addEventListener('click', function () { engaged = true; });
             function showPopup() {
                 if (shown || engaged) return;
@@ -1873,5 +2009,20 @@ function scrollToCard(id) {
 }
 </script>
 
+
+    <script>
+    (function(){
+      document.querySelectorAll('.faq-item').forEach(function(item){
+        var btn = item.querySelector('.faq-question');
+        if(!btn) return;
+        btn.addEventListener('click', function(){
+          var isOpen = item.classList.contains('open');
+          var list = item.closest('.faq-list');
+          if(list) list.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); });
+          if(!isOpen) item.classList.add('open');
+        });
+      });
+    })();
+    </script>
 </body>
 </html>

@@ -645,10 +645,11 @@ def main():
         if not api_key:
             print("  ⚠ --ai/--force-ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
             args.ai = args.force_ai = False
-        elif not check_gemini_quota(api_key):
-            # Quota exhausted — disable AI and continue generating pages without intros
-            args.ai = args.force_ai = False
-            api_key = None
+        elif args.ai and not check_gemini_quota(api_key):
+            # Quota exhausted — disable --ai (new pages only) mode.
+            # --force-ai intentionally bypasses this quota check.
+            args.ai = False
+            api_key = None if not args.force_ai else api_key
 
     print(f"\n{'='*60}")
     print(f"  TaxAMC Static Site Generator")
