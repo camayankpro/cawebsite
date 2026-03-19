@@ -322,30 +322,38 @@ Rules:
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
+                # Read error body to distinguish daily quota vs per-minute limit
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
 
-                # Only declare daily quota exhausted after 10 consecutive 429s
-                # across different cities — this rules out per-minute bursts
-                if get_ai_intro._consecutive_429s >= 10:
-                    print(f"    ⚠ Gemini daily quota exhausted after "
-                          f"{get_ai_intro._consecutive_429s} consecutive rate limits. "
-                          f"Switching to default intros for all remaining pages.")
+                # Daily quota exhausted — no point retrying today
+                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
+                    print(f"    ✗ Gemini daily quota exhausted (RESOURCE_EXHAUSTED).")
+                    print(f"      Quota resets at midnight US Pacific (12:30 PM IST).")
+                    print(f"      Switching to default intros for all remaining pages.")
                     get_ai_intro._quota_exhausted = True
                     return city_data["intro_note"]
 
-                # Per-minute rate limit — short wait then retry
+                # Per-minute rate limit — wait and retry
+                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
                 wait = 20 * attempt  # 20s, 40s
-
                 print(f"    ⏳ Gemini rate limit for {city_data['city']} "
                       f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
+                print(f"      Error detail: {err_body[:200]}")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
                     print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
-                    # Reset consecutive counter so next city gets a fresh try
                     get_ai_intro._consecutive_429s = 0
                     return city_data["intro_note"]
             else:
-                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
+                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} — using default intro")
+                print(f"      Error detail: {err_body[:200]}")
                 return city_data["intro_note"]
 
         except Exception as e:
