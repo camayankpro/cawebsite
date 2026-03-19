@@ -262,22 +262,20 @@ def load_cities(json_path, sheet_url=None):
     return unique
 
 
-# ─── STEP 2 — OPTIONAL AI INTROS (Groq — Free Tier) ─────────────────────────
+# ─── STEP 2 — OPTIONAL AI INTROS (OpenAI gpt-4o-mini) ───────────────────────
 #
-#  HOW TO SET UP (free, no credit card needed):
-#  1. Go to console.groq.com
-#  2. Sign in with your Google account
-#  3. Click "API Keys" → "Create API Key" → copy the key
-#  4. Go to your GitHub repo → Settings → Secrets → Actions
-#  5. Add new secret → Name: GROQ_API_KEY → paste key → Save
-#  6. When running the workflow, set force_ai to true
+#  HOW TO SET UP:
+#  1. Go to platform.openai.com → API Keys → Create new secret key
+#  2. Go to your GitHub repo → Settings → Secrets → Actions
+#  3. Add new secret → Name: OPENAI_API_KEY → paste key → Save
+#  4. When running the workflow, set force_ai to true
 #
-#  Free limits: 30 requests/minute, 14,400 requests/day
-#  Speed: ~0.5s per response (much faster than Gemini)
+#  Cost: ~$0.00015 per page = ~$0.27 for all 1776 pages (less than ₹25 total)
+#  Speed: ~1s per response, no rate limit issues from GitHub Actions
 
 def get_ai_intro(city_data, service_label, api_key):
-    """Call Groq API (free) to write a unique intro paragraph per city.
-    Uses llama-3.3-70b-versatile model. Retries once on rate limit.
+    """Call OpenAI gpt-4o-mini to write a unique intro paragraph per city.
+    Retries once on rate limit.
     """
     # If daily quota was exhausted earlier in this run, skip API call immediately
     if getattr(get_ai_intro, "_quota_exhausted", False):
@@ -299,13 +297,13 @@ Rules:
 - Output ONLY the paragraph, no heading, no extra commentary"""
 
     body = json.dumps({
-        "model": "llama-3.3-70b-versatile",
+        "model": "gpt-4o-mini",
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 300,
         "temperature": 0.7
     }).encode("utf-8")
 
-    url = "https://api.groq.com/openai/v1/chat/completions"
+    url = "https://api.openai.com/v1/chat/completions"
 
     # Per-minute limit: 2 retries max — if still failing, move on
     # throttle sleep after success prevents hitting limit in first place
@@ -323,8 +321,7 @@ Rules:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
                 get_ai_intro._consecutive_429s = 0   # reset on success
-                # Groq: 30 req/min free tier — 2s gap is safe
-                time.sleep(2)
+                time.sleep(1)  # 1s gap — well within OpenAI rate limits
                 return result["choices"][0]["message"]["content"].strip()
 
         except urllib.error.HTTPError as e:
@@ -337,7 +334,7 @@ Rules:
 
                 # Daily quota exhausted — no point retrying today
                 if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
-                    print(f"    ✗ Groq daily quota exhausted.")
+                    print(f"    ✗ OpenAI quota exhausted.")
                     print(f"      Quota resets at midnight US Pacific (12:30 PM IST).")
                     print(f"      Switching to default intros for all remaining pages.")
                     get_ai_intro._quota_exhausted = True
@@ -346,11 +343,11 @@ Rules:
                 # Per-minute rate limit — wait and retry
                 get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
                 wait = 20 * attempt  # 20s, 40s
-                print(f"    ⏳ Groq rate limit for {city_data['city']} (attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
+                print(f"    ⏳ OpenAI rate limit for {city_data['city']} (attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 print(f"      Error detail: {err_body[:200]}")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Groq gave up for {city_data['city']} — using default intro")
+                    print(f"    ⚠ OpenAI gave up for {city_data['city']} — using default intro")
                     get_ai_intro._consecutive_429s = 0
                     return city_data["intro_note"]
             else:
@@ -358,30 +355,30 @@ Rules:
                     err_body = e.read().decode("utf-8", errors="ignore")
                 except Exception:
                     err_body = ""
-                print(f"    ⚠ Groq failed for {city_data['city']}: HTTP {e.code} — using default intro")
+                print(f"    ⚠ OpenAI failed for {city_data['city']}: HTTP {e.code} — using default intro")
                 print(f"      Error detail: {err_body[:200]}")
                 return city_data["intro_note"]
 
         except Exception as e:
-            print(f"    ⚠ Groq failed for {city_data['city']}: {e} — using default intro")
+            print(f"    ⚠ OpenAI failed for {city_data['city']}: {e} — using default intro")
             return city_data["intro_note"]
 
     return city_data["intro_note"]
 
 
 
-def check_groq_quota(api_key):
+def check_openai_quota(api_key):
     """
-    Make a minimal test call to Groq before starting the run.
-    Returns True if API key is valid and quota available.
+    Make a minimal test call to OpenAI before starting the run.
+    Returns True if API key is valid and has credits.
     """
-    print("  Checking Groq API...")
+    print("  Checking OpenAI API key...")
     body = json.dumps({
-        "model": "llama-3.3-70b-versatile",
+        "model": "gpt-4o-mini",
         "messages": [{"role": "user", "content": "Say OK"}],
         "max_tokens": 5
     }).encode("utf-8")
-    url = "https://api.groq.com/openai/v1/chat/completions"
+    url = "https://api.openai.com/v1/chat/completions"
 
     try:
         req = urllib.request.Request(
@@ -389,7 +386,7 @@ def check_groq_quota(api_key):
             headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
         )
         with urllib.request.urlopen(req, timeout=15) as resp:
-            print("  ✓ Groq API key valid — proceeding with AI intros")
+            print("  ✓ OpenAI API key valid — proceeding with AI intros")
             return True
     except urllib.error.HTTPError as e:
         try:
@@ -397,14 +394,14 @@ def check_groq_quota(api_key):
         except Exception:
             err_body = ""
         if e.code == 401:
-            print(f"  ✗ Groq API key invalid or missing. Add GROQ_API_KEY secret to GitHub.")
+            print(f"  ✗ OpenAI API key invalid. Add OPENAI_API_KEY secret to GitHub.")
         elif e.code == 429:
-            print(f"  ✗ Groq rate limit hit on test call. Try again in a minute.")
+            print(f"  ✗ OpenAI rate limit or quota exceeded: {err_body[:200]}")
         else:
-            print(f"  ⚠ Groq test call failed: HTTP {e.code} — {err_body[:100]}")
+            print(f"  ⚠ OpenAI test call failed: HTTP {e.code} — {err_body[:200]}")
         return False
     except Exception as e:
-        print(f"  ⚠ Groq test call failed: {e}")
+        print(f"  ⚠ OpenAI test call failed: {e}")
         return False
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
@@ -481,8 +478,8 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
                 if ai_intro_received:
                     print(f"    ✓ AI intro: {data['city']}")
                 else:
-                    print(f"    ✗ Default intro used: {data['city']} (Groq returned same as default)")
-                time.sleep(2)    # Groq free tier: 30 req/min — 2s gap is safe
+                    print(f"    ✗ Default intro used: {data['city']} (OpenAI returned same as default)")
+                time.sleep(1)    # 1s gap — well within OpenAI rate limits
             elif force_ai and filename in ai_done:
                 ai_skipped += 1  # already has AI intro — skip
 
@@ -637,9 +634,9 @@ def main():
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
-                        help="Use Groq AI for unique city intros (skips existing pages)")
+                        help="Use OpenAI for unique city intros (skips existing pages)")
     parser.add_argument("--force-ai",  action="store_true",
-                        help="Use Groq AI for ALL pages, including existing ones (to refresh intros)")
+                        help="Use OpenAI for ALL pages, including existing ones (to refresh intros)")
     parser.add_argument("--ping",      action="store_true",
                         help="Ping search engines after generation")
     args = parser.parse_args()
@@ -651,14 +648,14 @@ def main():
         print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
         sys.exit(1)
 
-    # API key for AI mode (Groq — free)
+    # API key for AI mode (OpenAI gpt-4o-mini)
     api_key = None
     if args.ai or args.force_ai:
-        api_key = os.environ.get("GROQ_API_KEY")
+        api_key = os.environ.get("OPENAI_API_KEY")
         if not api_key:
-            print("  ⚠ --ai/--force-ai set but GROQ_API_KEY not found. Skipping AI intros. Get free key at console.groq.com")
+            print("  ⚠ --ai/--force-ai set but OPENAI_API_KEY not found. Skipping AI intros. Get key at platform.openai.com")
             args.ai = args.force_ai = False
-        elif args.ai and not check_groq_quota(api_key):
+        elif args.ai and not check_openai_quota(api_key):
             # Quota exhausted — disable --ai (new pages only) mode.
             # --force-ai intentionally bypasses this quota check.
             args.ai = False
