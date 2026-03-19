@@ -262,21 +262,22 @@ def load_cities(json_path, sheet_url=None):
     return unique
 
 
-# ─── STEP 2 — OPTIONAL AI INTROS (Google Gemini — Free Tier) ─────────────────
+# ─── STEP 2 — OPTIONAL AI INTROS (Groq — Free Tier) ─────────────────────────
 #
 #  HOW TO SET UP (free, no credit card needed):
-#  1. Go to aistudio.google.com
+#  1. Go to console.groq.com
 #  2. Sign in with your Google account
-#  3. Click "Get API key" → "Create API key" → copy the key
+#  3. Click "API Keys" → "Create API Key" → copy the key
 #  4. Go to your GitHub repo → Settings → Secrets → Actions
-#  5. Add new secret → Name: GEMINI_API_KEY → paste key → Save
-#  6. When running the workflow, set "Use AI for unique city intros?" to true
+#  5. Add new secret → Name: GROQ_API_KEY → paste key → Save
+#  6. When running the workflow, set force_ai to true
 #
-#  Free limits: 15 requests/minute, 1500 requests/day — more than enough.
+#  Free limits: 30 requests/minute, 14,400 requests/day
+#  Speed: ~0.5s per response (much faster than Gemini)
 
 def get_ai_intro(city_data, service_label, api_key):
-    """Call Google Gemini API (free) to write a unique intro paragraph per city.
-    Retries up to 3 times on 429 (rate limit) with exponential backoff.
+    """Call Groq API (free) to write a unique intro paragraph per city.
+    Uses llama-3.3-70b-versatile model. Retries once on rate limit.
     """
     # If daily quota was exhausted earlier in this run, skip API call immediately
     if getattr(get_ai_intro, "_quota_exhausted", False):
@@ -298,11 +299,13 @@ Rules:
 - Output ONLY the paragraph, no heading, no extra commentary"""
 
     body = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
+        "model": "llama-3.3-70b-versatile",
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 300,
+        "temperature": 0.7
     }).encode("utf-8")
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = "https://api.groq.com/openai/v1/chat/completions"
 
     # Per-minute limit: 2 retries max — if still failing, move on
     # throttle sleep after success prevents hitting limit in first place
@@ -312,13 +315,17 @@ Rules:
             req = urllib.request.Request(
                 url,
                 data=body,
-                headers={"Content-Type": "application/json"}
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {api_key}"
+                }
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
                 get_ai_intro._consecutive_429s = 0   # reset on success
-                time.sleep(5)  # throttle: stay under 15 req/min free tier limit
-                return result["candidates"][0]["content"]["parts"][0]["text"].strip()
+                # Groq: 30 req/min free tier — 2s gap is safe
+                time.sleep(2)
+                return result["choices"][0]["message"]["content"].strip()
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
@@ -330,7 +337,7 @@ Rules:
 
                 # Daily quota exhausted — no point retrying today
                 if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
-                    print(f"    ✗ Gemini daily quota exhausted (RESOURCE_EXHAUSTED).")
+                    print(f"    ✗ Groq daily quota exhausted.")
                     print(f"      Quota resets at midnight US Pacific (12:30 PM IST).")
                     print(f"      Switching to default intros for all remaining pages.")
                     get_ai_intro._quota_exhausted = True
@@ -339,12 +346,11 @@ Rules:
                 # Per-minute rate limit — wait and retry
                 get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
                 wait = 20 * attempt  # 20s, 40s
-                print(f"    ⏳ Gemini rate limit for {city_data['city']} "
-                      f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
+                print(f"    ⏳ Groq rate limit for {city_data['city']} (attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 print(f"      Error detail: {err_body[:200]}")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
+                    print(f"    ⚠ Groq gave up for {city_data['city']} — using default intro")
                     get_ai_intro._consecutive_429s = 0
                     return city_data["intro_note"]
             else:
@@ -352,72 +358,54 @@ Rules:
                     err_body = e.read().decode("utf-8", errors="ignore")
                 except Exception:
                     err_body = ""
-                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} — using default intro")
+                print(f"    ⚠ Groq failed for {city_data['city']}: HTTP {e.code} — using default intro")
                 print(f"      Error detail: {err_body[:200]}")
                 return city_data["intro_note"]
 
         except Exception as e:
-            print(f"    ⚠ Gemini failed for {city_data['city']}: {e} — using default intro")
+            print(f"    ⚠ Groq failed for {city_data['city']}: {e} — using default intro")
             return city_data["intro_note"]
 
     return city_data["intro_note"]
 
 
 
-def check_gemini_quota(api_key):
+def check_groq_quota(api_key):
     """
-    Make a minimal test call to Gemini before starting the run.
-    Returns True if quota is available, False only if DAILY quota is exhausted.
-
-    Gemini uses HTTP 429 for two distinct situations:
-      - Per-minute rate limit (RATE_LIMIT_EXCEEDED)  → retryable, wait and retry
-      - Daily quota exhausted (RESOURCE_EXHAUSTED)   → not retryable today
-
-    We read the response body to tell them apart, and retry up to 3 times
-    (with 20s waits) on per-minute limits before giving up.
+    Make a minimal test call to Groq before starting the run.
+    Returns True if API key is valid and quota available.
     """
-    print("  Checking Gemini API quota...")
+    print("  Checking Groq API...")
     body = json.dumps({
-        "contents": [{"parts": [{"text": "Say OK"}]}],
-        "generationConfig": {"maxOutputTokens": 5}
+        "model": "llama-3.3-70b-versatile",
+        "messages": [{"role": "user", "content": "Say OK"}],
+        "max_tokens": 5
     }).encode("utf-8")
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = "https://api.groq.com/openai/v1/chat/completions"
 
-    for attempt in range(1, 4):  # up to 3 attempts
+    try:
+        req = urllib.request.Request(
+            url, data=body,
+            headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print("  ✓ Groq API key valid — proceeding with AI intros")
+            return True
+    except urllib.error.HTTPError as e:
         try:
-            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                print("  ✓ Gemini quota available — proceeding with AI intros")
-                return True
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                # Read the error body to distinguish rate-limit vs daily quota
-                try:
-                    err_body = e.read().decode("utf-8", errors="ignore")
-                except Exception:
-                    err_body = ""
-                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
-                    # Daily quota genuinely exhausted — no point retrying
-                    print(f"  ✗ Gemini daily quota exhausted (HTTP 429 / RESOURCE_EXHAUSTED).")
-                    print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
-                    print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
-                    return False
-                else:
-                    # Per-minute rate limit — wait and retry
-                    if attempt < 3:
-                        print(f"  ⏳ Gemini per-minute rate limit hit (attempt {attempt}/3). Waiting 20s...")
-                        time.sleep(20)
-                        continue
-                    else:
-                        print(f"  ✗ Gemini rate limit persists after 3 attempts — proceeding without AI intros.")
-                        return False
-            else:
-                print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
-                return False
-        except Exception as e:
-            print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
-            return False
-    return False
+            err_body = e.read().decode("utf-8", errors="ignore")
+        except Exception:
+            err_body = ""
+        if e.code == 401:
+            print(f"  ✗ Groq API key invalid or missing. Add GROQ_API_KEY secret to GitHub.")
+        elif e.code == 429:
+            print(f"  ✗ Groq rate limit hit on test call. Try again in a minute.")
+        else:
+            print(f"  ⚠ Groq test call failed: HTTP {e.code} — {err_body[:100]}")
+        return False
+    except Exception as e:
+        print(f"  ⚠ Groq test call failed: {e}")
+        return False
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
 
@@ -470,7 +458,7 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
 
-            # Decide whether to call Gemini:
+            # Decide whether to call Groq:
             #   --ai:       only for pages that don't exist yet
             #   --force-ai: for pages not yet in the AI log (resumes across days)
             should_call_ai = api_key and (
@@ -484,7 +472,7 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
                     get_ai_intro._first_call_done = True
                     time.sleep(10)
                 ai_text = get_ai_intro(data, svc["label"], api_key)
-                # Only mark as received if Gemini returned something different from default
+                # Only mark as received if Groq returned something different from default
                 if ai_text and ai_text != data["intro_note"]:
                     data["intro_note"] = ai_text
                     ai_intro_received = True
@@ -493,8 +481,8 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
                 if ai_intro_received:
                     print(f"    ✓ AI intro: {data['city']}")
                 else:
-                    print(f"    ✗ Default intro used: {data['city']} (Gemini returned same as default)")
-                time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
+                    print(f"    ✗ Default intro used: {data['city']} (Groq returned same as default)")
+                time.sleep(2)    # Groq free tier: 30 req/min — 2s gap is safe
             elif force_ai and filename in ai_done:
                 ai_skipped += 1  # already has AI intro — skip
 
@@ -649,9 +637,9 @@ def main():
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
-                        help="Use Gemini AI for unique city intros (skips existing pages)")
+                        help="Use Groq AI for unique city intros (skips existing pages)")
     parser.add_argument("--force-ai",  action="store_true",
-                        help="Use Gemini AI for ALL pages, including existing ones (to refresh intros)")
+                        help="Use Groq AI for ALL pages, including existing ones (to refresh intros)")
     parser.add_argument("--ping",      action="store_true",
                         help="Ping search engines after generation")
     args = parser.parse_args()
@@ -663,14 +651,14 @@ def main():
         print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
         sys.exit(1)
 
-    # API key for AI mode (Google Gemini — free)
+    # API key for AI mode (Groq — free)
     api_key = None
     if args.ai or args.force_ai:
-        api_key = os.environ.get("GEMINI_API_KEY")
+        api_key = os.environ.get("GROQ_API_KEY")
         if not api_key:
-            print("  ⚠ --ai/--force-ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
+            print("  ⚠ --ai/--force-ai set but GROQ_API_KEY not found. Skipping AI intros. Get free key at console.groq.com")
             args.ai = args.force_ai = False
-        elif args.ai and not check_gemini_quota(api_key):
+        elif args.ai and not check_groq_quota(api_key):
             # Quota exhausted — disable --ai (new pages only) mode.
             # --force-ai intentionally bypasses this quota check.
             args.ai = False
