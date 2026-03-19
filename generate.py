@@ -469,14 +469,23 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
                 (use_ai     and not os.path.isfile(filepath)) or
                 (force_ai   and filename not in ai_done)
             )
+            ai_intro_received = False
             if should_call_ai:
                 # First-ever call in this run: pause 10s to ensure a clean rate-limit window
                 if not getattr(get_ai_intro, "_first_call_done", False):
                     get_ai_intro._first_call_done = True
                     time.sleep(10)
-                data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
-                if not getattr(get_ai_intro, "_quota_exhausted", False):
-                    ai_new.add(filename)
+                ai_text = get_ai_intro(data, svc["label"], api_key)
+                # Only mark as received if Gemini returned something different from default
+                if ai_text and ai_text != data["intro_note"]:
+                    data["intro_note"] = ai_text
+                    ai_intro_received = True
+                    if not getattr(get_ai_intro, "_quota_exhausted", False):
+                        ai_new.add(filename)
+                if ai_intro_received:
+                    print(f"    ✓ AI intro: {data['city']}")
+                else:
+                    print(f"    ✗ Default intro used: {data['city']} (Gemini returned same as default)")
                 time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
             elif force_ai and filename in ai_done:
                 ai_skipped += 1  # already has AI intro — skip
@@ -484,9 +493,10 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             new_html = template.render(**data, whatsapp_number=WHATSAPP_NUMBER)
 
             # Skip writing if file already exists and content is identical.
+            # Exception: if we got a real AI intro, always write.
             # Only pages whose template or city data changed get rewritten —
             # so git only commits the truly updated files.
-            if os.path.isfile(filepath):
+            if os.path.isfile(filepath) and not ai_intro_received:
                 with open(filepath, "r", encoding="utf-8") as f:
                     if f.read() == new_html:
                         generated.append({
