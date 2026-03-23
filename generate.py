@@ -262,20 +262,21 @@ def load_cities(json_path, sheet_url=None):
     return unique
 
 
-# ─── STEP 2 — OPTIONAL AI INTROS (OpenAI gpt-4o-mini) ───────────────────────
+# ─── STEP 2 — OPTIONAL AI INTROS (Google Gemini — Free Tier) ─────────────────
 #
-#  HOW TO SET UP:
-#  1. Go to platform.openai.com → API Keys → Create new secret key
-#  2. Go to your GitHub repo → Settings → Secrets → Actions
-#  3. Add new secret → Name: OPENAI_API_KEY → paste key → Save
-#  4. When running the workflow, set force_ai to true
+#  HOW TO SET UP (free, no credit card needed):
+#  1. Go to aistudio.google.com
+#  2. Sign in with your Google account
+#  3. Click "Get API key" → "Create API key" → copy the key
+#  4. Go to your GitHub repo → Settings → Secrets → Actions
+#  5. Add new secret → Name: GEMINI_API_KEY → paste key → Save
+#  6. When running the workflow, set "Use AI for unique city intros?" to true
 #
-#  Cost: ~$0.00015 per page = ~$0.27 for all 1776 pages (less than ₹25 total)
-#  Speed: ~1s per response, no rate limit issues from GitHub Actions
+#  Free limits: 15 requests/minute, 1500 requests/day — more than enough.
 
 def get_ai_intro(city_data, service_label, api_key):
-    """Call OpenAI gpt-4o-mini to write a unique intro paragraph per city.
-    Retries once on rate limit.
+    """Call Google Gemini API (free) to write a unique intro paragraph per city.
+    Retries up to 3 times on 429 (rate limit) with exponential backoff.
     """
     # If daily quota was exhausted earlier in this run, skip API call immediately
     if getattr(get_ai_intro, "_quota_exhausted", False):
@@ -297,112 +298,115 @@ Rules:
 - Output ONLY the paragraph, no heading, no extra commentary"""
 
     body = json.dumps({
-        "model": "gpt-4o-mini",
-        "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 300,
-        "temperature": 0.7
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
     }).encode("utf-8")
 
-    url = "https://api.openai.com/v1/chat/completions"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
-    # Per-minute limit: 2 retries max — if still failing, move on
-    # throttle sleep after success prevents hitting limit in first place
-    MAX_RETRIES = 2
+    # Per-minute limit: wait up to 5 minutes with increasing delays
+    # Daily quota: if STILL failing after 5 long retries, give up for the whole run
+    MAX_RETRIES = 5
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             req = urllib.request.Request(
                 url,
                 data=body,
-                headers={
-                    "Content-Type": "application/json",
-                    "Authorization": f"Bearer {api_key}"
-                }
+                headers={"Content-Type": "application/json"}
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
                 get_ai_intro._consecutive_429s = 0   # reset on success
-                time.sleep(1)  # 1s gap — well within OpenAI rate limits
-                return result["choices"][0]["message"]["content"].strip()
+                return result["candidates"][0]["content"]["parts"][0]["text"].strip()
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                # Read error body to distinguish daily quota vs per-minute limit
-                try:
-                    err_body = e.read().decode("utf-8", errors="ignore")
-                except Exception:
-                    err_body = ""
+                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
 
-                # Daily quota exhausted — no point retrying today
-                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
-                    print(f"    ✗ OpenAI quota exhausted.")
-                    print(f"      Quota resets at midnight US Pacific (12:30 PM IST).")
-                    print(f"      Switching to default intros for all remaining pages.")
+                # Only declare daily quota exhausted after 10 consecutive 429s
+                # across different cities — this rules out per-minute bursts
+                if get_ai_intro._consecutive_429s >= 10:
+                    print(f"    ⚠ Gemini daily quota exhausted after "
+                          f"{get_ai_intro._consecutive_429s} consecutive rate limits. "
+                          f"Switching to default intros for all remaining pages.")
                     get_ai_intro._quota_exhausted = True
                     return city_data["intro_note"]
 
-                # Per-minute rate limit — wait and retry
-                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
-                wait = 20 * attempt  # 20s, 40s
-                print(f"    ⏳ OpenAI rate limit for {city_data['city']} (attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
-                print(f"      Error detail: {err_body[:200]}")
+                # Per-minute rate limit — wait longer before retrying
+                # 30s → 60s → 90s → 120s → 120s
+                wait = min(30 * attempt, 120)
+                print(f"    ⏳ Gemini rate limit for {city_data['city']} "
+                      f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ OpenAI gave up for {city_data['city']} — using default intro")
-                    get_ai_intro._consecutive_429s = 0
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} attempts — using default intro")
                     return city_data["intro_note"]
             else:
-                try:
-                    err_body = e.read().decode("utf-8", errors="ignore")
-                except Exception:
-                    err_body = ""
-                print(f"    ⚠ OpenAI failed for {city_data['city']}: HTTP {e.code} — using default intro")
-                print(f"      Error detail: {err_body[:200]}")
+                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
                 return city_data["intro_note"]
 
         except Exception as e:
-            print(f"    ⚠ OpenAI failed for {city_data['city']}: {e} — using default intro")
+            print(f"    ⚠ Gemini failed for {city_data['city']}: {e} — using default intro")
             return city_data["intro_note"]
 
     return city_data["intro_note"]
 
 
 
-def check_openai_quota(api_key):
+def check_gemini_quota(api_key):
     """
-    Make a minimal test call to OpenAI before starting the run.
-    Returns True if API key is valid and has credits.
-    """
-    print("  Checking OpenAI API key...")
-    body = json.dumps({
-        "model": "gpt-4o-mini",
-        "messages": [{"role": "user", "content": "Say OK"}],
-        "max_tokens": 5
-    }).encode("utf-8")
-    url = "https://api.openai.com/v1/chat/completions"
+    Make a minimal test call to Gemini before starting the run.
+    Returns True if quota is available, False only if DAILY quota is exhausted.
 
-    try:
-        req = urllib.request.Request(
-            url, data=body,
-            headers={"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
-        )
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            print("  ✓ OpenAI API key valid — proceeding with AI intros")
-            return True
-    except urllib.error.HTTPError as e:
+    Gemini uses HTTP 429 for two distinct situations:
+      - Per-minute rate limit (RATE_LIMIT_EXCEEDED)  → retryable, wait and retry
+      - Daily quota exhausted (RESOURCE_EXHAUSTED)   → not retryable today
+
+    We read the response body to tell them apart, and retry up to 3 times
+    (with 20s waits) on per-minute limits before giving up.
+    """
+    print("  Checking Gemini API quota...")
+    body = json.dumps({
+        "contents": [{"parts": [{"text": "Say OK"}]}],
+        "generationConfig": {"maxOutputTokens": 5}
+    }).encode("utf-8")
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+
+    for attempt in range(1, 4):  # up to 3 attempts
         try:
-            err_body = e.read().decode("utf-8", errors="ignore")
-        except Exception:
-            err_body = ""
-        if e.code == 401:
-            print(f"  ✗ OpenAI API key invalid. Add OPENAI_API_KEY secret to GitHub.")
-        elif e.code == 429:
-            print(f"  ✗ OpenAI rate limit or quota exceeded: {err_body[:200]}")
-        else:
-            print(f"  ⚠ OpenAI test call failed: HTTP {e.code} — {err_body[:200]}")
-        return False
-    except Exception as e:
-        print(f"  ⚠ OpenAI test call failed: {e}")
-        return False
+            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                print("  ✓ Gemini quota available — proceeding with AI intros")
+                return True
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                # Read the error body to distinguish rate-limit vs daily quota
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
+                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
+                    # Daily quota genuinely exhausted — no point retrying
+                    print(f"  ✗ Gemini daily quota exhausted (HTTP 429 / RESOURCE_EXHAUSTED).")
+                    print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
+                    print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
+                    return False
+                else:
+                    # Per-minute rate limit — wait and retry
+                    if attempt < 3:
+                        print(f"  ⏳ Gemini per-minute rate limit hit (attempt {attempt}/3). Waiting 20s...")
+                        time.sleep(20)
+                        continue
+                    else:
+                        print(f"  ✗ Gemini rate limit persists after 3 attempts — proceeding without AI intros.")
+                        return False
+            else:
+                print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
+                return False
+        except Exception as e:
+            print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
+            return False
+    return False
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
 
@@ -455,41 +459,27 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
             filename = f"{svc['slug_prefix']}-{data['slug']}.html"
             filepath = os.path.join(output_dir, filename)
 
-            # Decide whether to call Groq:
+            # Decide whether to call Gemini:
             #   --ai:       only for pages that don't exist yet
             #   --force-ai: for pages not yet in the AI log (resumes across days)
             should_call_ai = api_key and (
                 (use_ai     and not os.path.isfile(filepath)) or
                 (force_ai   and filename not in ai_done)
             )
-            ai_intro_received = False
             if should_call_ai:
-                # First-ever call in this run: pause 10s to ensure a clean rate-limit window
-                if not getattr(get_ai_intro, "_first_call_done", False):
-                    get_ai_intro._first_call_done = True
-                    time.sleep(10)
-                ai_text = get_ai_intro(data, svc["label"], api_key)
-                # Only mark as received if Groq returned something different from default
-                if ai_text and ai_text != data["intro_note"]:
-                    data["intro_note"] = ai_text
-                    ai_intro_received = True
-                    if not getattr(get_ai_intro, "_quota_exhausted", False):
-                        ai_new.add(filename)
-                if ai_intro_received:
-                    print(f"    ✓ AI intro: {data['city']}")
-                else:
-                    print(f"    ✗ Default intro used: {data['city']} (OpenAI returned same as default)")
-                time.sleep(1)    # 1s gap — well within OpenAI rate limits
+                data["intro_note"] = get_ai_intro(data, svc["label"], api_key)
+                if not getattr(get_ai_intro, "_quota_exhausted", False):
+                    ai_new.add(filename)
+                time.sleep(5)    # Gemini free tier: 15 req/min — 5s gap keeps well under limit
             elif force_ai and filename in ai_done:
                 ai_skipped += 1  # already has AI intro — skip
 
             new_html = template.render(**data, whatsapp_number=WHATSAPP_NUMBER)
 
             # Skip writing if file already exists and content is identical.
-            # Exception: if we got a real AI intro, always write.
             # Only pages whose template or city data changed get rewritten —
             # so git only commits the truly updated files.
-            if os.path.isfile(filepath) and not ai_intro_received:
+            if os.path.isfile(filepath):
                 with open(filepath, "r", encoding="utf-8") as f:
                     if f.read() == new_html:
                         generated.append({
@@ -525,11 +515,12 @@ def generate_pages(cities, env, output_dir, services, use_ai=False, api_key=None
         save_ai_log(output_dir, ai_done)
         print(f"\n  ✓ AI log updated: {len(ai_done)} pages total have AI intros ({len(ai_new)} new this run)")
     elif force_ai:
-        remaining = 1776 - len(ai_done)
+        total_pages = len(cities) * len(services)
+        remaining = total_pages - len(ai_done)
         if remaining > 0:
-            print(f"\n  ℹ AI log: {len(ai_done)}/1776 pages done. {remaining} remaining — run again tomorrow.")
+            print(f"\n  ℹ AI log: {len(ai_done)}/{total_pages} pages done. {remaining} remaining — run again tomorrow.")
         else:
-            print(f"\n  ✓ All 1776 pages have AI intros.")
+            print(f"\n  ✓ All {total_pages} pages have AI intros.")
 
     return generated
 
@@ -634,9 +625,9 @@ def main():
     parser.add_argument("--sheet",     default=None,
                         help="Google Sheet published CSV URL")
     parser.add_argument("--ai",        action="store_true",
-                        help="Use OpenAI for unique city intros (skips existing pages)")
+                        help="Use Gemini AI for unique city intros (skips existing pages)")
     parser.add_argument("--force-ai",  action="store_true",
-                        help="Use OpenAI for ALL pages, including existing ones (to refresh intros)")
+                        help="Use Gemini AI for ALL pages, including existing ones (to refresh intros)")
     parser.add_argument("--ping",      action="store_true",
                         help="Ping search engines after generation")
     args = parser.parse_args()
@@ -648,22 +639,21 @@ def main():
         print("ERROR: Valid services are: " + ", ".join(SERVICES.keys()))
         sys.exit(1)
 
-    # API key for AI mode (OpenAI gpt-4o-mini)
+    # API key for AI mode (Google Gemini — free)
     api_key = None
     if args.ai or args.force_ai:
-        api_key = os.environ.get("OPENAI_API_KEY")
+        api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
-            print("  ⚠ --ai/--force-ai set but OPENAI_API_KEY not found. Skipping AI intros. Get key at platform.openai.com")
+            print("  ⚠ --ai/--force-ai set but GEMINI_API_KEY not found. Skipping AI intros. Get free key at aistudio.google.com")
             args.ai = args.force_ai = False
-        elif args.ai and not check_openai_quota(api_key):
-            # Quota exhausted — disable --ai (new pages only) mode.
-            # --force-ai intentionally bypasses this quota check.
-            args.ai = False
-            api_key = None if not args.force_ai else api_key
+        elif not check_gemini_quota(api_key):
+            # Quota exhausted — disable AI and continue generating pages without intros
+            args.ai = args.force_ai = False
+            api_key = None
 
     print(f"\n{'='*60}")
     print(f"  TaxAMC Static Site Generator")
-    print(f"  Services   : {', '.join(services)}")
+    print(f"  Services   : {', '.join(services)} ({len(services)} services × {len(cities)} cities = {len(services)*len(cities)} pages)")
     print(f"  Output dir : {os.path.abspath(args.output)}")
     print(f"  Data source: {'Google Sheet' if args.sheet else 'cities.json'}")
     print(f"  AI intros  : {'Force (all pages)' if args.force_ai else 'Yes (new pages only)' if args.ai else 'No'}")
