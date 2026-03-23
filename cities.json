@@ -2435,5 +2435,3977 @@
     ],
     "company_note": "Dibrugarh (ROC Assam, Guwahati) sees incorporation in tea export companies, oil field service providers, healthcare businesses, and bamboo industry companies.",
     "gst_note": "Dibrugarh's tea companies must navigate GST on bulk vs packaged tea. Oil field service companies working as ONGC vendors need careful compliance on service categories and RCM provisions applicable to petroleum sector contracts."
+  },
+  {
+    "city": "Thane",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "thane",
+    "commissionerate": "CGST Commissionerate, Thane",
+    "zone": "Mumbai Zone",
+    "local_areas": [
+      "Wagle Estate MIDC",
+      "Majiwada",
+      "Ghodbunder Road",
+      "Balkum",
+      "Bhiwandi Logistics Hub"
+    ],
+    "key_industries": [
+      "Chemical manufacturing",
+      "Pharmaceuticals",
+      "Logistics and warehousing (Bhiwandi)",
+      "IT and services",
+      "Real estate"
+    ],
+    "intro_note": "Mumbai's fastest-growing satellite city — Thane is a major chemicals, pharmaceuticals, and logistics hub, with India's largest logistics cluster at nearby Bhiwandi serving pan-India e-commerce.",
+    "nearby_cities": [
+      "Mumbai",
+      "Navi Mumbai",
+      "Kalyan",
+      "Bhiwandi"
+    ],
+    "company_note": "Thane (ROC Maharashtra) sees high incorporation in chemical manufacturers, pharma companies, logistics firms, and IT companies.",
+    "gst_note": "Thane's chemical and pharmaceutical industries require careful ITC management. Logistics companies in Bhiwandi are major GST compliance clients due to high-volume warehousing."
+  },
+  {
+    "city": "Navi Mumbai",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "navi-mumbai",
+    "commissionerate": "CGST Commissionerate, Thane",
+    "zone": "Mumbai Zone",
+    "local_areas": [
+      "Belapur CBD",
+      "Vashi",
+      "Turbhe MIDC",
+      "Taloja MIDC",
+      "Airoli",
+      "JNPT (Nhava Sheva)"
+    ],
+    "key_industries": [
+      "Port and shipping (JNPT — India's largest container port)",
+      "Chemical manufacturing (Taloja)",
+      "IT and finance (Belapur)",
+      "Pharmaceuticals",
+      "Logistics"
+    ],
+    "intro_note": "Planned as Mumbai's twin city — Navi Mumbai houses JNPT, India's largest container port, a major chemical and pharmaceutical cluster, and a growing IT hub at Belapur.",
+    "nearby_cities": [
+      "Mumbai",
+      "Thane",
+      "Panvel",
+      "Alibag"
+    ],
+    "company_note": "Navi Mumbai (ROC Maharashtra) sees incorporation in port logistics companies, chemical manufacturers, pharma firms, and IT companies in Belapur CBD.",
+    "gst_note": "Navi Mumbai's JNPT logistics companies deal with complex customs and GST interface on imports. Chemical and pharma companies in Taloja MIDC need systematic ITC management."
+  },
+  {
+    "city": "Greater Noida",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "greater-noida",
+    "commissionerate": "CGST Commissionerate, Noida",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "Knowledge Park I-V",
+      "Ecotech Industrial Area",
+      "Surajpur Industrial Area",
+      "Pari Chowk",
+      "Yamuna Expressway Corridor"
+    ],
+    "key_industries": [
+      "IT and education (Knowledge Park)",
+      "Electronics manufacturing (Samsung, LG)",
+      "Automobile testing",
+      "Logistics",
+      "Real estate"
+    ],
+    "intro_note": "UP's planned industrial and educational city — Greater Noida is a major IT, electronics, and education hub, home to India's Formula One circuit, and the fastest-growing real estate market in North India.",
+    "nearby_cities": [
+      "Noida",
+      "Delhi",
+      "Ghaziabad",
+      "Agra (via Yamuna Expressway)"
+    ],
+    "company_note": "Greater Noida (ROC Delhi) sees incorporation of IT companies, electronics manufacturers, educational institutions, and real estate developers.",
+    "gst_note": "Greater Noida's electronics manufacturers have complex component-level ITC and multi-tier supply chain compliance. Real estate developers apply GST on construction services."
+  },
+  {
+    "city": "Panipat",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "panipat",
+    "commissionerate": "CGST Commissionerate, Rohtak",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "HSIIDC Sector 25",
+      "Textile City",
+      "Babail Industrial Area",
+      "GT Road Corridor",
+      "Samalkha Industrial Area"
+    ],
+    "key_industries": [
+      "Textile recycling (shoddy industry — blankets, shawls)",
+      "Refinery (IOCL Panipat Refinery)",
+      "Steel re-rolling",
+      "Cotton and polyester textiles"
+    ],
+    "intro_note": "The Cast-off Capital and Textile City — Panipat recycles discarded textile waste from across the world into blankets and shawls, and also houses IOCL's major oil refinery.",
+    "nearby_cities": [
+      "Karnal",
+      "Sonipat",
+      "Rohtak",
+      "Kurukshetra"
+    ],
+    "company_note": "Panipat (ROC Haryana) sees incorporation in textile recycling mills, refinery vendors, steel re-rollers, and blanket manufacturers.",
+    "gst_note": "Panipat's shoddy textile industry has specific GST provisions on recycled fibre. IOCL refinery vendors deal with petroleum product GST compliance."
+  },
+  {
+    "city": "Ambala",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "ambala",
+    "commissionerate": "CGST Commissionerate, Panchkula",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "Ambala Cantonment",
+      "Ambala City",
+      "HSIIDC Industrial Area",
+      "Model Town",
+      "Delhi Road Corridor"
+    ],
+    "key_industries": [
+      "Scientific instruments (India's largest cluster)",
+      "Surgical instruments",
+      "Electronic goods trading",
+      "Defence (military cantonment)",
+      "Agriculture trading"
+    ],
+    "intro_note": "India's scientific instruments capital — Ambala produces over 80% of India's scientific and surgical instruments and is a major army cantonment and electronics trading hub.",
+    "nearby_cities": [
+      "Chandigarh",
+      "Yamunanagar",
+      "Kurukshetra",
+      "Panchkula"
+    ],
+    "company_note": "Ambala (ROC Haryana) sees incorporation in scientific instrument manufacturers, surgical goods exporters, electronics traders, and defence ancillary companies.",
+    "gst_note": "Ambala's scientific instrument exporters need LUT filing and IGST refunds. Surgical instruments have specific HSN classification between different medical device categories."
+  },
+  {
+    "city": "Rohtak",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "rohtak",
+    "commissionerate": "CGST Commissionerate, Rohtak",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "HSIIDC Industrial Area",
+      "Asthal Bohar",
+      "Delhi Road",
+      "Model Town",
+      "MDU University Area"
+    ],
+    "key_industries": [
+      "Automobile (Harley-Davidson plant)",
+      "Food processing",
+      "Textile and garments",
+      "Education (PGIMS, MDU)",
+      "Real estate"
+    ],
+    "intro_note": "Haryana's administrative hub and a major automobile and educational city — Rohtak houses Harley-Davidson's India operations, a major government university, and a large medical college.",
+    "nearby_cities": [
+      "Gurugram",
+      "Jhajjar",
+      "Sonipat",
+      "Bhiwani"
+    ],
+    "company_note": "Rohtak (ROC Haryana) sees incorporation in automobile ancillaries, food processors, educational institutions, and real estate developers.",
+    "gst_note": "Rohtak's automobile sector vendors have complex multi-tier GST supply chain compliance. Food processors must apply correct GST rates on branded versus unbranded items."
+  },
+  {
+    "city": "Hisar",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "hisar",
+    "commissionerate": "CGST Commissionerate, Rohtak",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "HSIIDC Industrial Area",
+      "Focal Point",
+      "Sirsa Road Industrial Area",
+      "Urban Estate",
+      "Barwala Poultry Belt"
+    ],
+    "key_industries": [
+      "Steel and sponge iron",
+      "Denim and jeans manufacturing",
+      "Poultry and egg production",
+      "Cotton textiles",
+      "Agro-processing"
+    ],
+    "intro_note": "Western Haryana's industrial hub — Hisar is India's largest denim manufacturing centre, a major steel and sponge iron city, and the heart of Haryana's massive poultry industry.",
+    "nearby_cities": [
+      "Rohtak",
+      "Sirsa",
+      "Bhiwani",
+      "Fatehabad"
+    ],
+    "company_note": "Hisar (ROC Haryana) sees incorporation in denim manufacturers, steel companies, poultry businesses, and cotton textile firms.",
+    "gst_note": "Hisar's denim industry requires careful ITC management on cotton yarn, dyes, and chemicals. Poultry businesses deal with agricultural exemptions for live birds versus taxable processed products."
+  },
+  {
+    "city": "Karnal",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "karnal",
+    "commissionerate": "CGST Commissionerate, Rohtak",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "Sector 12 Industrial Area",
+      "Model Town",
+      "HSIIDC Karnal",
+      "GT Road Corridor",
+      "Taraori Rice Hub"
+    ],
+    "key_industries": [
+      "Rice processing and trading (India's rice bowl)",
+      "Dairy products (National Dairy Research Institute)",
+      "Scientific instruments",
+      "Automobile ancillaries",
+      "Agro-processing"
+    ],
+    "intro_note": "Haryana's agricultural heartland and rice capital — Karnal is home to the National Dairy Research Institute, a major Basmati rice processing hub, and a significant agro-processing centre.",
+    "nearby_cities": [
+      "Panipat",
+      "Kurukshetra",
+      "Ambala",
+      "Kaithal"
+    ],
+    "company_note": "Karnal (ROC Haryana) sees incorporation in rice processing mills, dairy businesses, agro-traders, and scientific instrument manufacturers.",
+    "gst_note": "Karnal's Basmati rice exporters require LUT filing and IGST refunds. Rice mills must distinguish between paddy (exempt), brown rice, and polished rice for correct GST classification."
+  },
+  {
+    "city": "Sonipat",
+    "state": "Haryana",
+    "state_code": "IN-HR",
+    "slug": "sonipat",
+    "commissionerate": "CGST Commissionerate, Rohtak",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "HSIIDC Industrial Area",
+      "Kundli Industrial Area",
+      "Sonipat Food Park",
+      "GT Road Corridor",
+      "Bahalgarh"
+    ],
+    "key_industries": [
+      "Food processing (IMT Food Park)",
+      "Scientific equipment",
+      "Automobile components",
+      "Edible oil",
+      "Real estate (Delhi NCR expansion)"
+    ],
+    "intro_note": "Haryana's gateway to Delhi — Sonipat is a major food processing and automobile components hub, part of the Delhi-Mumbai Industrial Corridor, and rapidly developing as Delhi NCR's northern extension.",
+    "nearby_cities": [
+      "Delhi",
+      "Rohtak",
+      "Panipat",
+      "Bahadurgarh"
+    ],
+    "company_note": "Sonipat (ROC Haryana) sees incorporation in food processing companies, auto component suppliers, and real estate developers in the Delhi NCR expansion belt.",
+    "gst_note": "Sonipat's food processing park companies must carefully distinguish between exempt and taxable food items. Auto component suppliers have complex multi-tier GST supply chain compliance."
+  },
+  {
+    "city": "Patiala",
+    "state": "Punjab",
+    "state_code": "IN-PB",
+    "slug": "patiala",
+    "commissionerate": "CGST Commissionerate, Ludhiana",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "PSIEC Industrial Area",
+      "Rajpura Road",
+      "Leela Bhawan",
+      "Sirhind Road Industrial Area",
+      "Nabha Road"
+    ],
+    "key_industries": [
+      "Pharmaceutical manufacturing",
+      "Tractor and farm equipment",
+      "Textile (phulkari embroidery)",
+      "Steel re-rolling",
+      "Food processing"
+    ],
+    "intro_note": "Punjab's royal city and a major pharmaceutical and tractor hub — Patiala houses large pharmaceutical manufacturing plants, major tractor component manufacturers, and is famous for its Phulkari embroidery.",
+    "nearby_cities": [
+      "Chandigarh",
+      "Ludhiana",
+      "Sangrur",
+      "Nabha"
+    ],
+    "company_note": "Patiala (ROC Punjab) sees incorporation in pharmaceutical companies, tractor component manufacturers, and textile businesses.",
+    "gst_note": "Patiala's pharmaceutical companies require careful HSN classification. Tractor component manufacturers have complex ITC chains on metal inputs. Phulkari textile exporters need LUT filing."
+  },
+  {
+    "city": "Bathinda",
+    "state": "Punjab",
+    "state_code": "IN-PB",
+    "slug": "bathinda",
+    "commissionerate": "CGST Commissionerate, Ludhiana",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "Thermal Plant Area",
+      "BPCL Refinery Area",
+      "Industrial Area Phase I-II",
+      "Bibi Wala Road",
+      "Talwandi Sabo Industrial Area"
+    ],
+    "key_industries": [
+      "Petroleum refining (BPCL Guru Gobind Singh Refinery)",
+      "Thermal power",
+      "Cotton textiles",
+      "Agricultural trading (wheat, cotton)",
+      "Steel"
+    ],
+    "intro_note": "Malwa Punjab's commercial hub — Bathinda is home to one of India's largest oil refineries (BPCL), major thermal power stations, and is the heart of Punjab's cotton and wheat belt.",
+    "nearby_cities": [
+      "Ludhiana",
+      "Mansa",
+      "Fazilka",
+      "Muktsar"
+    ],
+    "company_note": "Bathinda (ROC Punjab) sees incorporation in petroleum ancillaries, power sector companies, cotton textile mills, and agro-trading businesses.",
+    "gst_note": "Bathinda's BPCL refinery vendors deal with petroleum product GST provisions. Cotton textile companies need careful rate application on different fabric categories."
+  },
+  {
+    "city": "Mohali",
+    "state": "Punjab",
+    "state_code": "IN-PB",
+    "slug": "mohali",
+    "commissionerate": "CGST Commissionerate, Chandigarh",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "IT City Mohali",
+      "Sector 66 (IT Hub)",
+      "Phase 7-11 Industrial Area",
+      "Aerocity",
+      "GMADA Urban Estate"
+    ],
+    "key_industries": [
+      "IT and software (IT City)",
+      "Pharmaceutical manufacturing",
+      "Real estate",
+      "Sports (PCA Cricket Stadium)",
+      "Education"
+    ],
+    "intro_note": "Chandigarh's planned twin city and Punjab's IT capital — Mohali is home to a large IT corridor, major pharmaceutical manufacturers, and is the sporting and real estate hub of the Tricity area.",
+    "nearby_cities": [
+      "Chandigarh",
+      "Patiala",
+      "Ludhiana",
+      "Ropar"
+    ],
+    "company_note": "Mohali (ROC Punjab) leads Punjab in IT company incorporations alongside pharmaceutical manufacturers and real estate developers.",
+    "gst_note": "Mohali's IT companies deal with software service exports, LUT compliance, and ITC on imported software. Pharmaceutical manufacturers need careful drug classification for GST rates."
+  },
+  {
+    "city": "Ajmer",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "ajmer",
+    "commissionerate": "CGST Commissionerate, Jaipur (II)",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "Ramganj Mandi",
+      "Pushkar Road",
+      "RIICO Industrial Area",
+      "Vaishali Nagar",
+      "Nasirabad Cantonment"
+    ],
+    "key_industries": [
+      "Tourism (Dargah Sharif, Pushkar)",
+      "Marble and granite",
+      "Agricultural trading",
+      "Salt processing",
+      "Education"
+    ],
+    "intro_note": "Rajasthan's spiritual heart — Ajmer is home to the revered Dargah of Khwaja Moinuddin Chishti, the sacred Pushkar lake, and is a major marble and granite trading hub.",
+    "nearby_cities": [
+      "Jaipur",
+      "Tonk",
+      "Nagaur",
+      "Pali"
+    ],
+    "company_note": "Ajmer (ROC Rajasthan) sees incorporation in tourism businesses, marble traders, educational institutions, and agricultural commodity firms.",
+    "gst_note": "Ajmer's marble and granite businesses must distinguish between raw stone (lower rate) and finished polished marble (higher rate). Tourism businesses need hotel and pilgrimage service GST compliance."
+  },
+  {
+    "city": "Bikaner",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "bikaner",
+    "commissionerate": "CGST Commissionerate, Bikaner",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "RIICO Industrial Area Bikaner",
+      "Karni Industrial Area",
+      "Station Road",
+      "Rani Bazaar",
+      "Sadul Colony"
+    ],
+    "key_industries": [
+      "Camel hide and wool products",
+      "Bikaneri bhujia (world-famous)",
+      "Wool processing",
+      "Handicrafts",
+      "Solar and wind energy (Thar Desert)"
+    ],
+    "intro_note": "Rajasthan's desert city and the Bhujia Capital — Bikaner is world-famous for its spicy Bikaneri namkeen, a major wool and camel hide processing hub, and gateway to the Thar Desert's renewable energy potential.",
+    "nearby_cities": [
+      "Jodhpur",
+      "Hanumangarh",
+      "Sri Ganganagar",
+      "Churu"
+    ],
+    "company_note": "Bikaner (ROC Rajasthan) sees incorporation in namkeen manufacturers, wool processors, renewable energy companies, and handicraft exporters.",
+    "gst_note": "Bikaner's namkeen and food processing companies need careful GST classification between branded and unbranded savouries. Renewable energy companies in the Thar Desert have specific solar and wind equipment GST provisions."
+  },
+  {
+    "city": "Alwar",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "alwar",
+    "commissionerate": "CGST Commissionerate, Jaipur (I)",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "RIICO Bhiwadi Industrial Area",
+      "MIA Alwar",
+      "GT Road Corridor",
+      "Hope Circus",
+      "Japanese Zone Neemrana"
+    ],
+    "key_industries": [
+      "Automobile components (Bhiwadi-Neemrana Japanese Zone)",
+      "FMCG manufacturing",
+      "Electronics",
+      "Steel",
+      "Real estate (Delhi NCR expansion)"
+    ],
+    "intro_note": "Rajasthan's industrial gateway to Delhi NCR — Alwar's Bhiwadi and Neemrana have emerged as a major Japanese industrial zone with auto component manufacturers, electronics firms, and FMCG companies.",
+    "nearby_cities": [
+      "Jaipur",
+      "Gurugram",
+      "Bharatpur",
+      "Dausa"
+    ],
+    "company_note": "Alwar (ROC Rajasthan) sees the highest growth in new company registrations due to Japanese Zone Neemrana — auto component suppliers, electronics manufacturers, and FMCG companies dominate.",
+    "gst_note": "Alwar's Neemrana Japanese Zone companies often have Japanese parent companies — cross-border service GST, reverse charge on royalties, and ITC on imported machinery are key compliance areas."
+  },
+  {
+    "city": "Panaji",
+    "state": "Goa",
+    "state_code": "IN-GA",
+    "slug": "panaji",
+    "commissionerate": "CGST Commissionerate, Goa",
+    "zone": "Mumbai Zone",
+    "local_areas": [
+      "Panaji Market",
+      "Patto Plaza (Government)",
+      "Dona Paula",
+      "Miramar Beach",
+      "Verna Industrial Estate"
+    ],
+    "key_industries": [
+      "Tourism and hospitality",
+      "Casinos and entertainment",
+      "Mining (iron ore, bauxite)",
+      "Government administration",
+      "IT and services"
+    ],
+    "intro_note": "Goa's vibrant capital — Panaji is the administrative centre of India's smallest state, home to a booming tourism, casino, and hospitality economy, and gateway to Goa's beaches.",
+    "nearby_cities": [
+      "Vasco da Gama",
+      "Margao",
+      "Mapusa",
+      "Porvorim"
+    ],
+    "company_note": "Panaji (ROC Goa) sees incorporation in tourism companies, casino operators, hospitality businesses, and mining companies.",
+    "gst_note": "Panaji's tourism and hospitality sector has detailed GST compliance — hotel tariffs above Rs 7,500 attract 18%, casino services have specific GST rates, and tour operators have unique valuation rules."
+  },
+  {
+    "city": "Margao",
+    "state": "Goa",
+    "state_code": "IN-GA",
+    "slug": "margao",
+    "commissionerate": "CGST Commissionerate, Goa",
+    "zone": "Mumbai Zone",
+    "local_areas": [
+      "Fatorda Industrial Estate",
+      "Margao Market",
+      "Verna Industrial Area",
+      "Colva Beach Road",
+      "Cuncolim Industrial Estate"
+    ],
+    "key_industries": [
+      "Wholesale trading",
+      "Cashew processing",
+      "Tourism (South Goa beaches)",
+      "Fish and seafood exports",
+      "Real estate"
+    ],
+    "intro_note": "Goa's commercial capital and South Goa's urban centre — Margao is the main wholesale trading hub of Goa, a major cashew processing centre, and gateway to South Goa's pristine beaches.",
+    "nearby_cities": [
+      "Panaji",
+      "Vasco da Gama",
+      "Canacona",
+      "Ponda"
+    ],
+    "company_note": "Margao (ROC Goa) sees incorporation in trading companies, cashew processors, seafood exporters, and real estate developers.",
+    "gst_note": "Margao's cashew processing industry has specific raw versus processed cashew GST rate differences. Seafood exporters need LUT filing. Real estate developers apply GST on construction services."
+  },
+  {
+    "city": "Vasco da Gama",
+    "state": "Goa",
+    "state_code": "IN-GA",
+    "slug": "vasco-da-gama",
+    "commissionerate": "CGST Commissionerate, Goa",
+    "zone": "Mumbai Zone",
+    "local_areas": [
+      "Mormugao Port",
+      "Dabolim Airport Area",
+      "Sancoale Industrial Area",
+      "Zuari Nagar",
+      "Headland Sada"
+    ],
+    "key_industries": [
+      "Port and shipping (Mormugao Port)",
+      "Mining (iron ore exports)",
+      "Aviation (Dabolim Airport)",
+      "Tourism",
+      "Fertilizer manufacturing"
+    ],
+    "intro_note": "Goa's port city and industrial hub — Vasco da Gama is home to Mormugao Port, India's largest iron ore exporting port, Goa's international airport, and major fertilizer plants.",
+    "nearby_cities": [
+      "Panaji",
+      "Margao",
+      "Ponda",
+      "Cortalim"
+    ],
+    "company_note": "Vasco da Gama (ROC Goa) sees incorporation in port logistics companies, mining firms, fertilizer manufacturers, and aviation ancillary businesses.",
+    "gst_note": "Vasco's port logistics companies deal with the GST-customs interface on iron ore exports. Fertilizer manufacturers have specific GST rate applications on different fertilizer categories."
+  },
+  {
+    "city": "Puducherry",
+    "state": "Puducherry",
+    "state_code": "IN-PY",
+    "slug": "puducherry",
+    "commissionerate": "CGST Commissionerate, Puducherry",
+    "zone": "Chennai Zone",
+    "local_areas": [
+      "Sedarapet Industrial Estate",
+      "PIPDIC Industrial Area",
+      "White Town",
+      "Auroville",
+      "Mission Street"
+    ],
+    "key_industries": [
+      "Tourism (French Quarter, Auroville)",
+      "Pharmaceuticals",
+      "Textile processing",
+      "IT and services",
+      "Fishing and aquaculture"
+    ],
+    "intro_note": "The French Riviera of the East — Puducherry is a Union Territory with French colonial architecture, the spiritual community of Auroville, a growing pharma cluster, and a major tourism destination.",
+    "nearby_cities": [
+      "Chennai",
+      "Cuddalore",
+      "Viluppuram",
+      "Tindivanam"
+    ],
+    "company_note": "Puducherry (ROC Tamil Nadu) sees incorporation in pharmaceutical companies, tourism businesses, IT firms, and Auroville-related entities.",
+    "gst_note": "Puducherry's pharmaceutical companies have specific union territory GST compliance (UTGST instead of SGST). Tourism businesses need hotel accommodation and restaurant service GST compliance."
+  },
+  {
+    "city": "Solapur",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "solapur",
+    "commissionerate": "CGST Commissionerate, Pune",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "Hotgi Road MIDC",
+      "Akkalkot Road MIDC",
+      "Jule Solapur",
+      "Chincholi MIDC",
+      "Sector 3 Industrial Area"
+    ],
+    "key_industries": [
+      "Textiles (Terry towels — India's largest exporter)",
+      "Bidi manufacturing",
+      "Sugar cooperatives",
+      "Engineering goods",
+      "Pomegranate farming"
+    ],
+    "intro_note": "Maharashtra's textile city and the world's largest terry towel exporting hub — Solapur produces over 40% of India's terry towels and bed sheets and is a major cooperative sugar centre.",
+    "nearby_cities": [
+      "Pune",
+      "Kolhapur",
+      "Osmanabad",
+      "Bijapur"
+    ],
+    "company_note": "Solapur (ROC Maharashtra) sees incorporation in terry towel manufacturers, bidi producers, sugar cooperatives, and engineering firms.",
+    "gst_note": "Solapur's terry towel exporters need LUT filing and IGST refund management. Bidi manufacturers have specific tobacco cess and GST compliance. Sugar cooperatives have different GST treatment from private mills."
+  },
+  {
+    "city": "Amravati",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "amravati",
+    "commissionerate": "CGST Commissionerate, Nagpur",
+    "zone": "Nagpur Zone",
+    "local_areas": [
+      "MIDC Amravati",
+      "Shegaon Road Industrial Area",
+      "Rajapeth",
+      "Campground",
+      "Badnera Cotton Hub"
+    ],
+    "key_industries": [
+      "Cotton trading and ginning",
+      "Handloom (Paithani sarees adjacent region)",
+      "Orange cultivation",
+      "Sugar processing",
+      "Education"
+    ],
+    "intro_note": "Vidarbha's cotton capital — Amravati is the centre of Maharashtra's cotton belt, a major cotton ginning and pressing hub, and gateway to the Melghat tiger reserve.",
+    "nearby_cities": [
+      "Nagpur",
+      "Akola",
+      "Yavatmal",
+      "Washim"
+    ],
+    "company_note": "Amravati (ROC Maharashtra) sees incorporation in cotton ginning mills, agricultural trading companies, sugar processors, and educational institutions.",
+    "gst_note": "Amravati's cotton ginning industry deals with raw cotton (exempt) to ginned cotton (5%) GST transition. Cotton traders must maintain careful documentation for agricultural exemptions."
+  },
+  {
+    "city": "Sangli",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "sangli",
+    "commissionerate": "CGST Commissionerate, Pune",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "Miraj MIDC",
+      "Vishrambag Industrial Area",
+      "Kupwad MIDC",
+      "Sangli Market",
+      "Palus Sugar Factory Area"
+    ],
+    "key_industries": [
+      "Turmeric (world's largest trading market)",
+      "Sugar cooperatives",
+      "Grapes and raisins",
+      "Textile (Sangli silk)",
+      "Engineering"
+    ],
+    "intro_note": "The Turmeric City of the World — Sangli is the world's largest turmeric trading and auction market, a major grape and raisin exporting hub, and a cooperative sugar centre.",
+    "nearby_cities": [
+      "Kolhapur",
+      "Solapur",
+      "Belgaum",
+      "Miraj"
+    ],
+    "company_note": "Sangli (ROC Maharashtra) sees incorporation in turmeric traders, grape exporters, cooperative sugar societies, and agro-processing firms.",
+    "gst_note": "Sangli's turmeric market trades both raw and processed turmeric — raw agricultural produce is exempt but dried and processed turmeric powder attracts 5% GST. Raisin exporters need LUT filing."
+  },
+  {
+    "city": "Jalgaon",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "jalgaon",
+    "commissionerate": "CGST Commissionerate, Nashik",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "MIDC Jalgaon",
+      "Chopda Road",
+      "Savda Industrial Area",
+      "Bhusawal Railway Junction Area",
+      "Muktainagar"
+    ],
+    "key_industries": [
+      "Banana cultivation (India's largest banana producing district)",
+      "Cotton and textiles",
+      "Gold trading (Maharashtra's gold hub)",
+      "Power and coal (NTPC Bhusawal)",
+      "Engineering"
+    ],
+    "intro_note": "Maharashtra's banana and gold capital — Jalgaon is India's largest banana producing district and a major gold trading hub, with Bhusawal housing one of Maharashtra's largest thermal power plants.",
+    "nearby_cities": [
+      "Aurangabad",
+      "Nashik",
+      "Dhule",
+      "Akola"
+    ],
+    "company_note": "Jalgaon (ROC Maharashtra) sees incorporation in banana exporters, cotton textile companies, gold trading businesses, and power sector firms.",
+    "gst_note": "Jalgaon's banana exports require agricultural exemption documentation for fresh bananas but processed banana products attract GST. Gold traders have specific GST compliance on bullion and jewellery."
+  },
+  {
+    "city": "Nanded",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "nanded",
+    "commissionerate": "CGST Commissionerate, Aurangabad",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "MIDC Nanded",
+      "Hazur Sahib Gurudwara Area",
+      "Vazirabad",
+      "Shivajinagar",
+      "Vishnupuri"
+    ],
+    "key_industries": [
+      "Religious tourism (Hazur Sahib — Sikhism's holiest sites)",
+      "Sugar cooperatives",
+      "Cotton textiles",
+      "Education",
+      "Agro-processing"
+    ],
+    "intro_note": "Maharashtra's spiritual city — Nanded is home to Hazur Sahib Gurudwara, one of Sikhism's five Takhts, and is a major pilgrimage destination, cooperative sugar centre, and cotton trading hub.",
+    "nearby_cities": [
+      "Aurangabad",
+      "Latur",
+      "Osmanabad",
+      "Hyderabad"
+    ],
+    "company_note": "Nanded (ROC Maharashtra) sees incorporation in tourism businesses, sugar cooperatives, cotton textile companies, and educational institutions.",
+    "gst_note": "Nanded's religious tourism sector has specific GST provisions on hotel accommodation near pilgrimage sites. Sugar cooperatives have different GST treatment from private mills."
+  },
+  {
+    "city": "Latur",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "latur",
+    "commissionerate": "CGST Commissionerate, Aurangabad",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "Latur Industrial Area MIDC",
+      "Udgir Road",
+      "Nanded Road Corridor",
+      "Ausa",
+      "Nilanga"
+    ],
+    "key_industries": [
+      "Soybean and tur dal processing",
+      "Sugar cooperatives",
+      "Seed production (India's seed capital)",
+      "Gold hallmarking and trading",
+      "Agro-processing"
+    ],
+    "intro_note": "Maharashtra's seed capital and soybean hub — Latur is India's largest seed production and trading centre, a major tur (pigeon pea) dal processing hub, and an important cooperative sugar region.",
+    "nearby_cities": [
+      "Nanded",
+      "Osmanabad",
+      "Solapur",
+      "Gulbarga"
+    ],
+    "company_note": "Latur (ROC Maharashtra) sees incorporation in seed companies, dal processors, cooperative sugar societies, and agro-trading businesses.",
+    "gst_note": "Latur's seed industry involves careful GST on certified seeds versus regular food crops. Dal processors manage raw pulses (exempt) to processed dal (5%) GST transitions."
+  },
+  {
+    "city": "Satara",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "satara",
+    "commissionerate": "CGST Commissionerate, Pune",
+    "zone": "Pune Zone",
+    "local_areas": [
+      "Karad MIDC",
+      "Satara MIDC",
+      "Koregaon",
+      "Vaduj Sugar Belt",
+      "Panchgani (Tourism)",
+      "Mahabaleshwar"
+    ],
+    "key_industries": [
+      "Sugar cooperatives",
+      "Renewable energy (windmills)",
+      "Strawberry and fruit farming",
+      "Tourism (Mahabaleshwar, Panchgani)",
+      "Engineering"
+    ],
+    "intro_note": "Maharashtra's strawberry valley and cooperative sugar heartland — Satara district produces over 85% of Maharashtra's strawberries, houses massive wind energy installations, and is home to the iconic Mahabaleshwar hill station.",
+    "nearby_cities": [
+      "Pune",
+      "Kolhapur",
+      "Solapur",
+      "Sangli"
+    ],
+    "company_note": "Satara (ROC Maharashtra) sees incorporation in cooperative sugar societies, renewable energy companies, strawberry exporting businesses, and tourism establishments.",
+    "gst_note": "Satara's strawberry and agricultural businesses need careful GST exemption documentation. Wind energy companies have specific renewable energy equipment GST rates. Sugar cooperatives have distinct compliance from private mills."
+  },
+  {
+    "city": "Hubli",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "hubli",
+    "commissionerate": "CGST Commissionerate, Belgaum",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "Gokul Road Industrial Area",
+      "Tarihal KIADB",
+      "Navanagar Industrial Area",
+      "Dharwad (twin city)",
+      "Vidyanagar",
+      "Unkal"
+    ],
+    "key_industries": [
+      "Cotton and synthetic textiles",
+      "Engineering goods",
+      "Steel trading",
+      "Real estate",
+      "Education (KLE University)"
+    ],
+    "intro_note": "Karnataka's second commercial hub and twin city with Dharwad — Hubli-Dharwad is a major textile and steel trading centre, engineering hub, and growing educational destination in North Karnataka.",
+    "nearby_cities": [
+      "Belgaum",
+      "Gadag",
+      "Haveri",
+      "Davangere"
+    ],
+    "company_note": "Hubli (ROC Karnataka) sees incorporation in textile traders, engineering companies, real estate developers, and educational institutions.",
+    "gst_note": "Hubli's cotton textile businesses require careful GST rate application on different fabric types. Steel traders need ITC management on stock transfers and interstate sales."
+  },
+  {
+    "city": "Belgaum",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "belgaum",
+    "commissionerate": "CGST Commissionerate, Belgaum",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "Udyambag Industrial Area",
+      "Angol Industrial Area",
+      "Shahapur",
+      "Camp Area",
+      "Gokak Road Corridor"
+    ],
+    "key_industries": [
+      "Foundry and casting",
+      "Sugar cooperatives (Deccan sugar belt)",
+      "Cotton textiles",
+      "Defence (EME Workshop)",
+      "Real estate"
+    ],
+    "intro_note": "Karnataka's northern gateway and industrial hub — Belgaum is a major foundry and casting centre, home to large cooperative sugar mills, and an important border city on the Karnataka-Maharashtra-Goa tri-junction.",
+    "nearby_cities": [
+      "Hubli",
+      "Dharwad",
+      "Bijapur",
+      "Kolhapur"
+    ],
+    "company_note": "Belgaum (ROC Karnataka) sees incorporation in foundry companies, cooperative sugar societies, cotton textile mills, and defence ancillary suppliers.",
+    "gst_note": "Belgaum's foundry sector requires careful capital goods ITC management. Cooperative sugar societies have different GST treatment from private mills."
+  },
+  {
+    "city": "Davangere",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "davangere",
+    "commissionerate": "CGST Commissionerate, Belgaum",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "Industrial Area Lokikere Road",
+      "Bapuji Layout",
+      "PJ Extension",
+      "Hadadi Road Industrial Area"
+    ],
+    "key_industries": [
+      "Cotton and textile trading",
+      "Steel trading",
+      "Agro-processing",
+      "Education",
+      "Benne dose food culture"
+    ],
+    "intro_note": "Karnataka's cotton trading capital — Davangere is one of India's largest cotton markets, a major textile trading hub, and known for its unique benne dose food culture.",
+    "nearby_cities": [
+      "Hubli",
+      "Shimoga",
+      "Chitradurga",
+      "Harihara"
+    ],
+    "company_note": "Davangere (ROC Karnataka) sees incorporation in cotton traders, textile businesses, steel trading firms, and educational institutions.",
+    "gst_note": "Davangere's cotton trading involves careful agricultural exemption documentation. Textile businesses need correct HSN classification. Steel traders manage ITC on interstate purchases."
+  },
+  {
+    "city": "Salem",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "salem",
+    "commissionerate": "CGST Commissionerate, Salem",
+    "zone": "Coimbatore Zone",
+    "local_areas": [
+      "Mettur Road Industrial Area",
+      "SIPCOT Salem",
+      "Steel Plant Area",
+      "Meyyanur",
+      "Ammapet",
+      "Shevapet"
+    ],
+    "key_industries": [
+      "Steel manufacturing (Salem Steel Plant — SAIL)",
+      "Textile weaving (Salem silk and cotton)",
+      "Jackfruit and mango (agricultural)",
+      "Engineering"
+    ],
+    "intro_note": "Tamil Nadu's steel city — Salem is home to SAIL's speciality stainless steel plant and is a major silk and cotton weaving hub with some of Tamil Nadu's finest woven textiles.",
+    "nearby_cities": [
+      "Coimbatore",
+      "Erode",
+      "Dharmapuri",
+      "Namakkal"
+    ],
+    "company_note": "Salem (ROC Tamil Nadu) sees incorporation in steel ancillaries, textile manufacturers, and agro-processing companies.",
+    "gst_note": "Salem's SAIL plant vendors deal with complex capital goods ITC. Textile manufacturers need careful GST rate classification between silk, cotton, and blended fabrics."
+  },
+  {
+    "city": "Erode",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "erode",
+    "commissionerate": "CGST Commissionerate, Coimbatore",
+    "zone": "Coimbatore Zone",
+    "local_areas": [
+      "SIDCO Industrial Estate",
+      "Perundurai SIPCOT",
+      "Chithode Road",
+      "Bhavani Sagar Area",
+      "Karungalpalayam"
+    ],
+    "key_industries": [
+      "Turmeric and spice trading",
+      "Cotton and knitwear",
+      "Power looms",
+      "Wet grinding machines",
+      "Agro-processing"
+    ],
+    "intro_note": "Tamil Nadu's textile and turmeric capital — Erode is one of India's largest turmeric and textile markets and a major powerlooms hub producing vast quantities of grey cotton fabric.",
+    "nearby_cities": [
+      "Coimbatore",
+      "Salem",
+      "Tiruppur",
+      "Namakkal"
+    ],
+    "company_note": "Erode (ROC Tamil Nadu) sees incorporation in turmeric traders, textile weaving units, and power loom operators.",
+    "gst_note": "Erode's turmeric traders deal with agricultural exemption boundaries. Textile businesses apply GST on different fabric categories. Power loom operators need service and goods GST classification."
+  },
+  {
+    "city": "Vellore",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "vellore",
+    "commissionerate": "CGST Commissionerate, Chennai (North)",
+    "zone": "Chennai Zone",
+    "local_areas": [
+      "SIPCOT Ranipet",
+      "Ambur Leather Hub",
+      "Vaniyambadi",
+      "Katpadi Industrial Area",
+      "CMC Hospital Area"
+    ],
+    "key_industries": [
+      "Leather and footwear (Ambur — world's largest leather footwear cluster)",
+      "Healthcare (CMC Vellore — world's largest private hospital)",
+      "Tanning",
+      "Education"
+    ],
+    "intro_note": "Tamil Nadu's leather capital and medical hub — the Vellore district houses the world's largest leather footwear cluster at Ambur-Vaniyambadi and the renowned Christian Medical College.",
+    "nearby_cities": [
+      "Chennai",
+      "Tiruvannamalai",
+      "Krishnagiri",
+      "Ranipet"
+    ],
+    "company_note": "Vellore (ROC Tamil Nadu) sees incorporation in leather manufacturers, footwear exporters, tanneries, and healthcare businesses.",
+    "gst_note": "Vellore's leather industry requires careful GST rate application — raw hides are exempt but finished leather and footwear attract different rates. Healthcare services provided by hospitals are largely exempt from GST."
+  },
+  {
+    "city": "Guntur",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "guntur",
+    "commissionerate": "CGST Commissionerate, Vijayawada",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "Brodipet",
+      "Arundelpet",
+      "Lakshmipuram",
+      "Amaravati Road",
+      "Guntur Market Yard"
+    ],
+    "key_industries": [
+      "Red chilli trading (world's largest market)",
+      "Cotton and tobacco",
+      "Aquaculture",
+      "Education",
+      "Agro-processing"
+    ],
+    "intro_note": "The chilli capital of the world — Guntur is home to the world's largest red chilli market, the heart of Andhra Pradesh's cotton and tobacco belt, and a major aquaculture hub.",
+    "nearby_cities": [
+      "Vijayawada",
+      "Tenali",
+      "Narasaraopet",
+      "Ongole"
+    ],
+    "company_note": "Guntur (ROC AP, Hyderabad) sees incorporation in chilli traders, tobacco companies, aquaculture businesses, and agro-processing firms.",
+    "gst_note": "Guntur's chilli trading involves careful agricultural exemption documentation. Tobacco companies have specific GST and cess compliance. Aquaculture businesses deal with seafood export GST provisions."
+  },
+  {
+    "city": "Rajahmundry",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "rajahmundry",
+    "commissionerate": "CGST Commissionerate, Visakhapatnam",
+    "zone": "Visakhapatnam Zone",
+    "local_areas": [
+      "Industrial Estate Rajahmundry",
+      "ONGC Area",
+      "Godavari Bridge Area",
+      "Danavaipeta",
+      "Tilak Road"
+    ],
+    "key_industries": [
+      "Petroleum (ONGC Eastern Region)",
+      "Coconut oil and agro-products",
+      "Paper mills",
+      "Education",
+      "Tourism (Pushkaram on Godavari)"
+    ],
+    "intro_note": "AP's cultural capital on the Godavari — Rajahmundry is the commercial hub of East Godavari, home to ONGC's Eastern Region headquarters, major paper mills, and the sacred Godavari river ghats.",
+    "nearby_cities": [
+      "Kakinada",
+      "Visakhapatnam",
+      "Vijayawada",
+      "Eluru"
+    ],
+    "company_note": "Rajahmundry (ROC AP, Hyderabad) sees incorporation in petroleum sector companies, paper manufacturers, agro-processing firms, and educational institutions.",
+    "gst_note": "Rajahmundry's petroleum sector companies deal with upstream oil and gas GST provisions. Paper mills manage ITC on imported pulp versus output paper products."
+  },
+  {
+    "city": "Karimnagar",
+    "state": "Telangana",
+    "state_code": "IN-TG",
+    "slug": "karimnagar",
+    "commissionerate": "CGST Commissionerate, Hyderabad (II)",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "APIIC Industrial Park",
+      "Jagtial Road",
+      "Manakondur Road",
+      "Karimnagar Granite Hub",
+      "BSNL Area"
+    ],
+    "key_industries": [
+      "Granite export (silver granite — world's largest)",
+      "Handloom (Karimnagar lace)",
+      "Pharmaceuticals",
+      "Cotton and rice agro-processing",
+      "Education"
+    ],
+    "intro_note": "Telangana's granite capital — Karimnagar exports world-famous silver and multicolour granite across the globe and is also known for its intricate lace work and cotton textiles.",
+    "nearby_cities": [
+      "Hyderabad",
+      "Warangal",
+      "Nizamabad",
+      "Adilabad"
+    ],
+    "company_note": "Karimnagar (ROC Telangana) sees incorporation in granite exporters, pharmaceutical companies, handloom manufacturers, and agro-processing firms.",
+    "gst_note": "Karimnagar's granite exporters need LUT filing and IGST refund management. Pharmaceutical companies require careful drug GST classification."
+  },
+  {
+    "city": "Nizamabad",
+    "state": "Telangana",
+    "state_code": "IN-TG",
+    "slug": "nizamabad",
+    "commissionerate": "CGST Commissionerate, Hyderabad (II)",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "Industrial Estate Nizamabad",
+      "Armur Industrial Area",
+      "Makarba",
+      "TSIIC Area",
+      "Railway Station Area"
+    ],
+    "key_industries": [
+      "Turmeric and soya processing",
+      "Sugar cooperatives",
+      "Lac industry",
+      "Bidriware handicrafts",
+      "Agriculture and cotton"
+    ],
+    "intro_note": "Telangana's agricultural hub — Nizamabad is a major turmeric and soya processing centre, home to Bidriware metal craft workers, and an important sugar cooperative region.",
+    "nearby_cities": [
+      "Hyderabad",
+      "Karimnagar",
+      "Adilabad",
+      "Kamareddy"
+    ],
+    "company_note": "Nizamabad (ROC Telangana) sees incorporation in agricultural commodity traders, sugar cooperatives, and handicraft exporters.",
+    "gst_note": "Nizamabad's turmeric businesses must distinguish between raw agricultural produce (exempt) and processed powder (5% GST). Bidriware craftsmen exporting handicrafts need LUT filing."
+  },
+  {
+    "city": "Thrissur",
+    "state": "Kerala",
+    "state_code": "IN-KL",
+    "slug": "thrissur",
+    "commissionerate": "CGST Commissionerate, Kochi",
+    "zone": "Kochi Zone",
+    "local_areas": [
+      "Punkunnam Industrial Area",
+      "KINFRA Industrial Park",
+      "MG Road",
+      "Round South",
+      "Guruvayur Road"
+    ],
+    "key_industries": [
+      "Gold jewellery (Kerala's gold capital)",
+      "Banking and finance",
+      "Cultural tourism (Thrissur Pooram)",
+      "Rubber processing",
+      "Education"
+    ],
+    "intro_note": "Kerala's cultural capital and gold hub — Thrissur is home to Kerala's largest gold jewellery market, several major cooperative banks, and the spectacular Thrissur Pooram elephant procession.",
+    "nearby_cities": [
+      "Kochi",
+      "Palakkad",
+      "Guruvayur",
+      "Irinjalakuda"
+    ],
+    "company_note": "Thrissur (ROC Kerala) sees incorporation in gold jewellery businesses, cooperative banking entities, rubber processing companies, and educational institutions.",
+    "gst_note": "Thrissur's gold jewellery businesses have specific GST compliance on gold purchases, making charges, and retail sales. Rubber processors deal with raw rubber (exempt) to processed rubber GST transitions."
+  },
+  {
+    "city": "Kollam",
+    "state": "Kerala",
+    "state_code": "IN-KL",
+    "slug": "kollam",
+    "commissionerate": "CGST Commissionerate, Thiruvananthapuram",
+    "zone": "Kochi Zone",
+    "local_areas": [
+      "Polayathode Industrial Area",
+      "KINFRA Kollam",
+      "Asramam",
+      "Chavara Chemical Industrial Area",
+      "Kundara",
+      "Punalur"
+    ],
+    "key_industries": [
+      "Cashew processing (India's cashew capital)",
+      "Chemical manufacturing (Travancore Titanium)",
+      "Coir products",
+      "Fishing and seafood",
+      "Timber and plywood"
+    ],
+    "intro_note": "India's cashew capital — Kollam processes the majority of India's cashew nuts for export, is home to major chemical manufacturers including Travancore Titanium, and is a major coir products hub.",
+    "nearby_cities": [
+      "Thiruvananthapuram",
+      "Alappuzha",
+      "Pathanamthitta",
+      "Kottayam"
+    ],
+    "company_note": "Kollam (ROC Kerala) sees incorporation in cashew processors, chemical manufacturers, coir product exporters, and seafood businesses.",
+    "gst_note": "Kollam's cashew processors deal with raw cashew (exempt) to processed cashew (5%) GST boundary. Chemical manufacturers need careful ITC management. Seafood exporters require LUT filing."
+  },
+  {
+    "city": "Kannur",
+    "state": "Kerala",
+    "state_code": "IN-KL",
+    "slug": "kannur",
+    "commissionerate": "CGST Commissionerate, Kozhikode",
+    "zone": "Kochi Zone",
+    "local_areas": [
+      "Payyambalam Beach Area",
+      "KINFRA Park",
+      "Thana Industrial Area",
+      "Mattannur Handloom Hub",
+      "Iritty",
+      "Thalassery"
+    ],
+    "key_industries": [
+      "Handloom weaving (Kannur fabric — world-famous)",
+      "Beedi manufacturing",
+      "Cashew processing",
+      "Tourism (Theyyam, beaches)",
+      "Fishing"
+    ],
+    "intro_note": "Kerala's handloom capital — Kannur is world-famous for its distinctive handloom fabrics, a major beedi manufacturing centre, and the home of the spectacular Theyyam ritualistic art form.",
+    "nearby_cities": [
+      "Kozhikode",
+      "Kasaragod",
+      "Thalassery",
+      "Vatakara"
+    ],
+    "company_note": "Kannur (ROC Kerala) sees incorporation in handloom manufacturers, beedi companies, cashew processors, and tourism businesses.",
+    "gst_note": "Kannur's handloom fabrics may qualify for specific GST exemptions under the handloom sector. Beedi manufacturers have tobacco cess and GST compliance requirements. Cashew exporters need LUT filing."
+  },
+  {
+    "city": "Palakkad",
+    "state": "Kerala",
+    "state_code": "IN-KL",
+    "slug": "palakkad",
+    "commissionerate": "CGST Commissionerate, Kochi",
+    "zone": "Kochi Zone",
+    "local_areas": [
+      "Kanjikode KINFRA Industrial Area",
+      "Walayar Industrial Area",
+      "Palakkad Market",
+      "Coimbatore Road Corridor",
+      "Malampuzha"
+    ],
+    "key_industries": [
+      "Textile mills (Palakkad — Kerala's Manchester)",
+      "Rice processing",
+      "Agriculture (Palakkad Gap — major farming belt)",
+      "Engineering",
+      "Tourism (Silent Valley)"
+    ],
+    "intro_note": "Kerala's gateway to Tamil Nadu and its textile hub — Palakkad is home to several major textile mills, the fertile Palakkad Gap farming belt, and is the transit point between Kerala and Tamil Nadu.",
+    "nearby_cities": [
+      "Coimbatore",
+      "Thrissur",
+      "Malappuram",
+      "Ottapalam"
+    ],
+    "company_note": "Palakkad (ROC Kerala) sees incorporation in textile mills, rice processing businesses, agricultural trading firms, and engineering companies.",
+    "gst_note": "Palakkad's textile mills have complex ITC chains on yarn and fibre inputs. Rice mills must distinguish between paddy (exempt) and processed rice. Agricultural businesses apply careful exemption rules."
+  },
+  {
+    "city": "Muzaffarpur",
+    "state": "Bihar",
+    "state_code": "IN-BR",
+    "slug": "muzaffarpur",
+    "commissionerate": "CGST Commissionerate, Patna",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Motipur Sugar Mill Area",
+      "BSIDC Industrial Area",
+      "Mithanpura",
+      "Saraiyaganj",
+      "Juran Chapra"
+    ],
+    "key_industries": [
+      "Litchi cultivation (world's largest producing district)",
+      "Sugar processing",
+      "Makhana (fox nut) processing",
+      "Textile trading",
+      "Agro-processing"
+    ],
+    "intro_note": "Bihar's litchi capital and the world's largest litchi producing district — Muzaffarpur is also a major makhana (fox nut) and sugar processing hub in North Bihar.",
+    "nearby_cities": [
+      "Patna",
+      "Darbhanga",
+      "Sitamarhi",
+      "Vaishali"
+    ],
+    "company_note": "Muzaffarpur (ROC Bihar) sees incorporation in litchi and fruit exporters, makhana processors, sugar mills, and agro-trading businesses.",
+    "gst_note": "Muzaffarpur's litchi exporters must apply agricultural exemption rules carefully. Makhana processing businesses deal with raw produce exemptions versus processed snack GST rates."
+  },
+  {
+    "city": "Gaya",
+    "state": "Bihar",
+    "state_code": "IN-BR",
+    "slug": "gaya",
+    "commissionerate": "CGST Commissionerate, Patna",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Manpur Industrial Area",
+      "Gaya Airport Area",
+      "Delha",
+      "Vishnupad Temple Area",
+      "Tekari",
+      "Bodhgaya"
+    ],
+    "key_industries": [
+      "Tourism and pilgrimage (Bodh Gaya — UNESCO World Heritage)",
+      "Silk weaving (Gaya silk)",
+      "Stone and granite",
+      "Agriculture",
+      "Government services"
+    ],
+    "intro_note": "Bihar's spiritual capital — Gaya is home to Bodh Gaya where Buddha attained enlightenment (UNESCO World Heritage Site), a major Buddhist pilgrimage destination attracting tourists from across the world.",
+    "nearby_cities": [
+      "Patna",
+      "Aurangabad",
+      "Nawada",
+      "Hazaribagh"
+    ],
+    "company_note": "Gaya (ROC Bihar) sees incorporation in tourism and hospitality businesses, silk manufacturers, stone processors, and government contractors.",
+    "gst_note": "Gaya's tourism sector near Bodh Gaya requires hotel and restaurant GST compliance. Silk weaving businesses need careful rate classification between raw silk, yarn, and finished fabric."
+  },
+  {
+    "city": "Bhagalpur",
+    "state": "Bihar",
+    "state_code": "IN-BR",
+    "slug": "bhagalpur",
+    "commissionerate": "CGST Commissionerate, Patna",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Champa Nagar Industrial Area",
+      "Nath Nagar Silk Hub",
+      "Nathnagar",
+      "Barari",
+      "Sabour (Agricultural University)"
+    ],
+    "key_industries": [
+      "Tussar silk weaving (Bhagalpur silk — world-famous)",
+      "Terracotta pottery",
+      "Agriculture (wheat, maize)",
+      "Education",
+      "Trading"
+    ],
+    "intro_note": "The Silk City of India — Bhagalpur is famous the world over for Bhagalpuri tussar silk, a major Ganga River city, and home to Sabour Agricultural University.",
+    "nearby_cities": [
+      "Munger",
+      "Purnia",
+      "Banka",
+      "Deoghar"
+    ],
+    "company_note": "Bhagalpur (ROC Bihar) sees incorporation in silk weaving businesses, exporters, agricultural trading firms, and educational institutions.",
+    "gst_note": "Bhagalpur's silk industry has specific GST provisions — raw tussar cocoons are exempt, processed silk yarn attracts 5%, and finished silk fabric and sarees are taxed at 5-12%. Exporters need LUT compliance."
+  },
+  {
+    "city": "Darbhanga",
+    "state": "Bihar",
+    "state_code": "IN-BR",
+    "slug": "darbhanga",
+    "commissionerate": "CGST Commissionerate, Patna",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Laheriasarai",
+      "Darbhanga Industrial Area",
+      "Benta Industrial Area",
+      "Rail Junction Area",
+      "AIIMS Darbhanga (upcoming)"
+    ],
+    "key_industries": [
+      "Makhana (fox nut) processing",
+      "Agriculture (paddy, maize, wheat)",
+      "Madhubani painting (GI tag art)",
+      "Education",
+      "Trading"
+    ],
+    "intro_note": "North Bihar's commercial hub and Madhubani art capital — Darbhanga is the centre of the world-famous GI-tagged Madhubani painting tradition, a major makhana trading hub, and growing healthcare destination.",
+    "nearby_cities": [
+      "Muzaffarpur",
+      "Sitamarhi",
+      "Samastipur",
+      "Begusarai"
+    ],
+    "company_note": "Darbhanga (ROC Bihar) sees incorporation in agricultural trading firms, makhana processors, handicraft exporters, and educational institutions.",
+    "gst_note": "Darbhanga's makhana processing businesses deal with raw agricultural produce exemptions versus processed snack GST rates. Madhubani painting exporters need LUT filing for handicraft exports."
+  },
+  {
+    "city": "Cuttack",
+    "state": "Odisha",
+    "state_code": "IN-OR",
+    "slug": "cuttack",
+    "commissionerate": "CGST Commissionerate, Bhubaneswar",
+    "zone": "Bhubaneswar Zone",
+    "local_areas": [
+      "Industrial Estate Cuttack",
+      "Choudwar Industrial Area",
+      "Badambadi",
+      "Choudhury Bazaar",
+      "Silver Filigree Hub"
+    ],
+    "key_industries": [
+      "Silver filigree jewellery (Tarkasi — world-famous)",
+      "Steel and manufacturing (Choudwar)",
+      "Trading hub",
+      "Education",
+      "Agro-processing"
+    ],
+    "intro_note": "Odisha's commercial capital and the Silver City — Cuttack is world-famous for its delicate silver filigree Tarkasi jewellery, a major steel manufacturing hub at Choudwar, and Odisha's primary trading centre.",
+    "nearby_cities": [
+      "Bhubaneswar",
+      "Jajpur",
+      "Kendrapara",
+      "Puri"
+    ],
+    "company_note": "Cuttack (ROC Odisha) leads Odisha alongside Bhubaneswar in company incorporations — silver jewellery exporters, steel companies, and trading businesses dominate.",
+    "gst_note": "Cuttack's silver filigree exporters need LUT filing and IGST refund management. Steel manufacturers at Choudwar have complex ITC chains. Jewellery businesses need GST compliance on silver purchase and making charges."
+  },
+  {
+    "city": "Rourkela",
+    "state": "Odisha",
+    "state_code": "IN-OR",
+    "slug": "rourkela",
+    "commissionerate": "CGST Commissionerate, Bhubaneswar",
+    "zone": "Bhubaneswar Zone",
+    "local_areas": [
+      "Rourkela Steel Plant Area (SAIL)",
+      "Sector 20 Industrial Area",
+      "Civil Township",
+      "Panposh",
+      "Bisra",
+      "Chhend Colony"
+    ],
+    "key_industries": [
+      "Steel manufacturing (Rourkela Steel Plant — SAIL)",
+      "Engineering and fabrication",
+      "Refractory products",
+      "Mining (iron ore, limestone)",
+      "Education (NIT Rourkela)"
+    ],
+    "intro_note": "Odisha's steel city — Rourkela is home to one of India's oldest integrated steel plants (SAIL RSP), a major engineering and refractory hub, and the prestigious NIT Rourkela.",
+    "nearby_cities": [
+      "Sambalpur",
+      "Jharsuguda",
+      "Sundargarh",
+      "Ranchi"
+    ],
+    "company_note": "Rourkela (ROC Odisha) sees incorporation in steel ancillaries, engineering companies, refractory manufacturers, and mining businesses.",
+    "gst_note": "Rourkela's SAIL plant vendors deal with complex capital goods ITC. Refractory manufacturers need careful raw material and finished product GST rate management."
+  },
+  {
+    "city": "Asansol",
+    "state": "West Bengal",
+    "state_code": "IN-WB",
+    "slug": "asansol",
+    "commissionerate": "CGST Commissionerate, Durgapur",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "Burnpur Steel Area (IISCO)",
+      "Kulti",
+      "Raniganj Coal Field Area",
+      "Barabani",
+      "Chittaranjan (Railway Factory)"
+    ],
+    "key_industries": [
+      "Steel manufacturing (SAIL IISCO)",
+      "Coal mining (Raniganj coalfields)",
+      "Locomotive manufacturing (Chittaranjan)",
+      "Refractory products",
+      "Chemicals"
+    ],
+    "intro_note": "West Bengal's industrial city and coal mining hub — Asansol sits at the heart of the Raniganj coalfields, is home to IISCO (India's oldest integrated steel plant), and the Chittaranjan Locomotive Works.",
+    "nearby_cities": [
+      "Durgapur",
+      "Dhanbad",
+      "Bokaro",
+      "Burdwan"
+    ],
+    "company_note": "Asansol (ROC West Bengal) sees incorporation in steel ancillaries, coal companies, locomotive component suppliers, and refractory manufacturers.",
+    "gst_note": "Asansol's coal companies apply GST on coal and related royalties. IISCO steel plant vendors have complex capital goods ITC. Locomotive component suppliers deal with railway procurement GST rules."
+  },
+  {
+    "city": "Howrah",
+    "state": "West Bengal",
+    "state_code": "IN-WB",
+    "slug": "howrah",
+    "commissionerate": "CGST Commissionerate, Kolkata (North)",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "Howrah Industrial Area",
+      "Shibpur Engineering Hub",
+      "Belur Math Area",
+      "Liluah Railway Workshop",
+      "Santragachi",
+      "Dasnagar"
+    ],
+    "key_industries": [
+      "Engineering and fabrication (Howrah Engineering Cluster)",
+      "Railway workshops",
+      "Chemicals",
+      "Small-scale manufacturing",
+      "Wholesale trading (hardware, iron)"
+    ],
+    "intro_note": "West Bengal's manufacturing twin to Kolkata — Howrah is home to one of India's oldest and largest engineering clusters, major railway workshops, and a dense wholesale hardware and iron goods market.",
+    "nearby_cities": [
+      "Kolkata",
+      "Dankuni",
+      "Uluberia",
+      "Bhatpara"
+    ],
+    "company_note": "Howrah (ROC West Bengal) sees incorporation in engineering firms, fabrication companies, railway ancillary suppliers, and chemical manufacturers.",
+    "gst_note": "Howrah's engineering cluster businesses need careful capital goods ITC management. Railway workshop vendors deal with government procurement GST compliance."
+  },
+  {
+    "city": "Burdwan",
+    "state": "West Bengal",
+    "state_code": "IN-WB",
+    "slug": "burdwan",
+    "commissionerate": "CGST Commissionerate, Durgapur",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "Industrial Area Burdwan",
+      "Durgapur Industrial Corridor",
+      "Kalna",
+      "Katwa Rice Hub",
+      "WBSEDCL Area"
+    ],
+    "key_industries": [
+      "Rice processing and trading (largest in West Bengal)",
+      "Coal and mining (proximity to Raniganj)",
+      "Education (Burdwan University)",
+      "Agro-processing",
+      "Engineering"
+    ],
+    "intro_note": "West Bengal's rice granary and educational hub — Burdwan is West Bengal's largest rice processing district, home to Burdwan University, and situated at the heart of the Damodar Valley industrial belt.",
+    "nearby_cities": [
+      "Durgapur",
+      "Asansol",
+      "Kolkata",
+      "Birbhum"
+    ],
+    "company_note": "Burdwan (ROC West Bengal) sees incorporation in rice mills, coal ancillary businesses, educational institutions, and agro-processing firms.",
+    "gst_note": "Burdwan's rice mills must apply correct GST on paddy (exempt), raw rice (5%), and parboiled rice. Coal and mining businesses deal with royalty-related GST provisions."
+  },
+  {
+    "city": "Malda",
+    "state": "West Bengal",
+    "state_code": "IN-WB",
+    "slug": "malda",
+    "commissionerate": "CGST Commissionerate, Kolkata (North)",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "English Bazaar",
+      "Malda Industrial Area",
+      "Kaliachak Mango Belt",
+      "Samsi WBIDC Park",
+      "Bangladesh Border Trade Area"
+    ],
+    "key_industries": [
+      "Mango cultivation (Himsagar and Fazli mangoes — GI tag)",
+      "Silk weaving (Murshidabad silk)",
+      "Border trade with Bangladesh",
+      "Rice and agro-processing",
+      "Jute"
+    ],
+    "intro_note": "West Bengal's mango and silk capital — Malda is famous for the GI-tagged Himsagar and Fazli mangoes, a major silk weaving hub, and an important border trade point with Bangladesh.",
+    "nearby_cities": [
+      "Murshidabad",
+      "Dinajpur",
+      "Siliguri",
+      "Rajshahi (Bangladesh)"
+    ],
+    "company_note": "Malda (ROC West Bengal) sees incorporation in mango exporters, silk weaving businesses, border trade companies, and agro-processing firms.",
+    "gst_note": "Malda's mango exporters need LUT filing for agricultural exports. Silk businesses have specific GST rate classification. Border trade companies must comply with cross-border GST export rules."
+  },
+  {
+    "city": "Dhanbad",
+    "state": "Jharkhand",
+    "state_code": "IN-JH",
+    "slug": "dhanbad",
+    "commissionerate": "CGST Commissionerate, Ranchi",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Jharia Coalfields",
+      "Sindri Industrial Area",
+      "Govindpur",
+      "Dhanbad City",
+      "Katras",
+      "Topchanchi"
+    ],
+    "key_industries": [
+      "Coal mining (Jharia — India's largest coking coal reserve)",
+      "Mining equipment",
+      "Fertilizer manufacturing (Sindri)",
+      "Education (IIT Dhanbad, BCCL)"
+    ],
+    "intro_note": "India's coal capital — Dhanbad sits above the Jharia coking coal mines, the largest and most important coking coal reserves in India, and is home to IIT (ISM) Dhanbad.",
+    "nearby_cities": [
+      "Asansol",
+      "Bokaro",
+      "Ranchi",
+      "Giridih"
+    ],
+    "company_note": "Dhanbad (ROC Jharkhand) sees incorporation in coal companies, mining equipment suppliers, fertilizer ancillaries, and engineering firms.",
+    "gst_note": "Dhanbad's coal mining companies deal with royalty reverse charge, coal transport GST, and coal washery compliance. Mining equipment suppliers have complex capital goods ITC requirements."
+  },
+  {
+    "city": "Bokaro",
+    "state": "Jharkhand",
+    "state_code": "IN-JH",
+    "slug": "bokaro",
+    "commissionerate": "CGST Commissionerate, Ranchi",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Bokaro Steel Plant Area (SAIL)",
+      "Bokaro City",
+      "Chas",
+      "Gomia Industrial Area",
+      "Bermo"
+    ],
+    "key_industries": [
+      "Steel manufacturing (SAIL Bokaro Steel Plant)",
+      "Mining (coal, iron ore)",
+      "Engineering and fabrication",
+      "Explosives manufacturing",
+      "Education"
+    ],
+    "intro_note": "Jharkhand's steel city built with Soviet collaboration — Bokaro Steel Plant (SAIL) is one of India's largest integrated steel plants, built as a model township in collaboration with the USSR.",
+    "nearby_cities": [
+      "Ranchi",
+      "Dhanbad",
+      "Hazaribagh",
+      "Giridih"
+    ],
+    "company_note": "Bokaro (ROC Jharkhand) sees incorporation in steel ancillary vendors, mining companies, engineering firms, and explosives manufacturers.",
+    "gst_note": "Bokaro's SAIL plant vendors have complex capital goods ITC and long-duration supply contracts. Mining companies deal with royalty provisions. Explosives manufacturers have specific permit-based GST compliance."
+  },
+  {
+    "city": "Bhilai",
+    "state": "Chhattisgarh",
+    "state_code": "IN-CG",
+    "slug": "bhilai",
+    "commissionerate": "CGST Commissionerate, Raipur",
+    "zone": "Nagpur Zone",
+    "local_areas": [
+      "Bhilai Steel Plant Area (SAIL)",
+      "Bhilai-3 Industrial Area",
+      "Durg (twin city)",
+      "Supela",
+      "Charoda",
+      "Kutelabhata"
+    ],
+    "key_industries": [
+      "Steel manufacturing (SAIL Bhilai Steel Plant — India's largest)",
+      "Engineering and fabrication",
+      "Refractories",
+      "Coal and mining",
+      "Education"
+    ],
+    "intro_note": "India's steel capital — Bhilai houses SAIL's flagship Bhilai Steel Plant, India's largest integrated steel plant, producing rails, structurals, and plates for the entire nation.",
+    "nearby_cities": [
+      "Raipur",
+      "Durg",
+      "Rajnandgaon",
+      "Bilaspur"
+    ],
+    "company_note": "Bhilai (ROC Chhattisgarh) sees incorporation in steel ancillary vendors, engineering companies, refractory manufacturers, and SAIL supply chain businesses.",
+    "gst_note": "Bhilai's steel plant vendors have complex capital goods ITC and long-duration project supply contracts. Engineering service companies must carefully segregate goods and service components for GST."
+  },
+  {
+    "city": "Bilaspur",
+    "state": "Chhattisgarh",
+    "state_code": "IN-CG",
+    "slug": "bilaspur",
+    "commissionerate": "CGST Commissionerate, Raipur",
+    "zone": "Nagpur Zone",
+    "local_areas": [
+      "Sirgitti Industrial Area",
+      "Vyapar Vihar",
+      "Torva",
+      "South East Central Railway Zone Area",
+      "Mangla"
+    ],
+    "key_industries": [
+      "Railway manufacturing and maintenance (SECR Zone HQ)",
+      "Coal trading",
+      "Agro-processing (rice, soya)",
+      "Cement",
+      "Government services"
+    ],
+    "intro_note": "Chhattisgarh's judicial capital and railway hub — Bilaspur is the headquarters of the South East Central Railway Zone, a major coal trading centre, and Chhattisgarh's High Court location.",
+    "nearby_cities": [
+      "Raipur",
+      "Korba",
+      "Raigarh",
+      "Durg"
+    ],
+    "company_note": "Bilaspur (ROC Chhattisgarh) sees incorporation in railway ancillary companies, coal traders, agro-processing firms, and government contractors.",
+    "gst_note": "Bilaspur's railway vendors deal with government procurement GST compliance. Coal traders apply GST on coal and related logistics services. Agro-processors manage agricultural versus processed food GST boundaries."
+  },
+  {
+    "city": "Korba",
+    "state": "Chhattisgarh",
+    "state_code": "IN-CG",
+    "slug": "korba",
+    "commissionerate": "CGST Commissionerate, Raipur",
+    "zone": "Nagpur Zone",
+    "local_areas": [
+      "BALCO Industrial Area",
+      "NTPC Korba Area",
+      "Urga Industrial Area",
+      "Coal Fields Area",
+      "CSEB Power Plant Area"
+    ],
+    "key_industries": [
+      "Aluminium smelting (BALCO — Vedanta)",
+      "Thermal power generation (India's power capital)",
+      "Coal mining",
+      "Steel and engineering",
+      "Cement"
+    ],
+    "intro_note": "India's power capital — Korba has the highest concentration of thermal power plants in India, home to BALCO aluminium smelter, and sits above massive coal reserves in the Korba coalfields.",
+    "nearby_cities": [
+      "Bilaspur",
+      "Raipur",
+      "Raigarh",
+      "Ambikapur"
+    ],
+    "company_note": "Korba (ROC Chhattisgarh) sees incorporation in power sector ancillaries, aluminium downstream businesses, coal companies, and engineering firms.",
+    "gst_note": "Korba's power generation companies deal with specific electricity and fuel GST provisions. Aluminium companies have complex metal input ITC chains. Coal mining businesses deal with royalty reverse charge compliance."
+  },
+  {
+    "city": "Anand",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "anand",
+    "commissionerate": "CGST Commissionerate, Vadodara",
+    "zone": "Ahmedabad Zone",
+    "local_areas": [
+      "GIDC Anand",
+      "Vallabh Vidyanagar",
+      "NDDB (Amul) Area",
+      "Karamsad",
+      "Petlad Tobacco Hub"
+    ],
+    "key_industries": [
+      "Dairy cooperative (Amul — world's largest dairy cooperative)",
+      "Tobacco processing",
+      "Pharmaceutical manufacturing",
+      "Education (GSFC University)"
+    ],
+    "intro_note": "The Milk Capital of India — Anand is home to Amul and the National Dairy Development Board (NDDB), the birthplace of India's White Revolution, and a major pharmaceutical and tobacco processing hub.",
+    "nearby_cities": [
+      "Vadodara",
+      "Ahmedabad",
+      "Nadiad",
+      "Kheda"
+    ],
+    "company_note": "Anand (ROC Gujarat) sees incorporation in dairy businesses, tobacco processors, pharmaceutical companies, and cooperative society registrations.",
+    "gst_note": "Anand's dairy cooperative sector has specific GST provisions on milk, milk products, and cooperative transactions. Tobacco processors need careful cess compliance. Pharma companies require drug GST classification."
+  },
+  {
+    "city": "Jamnagar",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "jamnagar",
+    "commissionerate": "CGST Commissionerate, Rajkot",
+    "zone": "Rajkot Zone",
+    "local_areas": [
+      "Reliance Refinery Complex (Jamnagar SEZ)",
+      "Brass Parts Hub",
+      "GIDC Industrial Estate",
+      "Bedi Port",
+      "Marine National Park Area"
+    ],
+    "key_industries": [
+      "Petroleum refining (Reliance — world's largest refinery)",
+      "Brass components (India's largest manufacturing hub)",
+      "Fisheries and seafood",
+      "Salt production",
+      "Tourism"
+    ],
+    "intro_note": "Home to the world's largest oil refinery — Jamnagar houses Reliance Industries' massive refinery complex, India's largest brass component manufacturing cluster, and a major fishing port.",
+    "nearby_cities": [
+      "Rajkot",
+      "Porbandar",
+      "Dwarka",
+      "Morbi"
+    ],
+    "company_note": "Jamnagar (ROC Gujarat) sees incorporation in petroleum ancillaries, brass component manufacturers, fishing companies, and Reliance supply chain businesses.",
+    "gst_note": "Jamnagar's Reliance refinery vendors deal with petroleum product GST compliance. Brass component manufacturers need careful HSN classification and ITC management. Seafood exporters require LUT compliance."
+  },
+  {
+    "city": "Morbi",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "morbi",
+    "commissionerate": "CGST Commissionerate, Rajkot",
+    "zone": "Rajkot Zone",
+    "local_areas": [
+      "Morbi Ceramic Hub",
+      "Wankaner Road Industrial Area",
+      "Navlakhi Port",
+      "Tankara",
+      "GIDC Morbi"
+    ],
+    "key_industries": [
+      "Ceramic tiles and sanitary ware (world's second-largest production hub)",
+      "Wall and floor tiles",
+      "Clock manufacturing",
+      "Agro chemicals"
+    ],
+    "intro_note": "The Ceramic Capital of the World — Morbi produces over 70% of India's ceramic tiles and is the world's second-largest ceramic tile hub after China, exporting to over 100 countries.",
+    "nearby_cities": [
+      "Rajkot",
+      "Surendranagar",
+      "Bhuj",
+      "Jamnagar"
+    ],
+    "company_note": "Morbi (ROC Gujarat) has the highest concentration of ceramic tile company registrations in India — tile manufacturers, sanitary ware producers, and ceramic exporters dominate.",
+    "gst_note": "Morbi's ceramic tile manufacturers need careful GST rate application — different tile sizes and types attract different rates. Exporters require LUT filing and IGST refund management on large volumes."
+  },
+  {
+    "city": "Junagadh",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "junagadh",
+    "commissionerate": "CGST Commissionerate, Rajkot",
+    "zone": "Rajkot Zone",
+    "local_areas": [
+      "GIDC Junagadh",
+      "Dhal Road Industrial Area",
+      "Girnar Road",
+      "Kalwa Chowk",
+      "Veraval Fishing Port (nearby)"
+    ],
+    "key_industries": [
+      "Groundnut and edible oil (Gujarat's groundnut belt)",
+      "Kesar mango (world-famous GI tag)",
+      "Agro-processing",
+      "Tourism (Gir Forest, Somnath)",
+      "Fisheries"
+    ],
+    "intro_note": "Gujarat's agriculture hub and gateway to Gir forest — Junagadh is at the heart of Gujarat's groundnut belt, produces the world-famous Gir Kesar mango with GI tag, and is the base for Asiatic lion safari.",
+    "nearby_cities": [
+      "Rajkot",
+      "Somnath",
+      "Porbandar",
+      "Amreli"
+    ],
+    "company_note": "Junagadh (ROC Gujarat) sees incorporation in groundnut oil mills, mango exporters, agro-processing businesses, and tourism companies.",
+    "gst_note": "Junagadh's groundnut oil mills deal with agricultural input exemptions versus processed oil GST. Mango exporters need LUT filing. Tourism businesses near Gir and Somnath require hotel and service GST compliance."
+  },
+  {
+    "city": "Navsari",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "navsari",
+    "commissionerate": "CGST Commissionerate, Surat",
+    "zone": "Surat Zone",
+    "local_areas": [
+      "GIDC Sayan",
+      "Abrama Industrial Area",
+      "Navsari Market",
+      "Valsad Road Corridor",
+      "Gandevi Chikooi Belt"
+    ],
+    "key_industries": [
+      "Textiles and polyester weaving",
+      "Chikoo (sapota) cultivation (India's largest)",
+      "Chemical manufacturing",
+      "Dairy products",
+      "Valsad agro-processing (nearby)"
+    ],
+    "intro_note": "Gujarat's chikoo capital — Navsari grows over 80% of India's chikoo (sapota) fruit, is a major textile and chemical manufacturing hub, and is the ancestral home of the Parsi community.",
+    "nearby_cities": [
+      "Surat",
+      "Valsad",
+      "Vapi",
+      "Bilimora"
+    ],
+    "company_note": "Navsari (ROC Gujarat) sees incorporation in textile businesses, chikoo exporters, chemical manufacturers, and dairy businesses.",
+    "gst_note": "Navsari's chikoo and agricultural exporters need LUT filing for fresh produce exports. Textile weavers apply GST on different fabric categories. Chemical manufacturers manage ITC on industrial chemical inputs."
+  },
+  {
+    "city": "Baddi",
+    "state": "Himachal Pradesh",
+    "state_code": "IN-HP",
+    "slug": "baddi",
+    "commissionerate": "CGST Commissionerate, Panchkula",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "Baddi Industrial Area",
+      "Barotiwala BBNDA Zone",
+      "Nalagarh Industrial Area",
+      "Pharmaceutical Cluster Baddi",
+      "Ramshahir"
+    ],
+    "key_industries": [
+      "Pharmaceuticals (India's largest pharma manufacturing hub)",
+      "FMCG manufacturing",
+      "Textiles",
+      "Electronics",
+      "Chemical manufacturing"
+    ],
+    "intro_note": "India's pharmaceutical manufacturing hub — Baddi-Barotiwala-Nalagarh (BBN) zone is India's largest pharmaceutical cluster, producing over 20% of India's formulations, attracted here by Himachal Pradesh's tax incentives.",
+    "nearby_cities": [
+      "Chandigarh",
+      "Solan",
+      "Shimla",
+      "Panchkula"
+    ],
+    "company_note": "Baddi (ROC Himachal Pradesh) has the highest density of pharmaceutical company registrations in North India — formulation manufacturers, API companies, and FMCG brands dominate.",
+    "gst_note": "Baddi's pharmaceutical companies have specific HP industrial incentive-era GST compliance transition. Drug manufacturers need careful classification between formulations, APIs, and medical devices for GST rates."
+  },
+  {
+    "city": "Solan",
+    "state": "Himachal Pradesh",
+    "state_code": "IN-HP",
+    "slug": "solan",
+    "commissionerate": "CGST Commissionerate, Shimla",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "Industrial Area Solan",
+      "Chambaghat Industrial Area",
+      "Kandaghat",
+      "Parwanoo Industrial Area",
+      "Rajgarh Road"
+    ],
+    "key_industries": [
+      "Pharmaceutical manufacturing (Parwanoo-Solan belt)",
+      "Mushroom cultivation (HP's mushroom capital)",
+      "Tourism",
+      "Education",
+      "Cement"
+    ],
+    "intro_note": "HP's industrial city — Solan is India's mushroom capital producing the majority of India's button mushrooms, part of the Baddi-Barotiwala-Nalagarh pharma belt, and gateway to the Kasauli hill station.",
+    "nearby_cities": [
+      "Shimla",
+      "Baddi",
+      "Chandigarh",
+      "Kasauli"
+    ],
+    "company_note": "Solan (ROC Himachal Pradesh) sees incorporation in pharmaceutical manufacturers, mushroom processors, tourism businesses, and cement companies.",
+    "gst_note": "Solan's pharmaceutical companies share the BBN industrial belt GST compliance requirements. Mushroom cultivation involves agricultural exemption for fresh mushrooms but processed and canned mushrooms attract GST."
+  },
+  {
+    "city": "Haldwani",
+    "state": "Uttarakhand",
+    "state_code": "IN-UT",
+    "slug": "haldwani",
+    "commissionerate": "CGST Commissionerate, Dehradun",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "Lal Kuan Industrial Area",
+      "Transport Nagar",
+      "Sheetla Market",
+      "Bhotia Parao",
+      "SIDCUL Pantnagar (nearby)"
+    ],
+    "key_industries": [
+      "Timber and plywood",
+      "Agricultural trading (gateway to Kumaon)",
+      "Transport and logistics",
+      "Real estate",
+      "Pharmaceutical manufacturing (SIDCUL nearby)"
+    ],
+    "intro_note": "Kumaon's commercial gateway — Haldwani is the major trading, logistics, and transport hub for Uttarakhand's Kumaon division and the base city for the hills of Nainital and Almora.",
+    "nearby_cities": [
+      "Nainital",
+      "Rudrapur",
+      "Kashipur",
+      "Bareilly"
+    ],
+    "company_note": "Haldwani (ROC Uttarakhand) sees incorporation in timber traders, logistics companies, real estate developers, and agricultural trading businesses.",
+    "gst_note": "Haldwani's timber and plywood businesses need careful GST classification. Agricultural commodity traders apply exemption rules. Logistics companies manage place of supply for inter-state transport services."
+  },
+  {
+    "city": "Rudrapur",
+    "state": "Uttarakhand",
+    "state_code": "IN-UT",
+    "slug": "rudrapur",
+    "commissionerate": "CGST Commissionerate, Dehradun",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "SIDCUL Phase I-II",
+      "Integrated Industrial Estate",
+      "IIE Pantnagar",
+      "Sitarganj Industrial Area",
+      "Bazpur Industrial Area"
+    ],
+    "key_industries": [
+      "Automobile manufacturing (Tata Motors, Ashok Leyland)",
+      "FMCG manufacturing (Hindustan Unilever, Britannia)",
+      "Pharmaceutical",
+      "Electronics (Samsung, LG)",
+      "Engineering"
+    ],
+    "intro_note": "Uttarakhand's industrial capital and the SIDCUL hub — Rudrapur is home to hundreds of major industrial units including Tata Motors, Ashok Leyland, Samsung, and HUL in its massive SIDCUL estates.",
+    "nearby_cities": [
+      "Haldwani",
+      "Kashipur",
+      "Rampur",
+      "Bareilly"
+    ],
+    "company_note": "Rudrapur (ROC Uttarakhand) has the highest industrial company incorporation volume in Uttarakhand — automobile, FMCG, pharmaceutical, and electronics manufacturers dominate.",
+    "gst_note": "Rudrapur's industrial units have complex Uttarakhand industrial incentive-era GST compliance. Automobile manufacturers have multi-tier GST supply chains. FMCG companies need careful branded product GST classification."
+  },
+  {
+    "city": "Rishikesh",
+    "state": "Uttarakhand",
+    "state_code": "IN-UT",
+    "slug": "rishikesh",
+    "commissionerate": "CGST Commissionerate, Dehradun",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "Tapovan",
+      "Laxman Jhula Area",
+      "Haridwar Road Corridor",
+      "Ram Jhula",
+      "SIDCUL Haridwar (nearby)",
+      "Muni Ki Reti"
+    ],
+    "key_industries": [
+      "Yoga and wellness tourism (Yoga Capital of the World)",
+      "Pharmaceutical manufacturing (SIDCUL nearby)",
+      "Adventure tourism",
+      "Ayurvedic and herbal products",
+      "Education (spiritual)"
+    ],
+    "intro_note": "The Yoga Capital of the World — Rishikesh attracts millions of spiritual seekers and adventure tourists annually to the banks of the Ganga, with a booming wellness and hospitality economy.",
+    "nearby_cities": [
+      "Haridwar",
+      "Dehradun",
+      "Roorkee",
+      "Tehri"
+    ],
+    "company_note": "Rishikesh (ROC Uttarakhand) sees incorporation in yoga and wellness centres, hospitality businesses, Ayurvedic product companies, and pharmaceutical firms nearby.",
+    "gst_note": "Rishikesh's yoga and wellness businesses have specific GST classification — yoga retreats, meditation courses, and spiritual services have varying GST applicability. Hotels and restaurants near pilgrimage areas have standard hospitality GST compliance."
+  },
+  {
+    "city": "Ujjain",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "ujjain",
+    "commissionerate": "CGST Commissionerate, Indore",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "Mahakaleshwar Temple Area",
+      "Industrial Area Ujjain",
+      "Freeganj",
+      "Nanakheda AKVN",
+      "Vikram University Area"
+    ],
+    "key_industries": [
+      "Tourism and pilgrimage (Mahakaleshwar Jyotirlinga, Kumbh Mela)",
+      "Soya processing",
+      "Education",
+      "Manufacturing (AKVN zone)",
+      "Religious services"
+    ],
+    "intro_note": "MP's spiritual capital and one of the world's most ancient cities — Ujjain is home to the Mahakaleshwar Jyotirlinga, hosts the Kumbh Simhastha once every 12 years, and is a sacred centre of Hindu pilgrimage.",
+    "nearby_cities": [
+      "Indore",
+      "Dewas",
+      "Ratlam",
+      "Mandsaur"
+    ],
+    "company_note": "Ujjain (ROC Gwalior) sees incorporation in tourism and hospitality businesses, soya processors, religious trust entities, and government contractors.",
+    "gst_note": "Ujjain's tourism sector during Kumbh Simhastha creates large-scale GST compliance requirements. Soya processing businesses manage raw soya (exempt) versus processed meal and oil GST."
+  },
+  {
+    "city": "Sagar",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "sagar",
+    "commissionerate": "CGST Commissionerate, Jabalpur",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "Industrial Area Sagar",
+      "AKVN Industrial Area",
+      "Civil Lines",
+      "Makroniya",
+      "Dr. Hari Singh Gour University Area"
+    ],
+    "key_industries": [
+      "Beedi manufacturing",
+      "Limestone and cement",
+      "Agricultural trading",
+      "Education (central university)",
+      "Government services"
+    ],
+    "intro_note": "Madhya Pradesh's educational and administrative hub in Bundelkhand — Sagar is home to Dr. Hari Singh Gour Central University, a major beedi manufacturing centre, and is surrounded by limestone-rich terrain.",
+    "nearby_cities": [
+      "Jabalpur",
+      "Damoh",
+      "Tikamgarh",
+      "Chhatarpur"
+    ],
+    "company_note": "Sagar (ROC Gwalior) sees incorporation in beedi manufacturers, limestone miners, cement companies, and government contractors.",
+    "gst_note": "Sagar's beedi manufacturers have specific tobacco cess and GST compliance. Limestone and cement businesses need careful raw material versus processed product GST rate management."
+  },
+  {
+    "city": "Satna",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "satna",
+    "commissionerate": "CGST Commissionerate, Jabalpur",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "Maihar Road Industrial Area",
+      "Cement Factory Areas (Ultra Tech, JP)",
+      "Satna Market",
+      "Birla Vikas",
+      "Rewa Road Corridor"
+    ],
+    "key_industries": [
+      "Cement manufacturing (India's largest cement hub)",
+      "Limestone quarrying",
+      "Agro-processing",
+      "Real estate",
+      "Trading"
+    ],
+    "intro_note": "MP's cement capital — Satna district has the highest concentration of cement plants in India, producing over 15% of India's total cement output, powered by vast limestone reserves.",
+    "nearby_cities": [
+      "Jabalpur",
+      "Rewa",
+      "Allahabad",
+      "Panna"
+    ],
+    "company_note": "Satna (ROC Gwalior) sees incorporation in cement plant vendors, limestone miners, real estate developers, and agro-processing businesses.",
+    "gst_note": "Satna's cement manufacturers deal with 28% GST — one of India's highest rates. Limestone mining companies manage mineral royalty reverse charge and extraction GST compliance."
+  },
+  {
+    "city": "Rewa",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "rewa",
+    "commissionerate": "CGST Commissionerate, Jabalpur",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "Industrial Area Govindgarh",
+      "Ultra Mega Solar Power Plant Area",
+      "Bhopal Road Corridor",
+      "Shahdol Road",
+      "MPAKVN Area"
+    ],
+    "key_industries": [
+      "Renewable energy (Ultra Mega Solar Power Plant — world's largest single-site)",
+      "Cement",
+      "Limestone quarrying",
+      "Agro-processing",
+      "Government services"
+    ],
+    "intro_note": "MP's solar energy capital — Rewa is home to the world's first Ultra Mega Solar Power Park (750 MW) and sits in a limestone-rich belt with major cement and agro-processing industries.",
+    "nearby_cities": [
+      "Satna",
+      "Jabalpur",
+      "Shahdol",
+      "Sidhi"
+    ],
+    "company_note": "Rewa (ROC Gwalior) sees incorporation in solar energy ancillary companies, cement plant vendors, limestone businesses, and government contractors.",
+    "gst_note": "Rewa's solar power plant vendors deal with specific renewable energy equipment GST. Cement companies apply 28% GST. Limestone miners manage royalty reverse charge and mineral extraction compliance."
+  },
+  {
+    "city": "Gorakhpur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "gorakhpur",
+    "commissionerate": "CGST Commissionerate, Gorakhpur",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Industrial Area Gorakhpur",
+      "AIIMS Area",
+      "BRD Medical College Area",
+      "Sahjanwa Industrial Area",
+      "Rapti Nagar",
+      "Gita Press Colony"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Education and medical (AIIMS, BRD)",
+      "Fertilizer manufacturing (HURL)",
+      "Sugar processing",
+      "Terracotta pottery"
+    ],
+    "intro_note": "Eastern UP's largest city and the seat of Gorakhnath Peeth — Gorakhpur is home to AIIMS, a major fertilizer plant, the world-famous Gita Press, and is the divisional headquarters of Eastern UP.",
+    "nearby_cities": [
+      "Kushinagar",
+      "Deoria",
+      "Basti",
+      "Maharajganj"
+    ],
+    "company_note": "Gorakhpur (ROC Kanpur) sees incorporation in pharmaceutical companies, fertilizer ancillaries, educational institutions, and government contractors.",
+    "gst_note": "Gorakhpur's HURL fertilizer plant vendors deal with specific fertilizer GST provisions. Medical institutions have healthcare service exemptions. Coaching classes for competitive exams attract 18% GST."
+  },
+  {
+    "city": "Firozabad",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "firozabad",
+    "commissionerate": "CGST Commissionerate, Agra",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "Glass Industries Area",
+      "Nai Mandi",
+      "Rasoolpur Industrial Area",
+      "Tundla Road",
+      "Shikohabad"
+    ],
+    "key_industries": [
+      "Glass bangles and glassware (world's largest manufacturing hub)",
+      "Glass processing",
+      "Agro-processing",
+      "Wholesale trading",
+      "Sugar mills"
+    ],
+    "intro_note": "The Glass City of India — Firozabad produces over 70% of India's glass bangles and is the world's largest glass bangle manufacturing hub with over 1,000 glass factories.",
+    "nearby_cities": [
+      "Agra",
+      "Mathura",
+      "Etawah",
+      "Mainpuri"
+    ],
+    "company_note": "Firozabad (ROC Delhi) sees incorporation in glass bangle manufacturers, glass processors, agro-trading businesses, and sugar mills.",
+    "gst_note": "Firozabad's glass manufacturing industry requires careful HSN classification between raw glass, intermediate glass products, and finished glass bangles and articles. Glass exporters need LUT filing."
+  },
+  {
+    "city": "Bulandshahr",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "bulandshahr",
+    "commissionerate": "CGST Commissionerate, Ghaziabad",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "UPSIDC Industrial Area",
+      "Dibai",
+      "Khurja (China clay hub)",
+      "Sikandrabad",
+      "Jewar (Airport Area)"
+    ],
+    "key_industries": [
+      "Pottery and ceramic tableware (Khurja — China of India)",
+      "China clay processing",
+      "Sugar mills",
+      "Real estate (Jewar Airport corridor)",
+      "Agriculture"
+    ],
+    "intro_note": "The pottery capital of India — Khurja in Bulandshahr district produces over 50% of India's crockery and ceramic tableware, earning it the title Ceramic City of India.",
+    "nearby_cities": [
+      "Noida",
+      "Ghaziabad",
+      "Aligarh",
+      "Hapur"
+    ],
+    "company_note": "Bulandshahr (ROC Delhi) sees strong incorporation in ceramic and pottery manufacturers, china clay processors, sugar mills, and real estate developers near Jewar airport.",
+    "gst_note": "Bulandshahr's ceramic and pottery businesses need careful GST classification on raw clay versus finished tableware. Sugar mills have specific agricultural input exemption and processed sugar output GST compliance."
+  },
+  {
+    "city": "Shahjahanpur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "shahjahanpur",
+    "commissionerate": "CGST Commissionerate, Bareilly",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "UPSIDC Industrial Area",
+      "Khera Sugar Mill Area",
+      "Tilhar",
+      "Hardoi Road Corridor",
+      "Rosa Thermal Plant Area"
+    ],
+    "key_industries": [
+      "Sugar manufacturing",
+      "Perfume and ittar (attar oils)",
+      "Cotton textiles",
+      "Agro-processing",
+      "Thermal power"
+    ],
+    "intro_note": "UP's perfume capital — Shahjahanpur is renowned for its traditional ittar (attar) perfume manufacturing, a major sugar processing hub, and home to Rosa thermal power plant.",
+    "nearby_cities": [
+      "Bareilly",
+      "Lakhimpur",
+      "Hardoi",
+      "Pilibhit"
+    ],
+    "company_note": "Shahjahanpur (ROC Kanpur) sees incorporation in ittar manufacturers, sugar mills, cotton textile companies, and agro-processing businesses.",
+    "gst_note": "Shahjahanpur's ittar and perfume manufacturers need careful GST classification between natural essential oils and synthetic fragrances. Sugar mills apply specific agricultural-to-processed sugar GST compliance."
+  },
+  {
+    "city": "Jhansi",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "jhansi",
+    "commissionerate": "CGST Commissionerate, Agra",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "Industrial Area Jhansi",
+      "Orchha Road",
+      "Sipri Bazaar",
+      "Cantonment Area",
+      "SIDCUL Jhansi"
+    ],
+    "key_industries": [
+      "Stone and granite processing",
+      "Defence (Ordnance factories)",
+      "Soft stone carving (Bundela craft)",
+      "Tourism (Jhansi Fort, Orchha)",
+      "Real estate"
+    ],
+    "intro_note": "The gateway to Bundelkhand and Rani Laxmibai's city — Jhansi is a major stone processing and defence manufacturing hub, the key transit point for Madhya Pradesh, and gateway to Orchha heritage.",
+    "nearby_cities": [
+      "Gwalior",
+      "Sagar",
+      "Lalitpur",
+      "Datia"
+    ],
+    "company_note": "Jhansi (ROC Delhi) sees incorporation in stone processors, defence ancillary firms, tourism businesses, and government contractors.",
+    "gst_note": "Jhansi's stone processing businesses need careful GST classification on raw stone versus finished carved products. Defence ancillary companies comply with government procurement GST TDS rules."
+  },
+  {
+    "city": "Silchar",
+    "state": "Assam",
+    "state_code": "IN-AS",
+    "slug": "silchar",
+    "commissionerate": "CGST Commissionerate, Silchar",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Meherpur Industrial Area",
+      "Cachar District HQ",
+      "Rangirkhari",
+      "Sonai Road",
+      "Tarapur"
+    ],
+    "key_industries": [
+      "Tea and agriculture (Barak Valley tea)",
+      "Natural gas (ONGC)",
+      "Bamboo products",
+      "Trading hub for Mizoram and Manipur",
+      "Education"
+    ],
+    "intro_note": "Northeast India's second commercial hub — Silchar is the major commercial centre for Barak Valley and the gateway to Mizoram and Manipur, a key oil exploration area, and a significant educational hub.",
+    "nearby_cities": [
+      "Guwahati",
+      "Imphal",
+      "Aizawl",
+      "Shillong"
+    ],
+    "company_note": "Silchar (ROC Assam) sees incorporation in tea businesses, petroleum ancillary companies, logistics firms serving Northeast states, and educational institutions.",
+    "gst_note": "Silchar's tea industry has complex supply chain GST. Oil exploration companies deal with upstream petroleum GST provisions. Logistics companies handling cross-state goods to Mizoram and Manipur need careful place of supply compliance."
+  },
+  {
+    "city": "Jorhat",
+    "state": "Assam",
+    "state_code": "IN-AS",
+    "slug": "jorhat",
+    "commissionerate": "CGST Commissionerate, Dibrugarh",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Tea Garden Areas",
+      "Cinnamara Industrial Area",
+      "Jorhat Market",
+      "Titabor",
+      "AT Road"
+    ],
+    "key_industries": [
+      "Tea cultivation and processing (heart of Assam tea)",
+      "Bamboo and furniture",
+      "Oil and natural gas (OIL)",
+      "Agriculture",
+      "Education"
+    ],
+    "intro_note": "The Tea Capital of Assam — Jorhat is home to some of the world's finest Assam Orthodox teas, the Tocklai Tea Research Institute (world's oldest tea research station), and major OIL operations.",
+    "nearby_cities": [
+      "Dibrugarh",
+      "Sibsagar",
+      "Tezpur",
+      "Golaghat"
+    ],
+    "company_note": "Jorhat (ROC Assam) sees incorporation in tea garden companies, oil sector ancillaries, bamboo furniture manufacturers, and agricultural businesses.",
+    "gst_note": "Jorhat's tea companies deal with complex auction house GST compliance. OIL sector ancillaries have upstream petroleum GST provisions. Bamboo furniture manufacturers need ITC management on bamboo raw material."
+  },
+  {
+    "city": "Imphal",
+    "state": "Manipur",
+    "state_code": "IN-MN",
+    "slug": "imphal",
+    "commissionerate": "CGST Commissionerate, Shillong",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Moirangkhom",
+      "Porompat Industrial Area",
+      "Khuman Lampak",
+      "Paona Bazaar",
+      "Mantripukhri"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Handloom weaving (Manipuri silk and cotton)",
+      "Tourism",
+      "Bamboo and cane products",
+      "Agriculture (organic farming)"
+    ],
+    "intro_note": "Manipur's capital and the jewel of Northeast India — Imphal is a major administrative, cultural, and tourism hub, famous for Manipuri classical dance, handloom weaving, and the pristine Loktak Lake.",
+    "nearby_cities": [
+      "Dimapur",
+      "Silchar",
+      "Kohima",
+      "Ukhrul"
+    ],
+    "company_note": "Imphal (ROC Guwahati) sees incorporation in government contractors, handloom businesses, tourism companies, and bamboo product manufacturers.",
+    "gst_note": "Imphal's handloom businesses may qualify for specific GST exemptions. Tourism operators need hotel and service GST compliance. Government contractors deal with TDS under GST provisions."
+  },
+  {
+    "city": "Shillong",
+    "state": "Meghalaya",
+    "state_code": "IN-ML",
+    "slug": "shillong",
+    "commissionerate": "CGST Commissionerate, Shillong",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Police Bazaar",
+      "Laitumkhrah",
+      "Barikuppen Industrial Area",
+      "IIMB (nearby)",
+      "Nongthymmai",
+      "Ward Lake Area"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Tourism and hospitality",
+      "IT and education",
+      "Coal and limestone trading",
+      "Agriculture (khasi mandarin oranges)"
+    ],
+    "intro_note": "The Scotland of the East and Meghalaya's capital — Shillong is a premier hill station, major administrative hub for Northeast India, home to North East India's growing IT sector, and a cool tourist destination.",
+    "nearby_cities": [
+      "Guwahati",
+      "Cherrapunji",
+      "Jowai",
+      "Tura"
+    ],
+    "company_note": "Shillong (ROC Guwahati) sees incorporation in tourism businesses, government contractors, IT companies, and coal trading businesses.",
+    "gst_note": "Shillong's tourism sector requires hotel and restaurant GST compliance. Coal traders apply coal GST provisions. IT companies deal with software service exports and LUT compliance."
+  },
+  {
+    "city": "Agartala",
+    "state": "Tripura",
+    "state_code": "IN-TR",
+    "slug": "agartala",
+    "commissionerate": "CGST Commissionerate, Agartala",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Industrial Growth Centre Bodhjungnagar",
+      "Amtali Industrial Area",
+      "Battala",
+      "MBB Airport Area",
+      "Bangladesh Border Trade Point Akhaura"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Natural rubber processing",
+      "Pineapple and agro-products",
+      "Border trade with Bangladesh",
+      "Bamboo and handicrafts"
+    ],
+    "intro_note": "Tripura's capital and India's gateway to Bangladesh — Agartala is the second-largest city in Northeast India, a major rubber processing hub, and the most important border trade point with Bangladesh.",
+    "nearby_cities": [
+      "Udaipur (Tripura)",
+      "Dharmanagar",
+      "Comilla (Bangladesh)",
+      "Dhaka (Bangladesh)"
+    ],
+    "company_note": "Agartala (ROC Guwahati) sees incorporation in rubber processors, border trade companies, government contractors, and bamboo product businesses.",
+    "gst_note": "Agartala's rubber processing businesses deal with natural rubber GST. Border trade companies handling export to Bangladesh need careful export documentation and LUT filing. Government contractors deal with TDS under GST."
+  },
+  {
+    "city": "Aizawl",
+    "state": "Mizoram",
+    "state_code": "IN-MZ",
+    "slug": "aizawl",
+    "commissionerate": "CGST Commissionerate, Shillong",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Ramhlun Road",
+      "Bawngkawn",
+      "Dawrpui",
+      "Laipuitlang Industrial Area",
+      "Chawnpui"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Handloom and handicrafts (Mizo shawls)",
+      "Bamboo products",
+      "Tourism",
+      "Horticulture (ginger, turmeric)"
+    ],
+    "intro_note": "Mizoram's capital perched on steep hillsides — Aizawl is the commercial and administrative hub of Northeast India's most literate state, known for vibrant Mizo culture, handloom weaving, and eco-tourism.",
+    "nearby_cities": [
+      "Silchar",
+      "Lunglei",
+      "Champhai",
+      "Kolasib"
+    ],
+    "company_note": "Aizawl (ROC Guwahati) sees incorporation in government contractors, handloom businesses, bamboo product exporters, and horticulture companies.",
+    "gst_note": "Aizawl's handloom businesses may qualify for specific GST exemptions. Bamboo product exporters need LUT filing. Horticulture businesses dealing in ginger and turmeric apply agricultural exemption rules."
+  },
+  {
+    "city": "Dimapur",
+    "state": "Nagaland",
+    "state_code": "IN-NL",
+    "slug": "dimapur",
+    "commissionerate": "CGST Commissionerate, Shillong",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Industrial Estate Dimapur",
+      "Hong Kong Market",
+      "Sovima",
+      "Chumukedima",
+      "Padumpukhuri"
+    ],
+    "key_industries": [
+      "Trading and commerce (gateway to Nagaland)",
+      "Government services",
+      "Agro-processing",
+      "Tourism",
+      "Bamboo and cane products"
+    ],
+    "intro_note": "Nagaland's commercial capital and railway gateway — Dimapur is the only city in Nagaland connected by rail, the major commercial and trading hub for the entire state, and gateway to the Hornbill Festival.",
+    "nearby_cities": [
+      "Kohima",
+      "Imphal",
+      "Jorhat",
+      "Mokukchung"
+    ],
+    "company_note": "Dimapur (ROC Guwahati) sees incorporation in trading businesses, agro-processing firms, government contractors, and tourism companies.",
+    "gst_note": "Dimapur's trading businesses need careful inter-state GST compliance as the gateway for goods entering Nagaland. Agricultural commodity traders apply exemption rules. Tourism businesses near Hornbill Festival venues need hospitality GST compliance."
+  },
+  {
+    "city": "Gangtok",
+    "state": "Sikkim",
+    "state_code": "IN-SK",
+    "slug": "gangtok",
+    "commissionerate": "CGST Commissionerate, Siliguri",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "MG Marg",
+      "Tadong Industrial Area",
+      "Deorali",
+      "Ranipool",
+      "NH-10 Corridor"
+    ],
+    "key_industries": [
+      "Tourism and hospitality (Kanchenjunga, monasteries)",
+      "Pharmaceuticals (Sikkim pharma cluster)",
+      "Cardamom and large cardamom (world's largest producer)",
+      "Hydro power",
+      "Organic farming"
+    ],
+    "intro_note": "The capital of the world's most organic state — Gangtok is a premier Himalayan tourism destination, home to India's fastest-growing pharmaceutical cluster, and the centre of the world's largest large cardamom growing region.",
+    "nearby_cities": [
+      "Siliguri",
+      "Namchi",
+      "Jorethang",
+      "Kalimpong"
+    ],
+    "company_note": "Gangtok (ROC West Bengal) sees incorporation in pharmaceutical manufacturers, tourism businesses, cardamom exporters, and hydro power ancillary companies.",
+    "gst_note": "Gangtok's pharmaceutical companies in Sikkim's industrial zone have specific state industrial incentive GST compliance. Cardamom exporters need LUT filing. Tourism businesses require hotel and service GST compliance."
+  },
+  {
+    "city": "Itanagar",
+    "state": "Arunachal Pradesh",
+    "state_code": "IN-AR",
+    "slug": "itanagar",
+    "commissionerate": "CGST Commissionerate, Shillong",
+    "zone": "Shillong Zone",
+    "local_areas": [
+      "Naharlagun Industrial Area",
+      "Nirjuli",
+      "Gohpur Road",
+      "Bank Tinali",
+      "Papu Nallah"
+    ],
+    "key_industries": [
+      "Government and administration",
+      "Hydro power (India's largest hydro potential)",
+      "Timber and bamboo",
+      "Tourism (tribal culture, biodiversity)",
+      "Horticulture (kiwi, apple)"
+    ],
+    "intro_note": "Arunachal Pradesh's capital and gateway to India's biodiversity hotspot — Itanagar is the administrative hub of India's largest northeastern state, home to rich tribal cultures and Asia's largest hydro power potential.",
+    "nearby_cities": [
+      "Naharlagun",
+      "Guwahati",
+      "Tezpur",
+      "Ziro"
+    ],
+    "company_note": "Itanagar (ROC Guwahati) sees incorporation in hydro power ancillary companies, government contractors, timber businesses, and tourism companies.",
+    "gst_note": "Itanagar's hydro power contractors deal with large infrastructure project GST compliance. Timber businesses apply forest produce GST rules. Tourism operators need hospitality sector GST compliance."
+  },
+  {
+    "city": "Mau",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "mau",
+    "commissionerate": "CGST Commissionerate, Varanasi",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Power Loom Area",
+      "Madhuban Road",
+      "Dobhi Industrial Area",
+      "Ghosi Road",
+      "Civil Lines"
+    ],
+    "key_industries": [
+      "Powerloom weaving (India's largest powerloom hub)",
+      "Saree manufacturing",
+      "Sugar mills",
+      "Chemical dyeing",
+      "Agro-processing"
+    ],
+    "intro_note": "The Powerloom Capital of India — Mau is India's largest powerloom city, producing millions of metres of synthetic fabric and sarees annually for domestic and export markets.",
+    "nearby_cities": [
+      "Varanasi",
+      "Azamgarh",
+      "Ghazipur",
+      "Ballia"
+    ],
+    "company_note": "Mau (ROC Kanpur) sees incorporation in powerloom manufacturers, saree exporters, chemical dyeing units, and sugar mills.",
+    "gst_note": "Mau's powerloom industry requires careful GST classification on synthetic fabric versus blended fabric. Saree exporters need LUT filing. Dyeing units deal with service and chemical goods GST."
+  },
+  {
+    "city": "Rampur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "rampur",
+    "commissionerate": "CGST Commissionerate, Moradabad",
+    "zone": "Meerut Zone",
+    "local_areas": [
+      "UPSIDC Industrial Area",
+      "Milak Road",
+      "Civil Lines",
+      "Azim Khan Road",
+      "Sugar Mill Area Behjam"
+    ],
+    "key_industries": [
+      "Steel furniture and utensils",
+      "Sugar mills",
+      "Rampuri knife (GI tag)",
+      "Embroidery and textiles",
+      "Agro-processing"
+    ],
+    "intro_note": "Rampur is known for its traditional Rampuri knives with GI tag, a major steel furniture manufacturing hub, and home to the historic Raza Library with rare Mughal manuscripts.",
+    "nearby_cities": [
+      "Moradabad",
+      "Bareilly",
+      "Sambhal",
+      "Amroha"
+    ],
+    "company_note": "Rampur (ROC Kanpur) sees incorporation in steel furniture manufacturers, knife makers, sugar mills, and embroidery businesses.",
+    "gst_note": "Rampur's steel furniture manufacturers need careful ITC management on metal inputs. Rampuri knife exporters require LUT filing as handicraft exports. Sugar mills apply specific agricultural input and processed sugar GST rules."
+  },
+  {
+    "city": "Etawah",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "etawah",
+    "commissionerate": "CGST Commissionerate, Agra",
+    "zone": "Delhi Zone",
+    "local_areas": [
+      "UPSIDC Industrial Area",
+      "Chakarnagar",
+      "Civil Lines",
+      "Saifai Medical University Area",
+      "Jaswantnagar"
+    ],
+    "key_industries": [
+      "Agriculture (wheat, mustard)",
+      "Mustard oil processing",
+      "Sugar mills",
+      "Government (Saifai Medical University — SP family base)",
+      "Real estate"
+    ],
+    "intro_note": "Western UP's agricultural and political hub — Etawah district is a major mustard and wheat producing area, home to the prestigious Saifai Medical University, and the ancestral base of the Yadav political family.",
+    "nearby_cities": [
+      "Agra",
+      "Kanpur",
+      "Mainpuri",
+      "Auraiya"
+    ],
+    "company_note": "Etawah (ROC Delhi) sees incorporation in mustard oil mills, sugar manufacturers, agro-trading businesses, and medical institution ancillaries.",
+    "gst_note": "Etawah's mustard oil mills deal with agricultural input exemptions versus processed oil GST. Sugar mills apply specific agricultural-to-processed product GST compliance."
+  },
+  {
+    "city": "Bhilwara",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "bhilwara",
+    "commissionerate": "CGST Commissionerate, Ajmer",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "RIICO Industrial Area Bhilwara",
+      "Textile City",
+      "Banswara Road",
+      "Gandhi Nagar",
+      "Hamirgarh Textile Hub"
+    ],
+    "key_industries": [
+      "Synthetic textiles (India's textile city — largest synthetics hub)",
+      "Wool and acrylic yarn",
+      "Cotton yarn",
+      "Zinc smelting (Hindustan Zinc proximity)",
+      "Marble and stone"
+    ],
+    "intro_note": "Rajasthan's textile capital — Bhilwara is India's largest synthetic textile manufacturing city, producing a vast range of grey fabrics, dyed fabrics, and synthetic yarns for domestic and export markets.",
+    "nearby_cities": [
+      "Ajmer",
+      "Kota",
+      "Udaipur",
+      "Chittorgarh"
+    ],
+    "company_note": "Bhilwara (ROC Rajasthan) sees the highest incorporation of textile manufacturers in Rajasthan — synthetic fabric mills, yarn spinners, and dyeing units dominate.",
+    "gst_note": "Bhilwara's textile manufacturers require careful HSN classification on different synthetic fabric categories. Export houses need LUT filing. Dyeing units deal with composite goods and services GST."
+  },
+  {
+    "city": "Sikar",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "sikar",
+    "commissionerate": "CGST Commissionerate, Jaipur (II)",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "RIICO Industrial Area Sikar",
+      "Fatehpur Road",
+      "Sri Madhopur Industrial Area",
+      "Station Road",
+      "Laxmangarh"
+    ],
+    "key_industries": [
+      "Brass and copper metalwork (Sikar metal art)",
+      "Merchant banking (historically prominent trading families)",
+      "Cotton and synthetic textiles",
+      "Agriculture (mustard, wheat)",
+      "Education (coaching hub of Shekhawati)"
+    ],
+    "intro_note": "The heart of Rajasthan's Shekhawati region and a major education hub — Sikar is famous for its rich merchant heritage, brass metal artwork, coaching institutes, and is the gateway to the painted havelis of Shekhawati.",
+    "nearby_cities": [
+      "Jaipur",
+      "Jhunjhunu",
+      "Churu",
+      "Fatehpur"
+    ],
+    "company_note": "Sikar (ROC Rajasthan) sees incorporation in coaching institutes, metal craft exporters, textile businesses, and agricultural trading firms.",
+    "gst_note": "Sikar's coaching institutes for competitive exams attract 18% GST. Metal craft exporters need LUT filing. Textile businesses apply different GST rates on cotton versus synthetic fabrics."
+  },
+  {
+    "city": "Kurnool",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "kurnool",
+    "commissionerate": "CGST Commissionerate, Kurnool",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "APIIC Industrial Area",
+      "Nandyal Road",
+      "Bellary Road",
+      "Old Town",
+      "Atmakur Road"
+    ],
+    "key_industries": [
+      "Cotton and textiles",
+      "Cement manufacturing",
+      "Agriculture (paddy, cotton, groundnut)",
+      "Wholesale trading",
+      "Tourism (Srisailam proximity)"
+    ],
+    "intro_note": "Rayalaseema's commercial capital — Kurnool is the largest city in Andhra Pradesh's Rayalaseema region, a major cotton and cement hub, and gateway to the Srisailam dam and Nagarjunasagar.",
+    "nearby_cities": [
+      "Nandyal",
+      "Proddatur",
+      "Kadapa",
+      "Anantapur"
+    ],
+    "company_note": "Kurnool (ROC AP, Hyderabad) sees incorporation in cotton traders, cement plant vendors, agricultural businesses, and tourism companies.",
+    "gst_note": "Kurnool's cotton trading involves agricultural exemption documentation. Cement businesses deal with 28% GST. Wholesale traders need careful intrastate and interstate GST compliance."
+  },
+  {
+    "city": "Nellore",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "nellore",
+    "commissionerate": "CGST Commissionerate, Visakhapatnam",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "Krishnapatnam Port Area",
+      "Nellore Industrial Area",
+      "Kavali",
+      "Sullurpeta SHAR Area",
+      "Bogole"
+    ],
+    "key_industries": [
+      "Aquaculture and shrimp (India's largest)",
+      "Krishnapatnam Port logistics",
+      "Granite",
+      "SHAR (Satish Dhawan Space Centre)",
+      "Mica mining"
+    ],
+    "intro_note": "India's shrimp capital and home to India's primary satellite launch centre — Nellore produces over 30% of India's farmed shrimp and is adjacent to ISRO's Satish Dhawan Space Centre at Sriharikota.",
+    "nearby_cities": [
+      "Tirupati",
+      "Ongole",
+      "Gudur",
+      "Kavali"
+    ],
+    "company_note": "Nellore (ROC AP, Hyderabad) sees incorporation in aquaculture companies, seafood exporters, port logistics firms, and ISRO ancillary businesses.",
+    "gst_note": "Nellore's shrimp exporters require LUT filing and IGST refund management. Port logistics companies apply specific GST on freight and handling. ISRO ancillaries deal with government procurement GST rules."
+  },
+  {
+    "city": "Kadapa",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "kadapa",
+    "commissionerate": "CGST Commissionerate, Kurnool",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "APIIC Industrial Area Kadapa",
+      "Cuddapah Slate Area",
+      "Proddatur Road",
+      "YSR Kadapa Airport Area",
+      "Pulivendula"
+    ],
+    "key_industries": [
+      "Cuddapah slate and limestone quarrying",
+      "Cement manufacturing",
+      "Cotton and agro-processing",
+      "Barytes mining (India's largest)",
+      "Government services"
+    ],
+    "intro_note": "Rayalaseema's slate and barytes capital — Kadapa is the world's largest source of Cuddapah slate, India's largest barytes producer, and a major cement and agro-processing hub in southern AP.",
+    "nearby_cities": [
+      "Kurnool",
+      "Tirupati",
+      "Nellore",
+      "Anantapur"
+    ],
+    "company_note": "Kadapa (ROC AP, Hyderabad) sees incorporation in mining companies, cement plant vendors, quarry businesses, and cotton traders.",
+    "gst_note": "Kadapa's slate and barytes mining involves mineral royalty reverse charge and extraction GST. Cement companies deal with 28% GST. Cotton and agro-traders apply agricultural exemption rules carefully."
+  },
+  {
+    "city": "Bharuch",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "bharuch",
+    "commissionerate": "CGST Commissionerate, Vadodara",
+    "zone": "Ahmedabad Zone",
+    "local_areas": [
+      "Ankleshwar GIDC (Asia's largest chemical zone)",
+      "Dahej Port and SEZ",
+      "Panoli Chemical Area",
+      "Bharuch City",
+      "Amod"
+    ],
+    "key_industries": [
+      "Chemical and petrochemical manufacturing (Ankleshwar — Asia's largest chemical cluster)",
+      "Dahej port and SEZ",
+      "Pharmaceuticals",
+      "Textiles",
+      "Agrochemicals"
+    ],
+    "intro_note": "Gujarat's chemical capital — Bharuch houses Ankleshwar, Asia's largest chemical industrial cluster, and Dahej, one of India's most important ports and petrochemical SEZ.",
+    "nearby_cities": [
+      "Surat",
+      "Vadodara",
+      "Ankleshwar",
+      "Anand"
+    ],
+    "company_note": "Bharuch (ROC Gujarat) sees the highest chemical company incorporation density in India — chemical manufacturers, pharma companies, and Dahej SEZ units are primary registrants.",
+    "gst_note": "Bharuch's chemical companies deal with complex ITC chains on chemical inputs. Dahej SEZ units operate under zero-rated GST for exports. Pharma companies need careful drug GST classification."
+  },
+  {
+    "city": "Vapi",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "vapi",
+    "commissionerate": "CGST Commissionerate, Surat",
+    "zone": "Surat Zone",
+    "local_areas": [
+      "GIDC Vapi (India's largest GIDC)",
+      "Umbergaon Industrial Area",
+      "Silvassa Road",
+      "Bhilad",
+      "Daman Road Corridor"
+    ],
+    "key_industries": [
+      "Chemical and dye manufacturing",
+      "Pharmaceuticals",
+      "Plastics and polymers",
+      "Textile processing",
+      "Electronics"
+    ],
+    "intro_note": "South Gujarat's industrial powerhouse — Vapi houses India's largest GIDC with over 2,000 industrial units producing chemicals, pharmaceuticals, plastics, and dyes in a sprawling industrial estate.",
+    "nearby_cities": [
+      "Surat",
+      "Silvassa",
+      "Daman",
+      "Navsari"
+    ],
+    "company_note": "Vapi (ROC Gujarat) sees very high company incorporation in chemical manufacturers, pharmaceutical companies, plastics firms, and textile processing units.",
+    "gst_note": "Vapi's chemical manufacturers need careful ITC management on industrial chemical inputs. Pharmaceutical companies require drug classification GST compliance. Plastics businesses need HSN classification on different polymer types."
+  },
+  {
+    "city": "Mehsana",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "mehsana",
+    "commissionerate": "CGST Commissionerate, Ahmedabad (North)",
+    "zone": "Ahmedabad Zone",
+    "local_areas": [
+      "GIDC Mehsana",
+      "ONGC-GSPC Gas Field Area",
+      "Visnagar Road",
+      "Dairy Road (DUDHSAGAR)",
+      "Kheralu"
+    ],
+    "key_industries": [
+      "Dairy cooperative (Dudhsagar Dairy — GCMMF)",
+      "Natural gas (ONGC, GSPC)",
+      "Pharmaceutical manufacturing",
+      "Tobacco and spices",
+      "Engineering"
+    ],
+    "intro_note": "North Gujarat's dairy hub — Mehsana is home to the Dudhsagar Dairy cooperative (GCMMF/Amul), a major natural gas producing district, and a growing pharmaceutical manufacturing belt.",
+    "nearby_cities": [
+      "Gandhinagar",
+      "Ahmedabad",
+      "Patan",
+      "Patan (North Gujarat)"
+    ],
+    "company_note": "Mehsana (ROC Gujarat) sees incorporation in dairy businesses, gas sector ancillaries, pharmaceutical companies, and engineering firms.",
+    "gst_note": "Mehsana's dairy cooperative sector has specific GST provisions on milk and milk products. Natural gas companies deal with upstream petroleum GST. Pharma companies require careful drug classification."
+  },
+  {
+    "city": "Akola",
+    "state": "Maharashtra",
+    "state_code": "IN-MH",
+    "slug": "akola",
+    "commissionerate": "CGST Commissionerate, Nagpur",
+    "zone": "Nagpur Zone",
+    "local_areas": [
+      "MIDC Akola",
+      "Cotton Market Area",
+      "Murtizapur Road",
+      "Civil Lines",
+      "Balapur"
+    ],
+    "key_industries": [
+      "Cotton trading (Vidarbha cotton hub)",
+      "Oil seeds processing (soybean, sunflower)",
+      "Handloom weaving",
+      "Agricultural trading",
+      "Agro-processing"
+    ],
+    "intro_note": "Vidarbha's cotton and oilseed capital — Akola is a major cotton and oilseed trading hub, home to significant handloom clusters, and the commercial centre of North Vidarbha.",
+    "nearby_cities": [
+      "Amravati",
+      "Washim",
+      "Yavatmal",
+      "Buldhana"
+    ],
+    "company_note": "Akola (ROC Maharashtra) sees incorporation in cotton traders, oilseed processors, handloom businesses, and agro-trading firms.",
+    "gst_note": "Akola's cotton and oilseed trading involves careful agricultural exemption documentation. Oilseed processors deal with raw seed exemption versus processed oil GST. Handloom businesses may qualify for specific GST exemptions."
+  },
+  {
+    "city": "Tumkur",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "tumkur",
+    "commissionerate": "CGST Commissionerate, Bangalore (North)",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "KIADB Industrial Area Tumkur",
+      "Vasanthanarasapura Industrial Area",
+      "NH-4 Corridor",
+      "Tiptur Road",
+      "Sira Road"
+    ],
+    "key_industries": [
+      "Automobile components (Bangalore aerospace corridor)",
+      "Coconut and coconut products (coconut capital of India)",
+      "Silk weaving",
+      "Electronics",
+      "Food processing"
+    ],
+    "intro_note": "Karnataka's coconut capital and Bangalore's industrial satellite — Tumkur is India's largest coconut producing district, home to major auto component manufacturers, and a growing electronics industrial hub.",
+    "nearby_cities": [
+      "Bangalore",
+      "Hassan",
+      "Chitradurga",
+      "Davangere"
+    ],
+    "company_note": "Tumkur (ROC Karnataka) sees incorporation in auto component suppliers, coconut product manufacturers, food processing companies, and electronics firms.",
+    "gst_note": "Tumkur's coconut product businesses deal with raw coconut (exempt) to processed coconut oil and products GST transitions. Auto component manufacturers have complex multi-tier ITC chains."
+  },
+  {
+    "city": "Thanjavur",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "thanjavur",
+    "commissionerate": "CGST Commissionerate, Madurai",
+    "zone": "Madurai Zone",
+    "local_areas": [
+      "Thanjavur Industrial Estate",
+      "Grand Anicut Area",
+      "Medical College Road",
+      "Sathy Road",
+      "Kumbakonam Road"
+    ],
+    "key_industries": [
+      "Rice cultivation (Rice Bowl of Tamil Nadu)",
+      "Thanjavur painting and bronze casting (GI tag)",
+      "Music instruments (veena, nattuvaangam)",
+      "Tourism (Brihadeeswarar Temple — UNESCO)",
+      "Education"
+    ],
+    "intro_note": "Tamil Nadu's rice bowl and cultural capital — Thanjavur is home to the UNESCO World Heritage Brihadeeswarar Temple, world-famous GI-tagged Thanjavur paintings, and India's finest bronze casting tradition.",
+    "nearby_cities": [
+      "Tiruchirappalli",
+      "Kumbakonam",
+      "Nagapattinam",
+      "Pudukkottai"
+    ],
+    "company_note": "Thanjavur (ROC Tamil Nadu) sees incorporation in rice traders, art and handicraft exporters, tourism businesses, and educational institutions.",
+    "gst_note": "Thanjavur's rice trading businesses apply agricultural exemption rules on paddy and processed rice. Handicraft and art exporters need LUT filing for GI-tagged product exports. Tourism businesses require hotel GST compliance."
+  },
+  {
+    "city": "Thoothukudi",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "thoothukudi",
+    "commissionerate": "CGST Commissionerate, Madurai",
+    "zone": "Madurai Zone",
+    "local_areas": [
+      "Tuticorin Port Area",
+      "SPIC Industrial Area",
+      "VOC Port",
+      "Thermal Power Area",
+      "Ettayapuram"
+    ],
+    "key_industries": [
+      "Port and shipping (VOC Port — India's third largest)",
+      "Chemical manufacturing (SPIC)",
+      "Thermal power",
+      "Salt production (India's largest)",
+      "Seafood exports"
+    ],
+    "intro_note": "Tamil Nadu's port city and salt capital — Thoothukudi (Tuticorin) houses VOC Port, India's third-largest container port, the country's largest salt production centre, and major chemical and thermal power plants.",
+    "nearby_cities": [
+      "Madurai",
+      "Tirunelveli",
+      "Virudhunagar",
+      "Kovilpatti"
+    ],
+    "company_note": "Thoothukudi (ROC Tamil Nadu) sees incorporation in port logistics companies, chemical manufacturers, salt producers, and seafood exporters.",
+    "gst_note": "Thoothukudi's port logistics companies deal with GST-customs interface on imports and exports. Chemical manufacturers need ITC management. Salt (sodium chloride) has specific GST rate provisions. Seafood exporters require LUT filing."
+  },
+  {
+    "city": "Lakhimpur Kheri",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "lakhimpur-kheri",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Pallia Sugar Mill Area",
+      "Gola Industrial Area",
+      "Nighasan",
+      "Philibit Road",
+      "NH-730 Corridor"
+    ],
+    "key_industries": [
+      "Sugar manufacturing (India's largest sugar producing district)",
+      "Jaggery (gur) production",
+      "Timber and plywood",
+      "Agro-processing",
+      "Wildlife tourism (Dudhwa National Park)"
+    ],
+    "intro_note": "India's largest sugar producing district — Lakhimpur Kheri has the highest number of sugar mills in India, producing a massive share of UP's sugar output, and is home to the Dudhwa National Park.",
+    "nearby_cities": [
+      "Lucknow",
+      "Pilibhit",
+      "Shahjahanpur",
+      "Sitapur"
+    ],
+    "company_note": "Lakhimpur Kheri (ROC Kanpur) sees incorporation in sugar mills, jaggery manufacturers, timber traders, and tourism businesses near Dudhwa.",
+    "gst_note": "Lakhimpur Kheri's sugar mills have specific GST provisions on sugarcane (reverse charge in some cases), sugar output, and by-products like molasses and bagasse. Timber businesses apply forest produce GST rules."
+  },
+  {
+    "city": "Unnao",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "unnao",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Leather Industrial Area Unnao",
+      "Auras Road",
+      "UPSIDC Unnao",
+      "Shuklaganj",
+      "Nawabganj"
+    ],
+    "key_industries": [
+      "Leather tanning (India's largest tannery cluster)",
+      "Leather goods manufacturing",
+      "Chemical industries",
+      "Agro-processing",
+      "Real estate (Lucknow proximity)"
+    ],
+    "intro_note": "India's leather tanning capital — Unnao is home to India's largest cluster of leather tanneries, processing hides and skins for domestic and export markets, situated on the outskirts of Lucknow.",
+    "nearby_cities": [
+      "Lucknow",
+      "Kanpur",
+      "Raebareli",
+      "Fatehpur"
+    ],
+    "company_note": "Unnao (ROC Kanpur) sees incorporation in leather tanneries, leather goods manufacturers, chemical companies, and real estate developers.",
+    "gst_note": "Unnao's leather tanning industry requires careful GST rate application — raw hides are exempt but processed leather attracts 5-18% depending on the type. Chemical inputs for tanning need ITC management."
+  },
+  {
+    "city": "Ganganagar",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "ganganagar",
+    "commissionerate": "CGST Commissionerate, Bikaner",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "Industrial Area Sri Ganganagar",
+      "Sugar Mill Area",
+      "RIICO Industrial Area",
+      "Padampur Road",
+      "Hanumangarh Road"
+    ],
+    "key_industries": [
+      "Sugar manufacturing",
+      "Cotton and agro-processing",
+      "Food processing",
+      "Border trade (Pakistan proximity)",
+      "Agriculture (wheat, mustard, citrus fruits)"
+    ],
+    "intro_note": "Rajasthan's agricultural heartland and northernmost city — Sri Ganganagar is a major sugar and cotton producing hub, known for its fertile irrigated plains from the Indira Gandhi Canal, and India's largest citrus fruit market.",
+    "nearby_cities": [
+      "Hanumangarh",
+      "Bikaner",
+      "Anupgarh",
+      "Abohar (Punjab)"
+    ],
+    "company_note": "Sri Ganganagar (ROC Rajasthan) sees incorporation in sugar mills, cotton processing businesses, food processing companies, and agro-trading firms.",
+    "gst_note": "Sri Ganganagar's sugar mills have specific GST provisions on sugarcane and sugar by-products. Cotton traders apply agricultural exemption rules. Citrus fruit exporters need LUT filing and export documentation."
+  },
+  {
+    "city": "Barmer",
+    "state": "Rajasthan",
+    "state_code": "IN-RJ",
+    "slug": "barmer",
+    "commissionerate": "CGST Commissionerate, Jodhpur",
+    "zone": "Jaipur Zone",
+    "local_areas": [
+      "Barmer Refinery Area (HPCL-Rajasthan Refinery)",
+      "Sindhari Industrial Area",
+      "Balotara Textile Hub",
+      "RIICO Barmer",
+      "Gudamalani"
+    ],
+    "key_industries": [
+      "Petroleum (Rajasthan's oil fields — Cairn India)",
+      "Textile dyeing and printing (Balotara — Asia's largest)",
+      "Renewable energy (Thar Desert solar and wind)",
+      "Handicrafts (Barmer embroidery)",
+      "Agro-processing"
+    ],
+    "intro_note": "Rajasthan's oil and textile city — Barmer is home to the Rajasthan oil fields operated by Cairn India, Balotara which is Asia's largest textile dyeing and printing hub, and massive Thar Desert renewable energy projects.",
+    "nearby_cities": [
+      "Jodhpur",
+      "Jaisalmer",
+      "Pali",
+      "Jalore"
+    ],
+    "company_note": "Barmer (ROC Rajasthan) sees incorporation in petroleum ancillary companies, textile dyeing units, renewable energy businesses, and handicraft exporters.",
+    "gst_note": "Barmer's petroleum companies deal with upstream oil GST provisions. Textile dyeing units apply GST on dyeing services and finished fabrics. Renewable energy companies have specific solar and wind equipment GST provisions."
+  },
+  {
+    "city": "Surendranagar",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "surendranagar",
+    "commissionerate": "CGST Commissionerate, Ahmedabad (North)",
+    "zone": "Ahmedabad Zone",
+    "local_areas": [
+      "Wadhwan City",
+      "Limbdi Road Industrial Area",
+      "GIDC Surendranagar",
+      "Cotton Market",
+      "Chotila Road"
+    ],
+    "key_industries": [
+      "Cotton trading (Saurashtra's cotton hub)",
+      "Salt production (Rann of Kutch proximity)",
+      "Textile processing",
+      "Agro-processing",
+      "Groundnut and oilseeds"
+    ],
+    "intro_note": "Saurashtra's cotton and salt hub — Surendranagar is a major cotton trading centre, home to large salt production from the Rann of Kutch, and a significant oilseed and textile processing district.",
+    "nearby_cities": [
+      "Ahmedabad",
+      "Rajkot",
+      "Bhavnagar",
+      "Morbi"
+    ],
+    "company_note": "Surendranagar (ROC Gujarat) sees incorporation in cotton trading businesses, salt producers, textile processors, and oilseed companies.",
+    "gst_note": "Surendranagar's cotton trading involves agricultural exemption documentation. Salt production has specific GST provisions. Oilseed processors manage raw seed exemption versus processed oil GST."
+  },
+  {
+    "city": "Gandhidham",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "gandhidham",
+    "commissionerate": "CGST Commissionerate, Kutch",
+    "zone": "Rajkot Zone",
+    "local_areas": [
+      "Kandla Port (Deendayal Port)",
+      "Adani Mundra Port Area",
+      "GIDC Kutch",
+      "Adipur",
+      "NH-8A Corridor"
+    ],
+    "key_industries": [
+      "Kandla Port (India's largest port by cargo volume)",
+      "Mundra Port (Adani — India's largest private port)",
+      "Chemical and petrochemical (Kutch industrial belt)",
+      "Salt production (world's largest salt desert proximity)",
+      "Textiles and garments (Kutch craft exports)"
+    ],
+    "intro_note": "The twin port city of Kutch — Gandhidham and adjacent Adipur house Kandla (Deendayal Port), India's largest port by cargo volume, and Mundra (Adani), India's largest private port.",
+    "nearby_cities": [
+      "Bhuj",
+      "Anjar",
+      "Adipur",
+      "Mandvi"
+    ],
+    "company_note": "Gandhidham (ROC Gujarat) sees incorporation in port logistics companies, chemical manufacturers, salt producers, and Kutch textile exporters.",
+    "gst_note": "Gandhidham's port logistics companies deal with the GST-customs interface on imports. Chemical manufacturers need ITC management. Salt producers have specific GST provisions. Kutch textile exporters need LUT filing."
+  },
+  {
+    "city": "Bhuj",
+    "state": "Gujarat",
+    "state_code": "IN-GJ",
+    "slug": "bhuj",
+    "commissionerate": "CGST Commissionerate, Kutch",
+    "zone": "Rajkot Zone",
+    "local_areas": [
+      "Kutch District HQ",
+      "Bhuj-Bhachau Highway",
+      "GIDC Bhuj",
+      "New Area",
+      "Scrap Yard Area (ship recycling)"
+    ],
+    "key_industries": [
+      "Kutch handicrafts (world-famous embroidery, weaving)",
+      "Salt production",
+      "Rann of Kutch tourism",
+      "Dairy and agro-processing",
+      "Renewable energy (Kutch solar and wind)"
+    ],
+    "intro_note": "The cultural capital of Kutch — Bhuj is world-famous for the Rann of Kutch festival, intricate Kutchi embroidery and Ajrakh block printing, the White Rann salt desert, and massive Kutch renewable energy projects.",
+    "nearby_cities": [
+      "Gandhidham",
+      "Anjar",
+      "Mandvi",
+      "Rapar"
+    ],
+    "company_note": "Bhuj (ROC Gujarat) sees incorporation in handicraft exporters, tourism businesses, salt producers, and renewable energy companies.",
+    "gst_note": "Bhuj's handicraft exporters need LUT filing for traditional art and craft exports. Tourism businesses during Rann Utsav require hotel and service GST compliance. Renewable energy companies have specific equipment GST provisions."
+  },
+  {
+    "city": "Anantapur",
+    "state": "Andhra Pradesh",
+    "state_code": "IN-AP",
+    "slug": "anantapur",
+    "commissionerate": "CGST Commissionerate, Kurnool",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "APIIC Industrial Area",
+      "Tadipatri Road",
+      "Hindupur Road",
+      "Dharmavaram",
+      "Penukonda"
+    ],
+    "key_industries": [
+      "Groundnut and oilseeds (largest groundnut district in India)",
+      "Cement manufacturing",
+      "Solar energy (AP Solar Park — world's largest)",
+      "Textile weaving (Dharmavaram silk)",
+      "Agro-processing"
+    ],
+    "intro_note": "Andhra Pradesh's groundnut capital and solar energy hub — Anantapur is India's largest groundnut producing district, home to the world's largest solar park at Kurnool-Anantapur, and Dharmavaram silk weaving.",
+    "nearby_cities": [
+      "Kurnool",
+      "Kadapa",
+      "Bellary",
+      "Hindupur"
+    ],
+    "company_note": "Anantapur (ROC AP, Hyderabad) sees incorporation in groundnut oil mills, solar energy ancillaries, textile businesses, and cement plant vendors.",
+    "gst_note": "Anantapur's groundnut oil mills deal with agricultural input exemptions versus processed oil GST. Solar energy companies have specific renewable energy equipment GST. Silk weavers need fabric GST classification."
+  },
+  {
+    "city": "Purnia",
+    "state": "Bihar",
+    "state_code": "IN-BR",
+    "slug": "purnia",
+    "commissionerate": "CGST Commissionerate, Patna",
+    "zone": "Patna Zone",
+    "local_areas": [
+      "Industrial Area Purnia",
+      "NH-31 Corridor",
+      "Bhatta Bazar",
+      "Kosi River Flood Plain",
+      "Nepal Border Trade Area"
+    ],
+    "key_industries": [
+      "Jute processing (Kosi belt jute)",
+      "Maize and agro-processing",
+      "Sugar mills",
+      "Border trade (Nepal)",
+      "Bamboo products"
+    ],
+    "intro_note": "Northeast Bihar's commercial hub and gateway to Nepal — Purnia is a major jute and maize processing centre, key border trade point with Nepal, and the commercial hub for Bihar's Kosi-Seemanchal region.",
+    "nearby_cities": [
+      "Bhagalpur",
+      "Katihar",
+      "Kishanganj",
+      "Supaul"
+    ],
+    "company_note": "Purnia (ROC Bihar) sees incorporation in jute processors, maize mills, border trade businesses, and agro-processing firms.",
+    "gst_note": "Purnia's jute processing industry has specific agricultural produce GST boundaries. Maize processors manage raw grain exemptions versus processed food GST. Border trade companies need export documentation and LUT compliance."
+  },
+  {
+    "city": "Dewas",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "dewas",
+    "commissionerate": "CGST Commissionerate, Indore",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "Industrial Area Dewas",
+      "Sector A-B-C AKVN",
+      "Pithampur Road",
+      "Maksi Road Industrial Area",
+      "Dewas Naka"
+    ],
+    "key_industries": [
+      "Pharmaceutical manufacturing (Dewas-Indore pharma belt)",
+      "Auto components",
+      "Electronic goods",
+      "Textiles",
+      "Agro-processing"
+    ],
+    "intro_note": "Madhya Pradesh's pharmaceutical and industrial satellite — Dewas is part of the Indore-Pithampur-Dewas industrial triangle, home to major pharmaceutical plants, auto component manufacturers, and electronics companies.",
+    "nearby_cities": [
+      "Indore",
+      "Ujjain",
+      "Shajapur",
+      "Sehore"
+    ],
+    "company_note": "Dewas (ROC Gwalior) sees incorporation in pharmaceutical manufacturers, auto component suppliers, and electronic goods companies in proximity to Indore's industrial belt.",
+    "gst_note": "Dewas's pharmaceutical companies need careful drug GST classification. Auto component manufacturers have multi-tier supply chain ITC compliance. Electronics businesses need HSN classification on different product categories."
+  },
+  {
+    "city": "Ratlam",
+    "state": "Madhya Pradesh",
+    "state_code": "IN-MP",
+    "slug": "ratlam",
+    "commissionerate": "CGST Commissionerate, Indore",
+    "zone": "Bhopal Zone",
+    "local_areas": [
+      "AKVN Industrial Area Ratlam",
+      "Chemical Industrial Zone",
+      "Railway Junction Area",
+      "Sailana Road",
+      "Bavadi"
+    ],
+    "key_industries": [
+      "Chemical manufacturing (soda ash, dyes, pigments)",
+      "Pharmaceutical intermediates",
+      "Sev (Ratlami sev — GI tag snack)",
+      "Agriculture (garlic, wheat)",
+      "Railway junction (large goods transit)"
+    ],
+    "intro_note": "MP's chemical city — Ratlam is a major chemical manufacturing hub producing soda ash, dyes, and pigments, world-famous for the GI-tagged Ratlami sev snack, and an important railway junction in Central India.",
+    "nearby_cities": [
+      "Indore",
+      "Ujjain",
+      "Mandsaur",
+      "Neemuch"
+    ],
+    "company_note": "Ratlam (ROC Gwalior) sees incorporation in chemical manufacturers, pharma intermediate companies, food processing businesses, and railway ancillary firms.",
+    "gst_note": "Ratlam's chemical manufacturers need careful ITC management on chemical inputs. Ratlami sev food processors apply branded versus unbranded snack GST classification. Pharma intermediate companies require drug GST compliance."
+  },
+  {
+    "city": "Khammam",
+    "state": "Telangana",
+    "state_code": "IN-TG",
+    "slug": "khammam",
+    "commissionerate": "CGST Commissionerate, Hyderabad (II)",
+    "zone": "Hyderabad Zone",
+    "local_areas": [
+      "TSIIC Industrial Area",
+      "Kothagudem Coal Mines Area",
+      "Bhadrachalam Forest Area",
+      "Wyra Road",
+      "Madhira"
+    ],
+    "key_industries": [
+      "Coal mining (Singareni Collieries)",
+      "Tobacco (India's largest tobacco producing region)",
+      "Paper mills (Sirpur Paper)",
+      "Bamboo and forest products",
+      "Agro-processing"
+    ],
+    "intro_note": "Telangana's coal and tobacco capital — Khammam district contains the Singareni Collieries' major coal mines, India's largest tobacco producing region, and the sacred Bhadrachalam on the Godavari.",
+    "nearby_cities": [
+      "Hyderabad",
+      "Warangal",
+      "Vijayawada",
+      "Bhadrachalam"
+    ],
+    "company_note": "Khammam (ROC Telangana) sees incorporation in coal companies, tobacco processors, paper manufacturers, and agro-processing businesses.",
+    "gst_note": "Khammam's coal mining companies deal with royalty reverse charge and coal extraction GST. Tobacco processors have specific GST and cess compliance requirements. Paper manufacturers need ITC management on bamboo and forest produce inputs."
+  },
+  {
+    "city": "Krishnanagar",
+    "state": "West Bengal",
+    "state_code": "IN-WB",
+    "slug": "krishnanagar",
+    "commissionerate": "CGST Commissionerate, Kolkata (North)",
+    "zone": "Kolkata Zone",
+    "local_areas": [
+      "Industrial Area Krishnanagar",
+      "Nabadwip (Cultural city)",
+      "Shantipur Handloom Hub",
+      "Plassey Road",
+      "Bethuadahari"
+    ],
+    "key_industries": [
+      "Handloom weaving (Shantipur and Fulia sarees — GI tag)",
+      "Pottery and clay dolls (Krishnanagar — world-famous)",
+      "Tourism (Nabadwip — spiritual capital)",
+      "Rice and agro-processing",
+      "Silk weaving"
+    ],
+    "intro_note": "The cultural heart of Nadia district — Krishnanagar is world-famous for its exquisitely crafted clay dolls and pottery, nearby Shantipur produces GI-tagged handloom sarees, and Nabadwip is a major Vaishnava pilgrimage site.",
+    "nearby_cities": [
+      "Kolkata",
+      "Berhampore",
+      "Barasat",
+      "Naihati"
+    ],
+    "company_note": "Krishnanagar (ROC West Bengal) sees incorporation in handloom manufacturers, handicraft exporters, rice mills, and tourism businesses.",
+    "gst_note": "Krishnanagar's handloom sarees may qualify for specific GST exemptions under the handloom sector. Handicraft exporters need LUT filing. Rice mills must distinguish between paddy and processed rice for GST classification."
+  },
+  {
+    "city": "Dharamsala",
+    "state": "Himachal Pradesh",
+    "state_code": "IN-HP",
+    "slug": "dharamsala",
+    "commissionerate": "CGST Commissionerate, Shimla",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "McLeod Ganj (Dalai Lama's seat)",
+      "Lower Dharamsala",
+      "Kangra Road",
+      "Palampur Tea Belt (nearby)",
+      "Norbulingka Institute"
+    ],
+    "key_industries": [
+      "Tourism and hospitality (Tibetan culture, Dalai Lama HQ)",
+      "Cricket (HPCA Stadium)",
+      "IT and education",
+      "Tea cultivation (Kangra tea — GI tag)",
+      "Handicrafts (Tibetan arts)"
+    ],
+    "intro_note": "The home of the Dalai Lama and Little Lhasa — Dharamsala is a world-famous spiritual and tourism destination, home to the Tibetan Government in Exile, and the gateway to Kangra valley's GI-tagged tea.",
+    "nearby_cities": [
+      "Palampur",
+      "Kangra",
+      "Una",
+      "Chamba"
+    ],
+    "company_note": "Dharamsala (ROC Himachal Pradesh) sees incorporation in tourism and hospitality businesses, tea traders, Tibetan handicraft exporters, and IT companies.",
+    "gst_note": "Dharamsala's tourism businesses require hotel and restaurant GST compliance. Kangra tea exporters need LUT filing for GI-tagged tea exports. Tibetan handicraft exporters require LUT compliance."
+  },
+  {
+    "city": "Mirzapur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "mirzapur",
+    "commissionerate": "CGST Commissionerate, Varanasi",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Carpet Weaving Area",
+      "Chunar Fort Area",
+      "Lalganj",
+      "Madhopur Industrial Area",
+      "NH-19 Corridor"
+    ],
+    "key_industries": [
+      "Carpet and durrie weaving (Mirzapur carpet belt)",
+      "Brassware",
+      "Stone quarrying (Chunar sandstone)",
+      "Agro-processing",
+      "Tourism (Vindhyavasini temple)"
+    ],
+    "intro_note": "UP's carpet capital — Mirzapur is one of India's largest carpet and durrie weaving hubs, known globally for its hand-knotted and hand-tufted carpets and rugs exported worldwide.",
+    "nearby_cities": [
+      "Varanasi",
+      "Allahabad",
+      "Sonbhadra",
+      "Robertsganj"
+    ],
+    "company_note": "Mirzapur (ROC Kanpur) sees incorporation in carpet manufacturers, exporters, brass manufacturers, and stone processors.",
+    "gst_note": "Mirzapur's carpet exporters need LUT filing and IGST refund management. Handmade carpet weaving businesses apply specific textile GST provisions. Stone quarrying involves mineral extraction GST compliance."
+  },
+  {
+    "city": "Azamgarh",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "azamgarh",
+    "commissionerate": "CGST Commissionerate, Varanasi",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Mubarakpur Silk Hub",
+      "Industrial Area Azamgarh",
+      "NH-233 Corridor",
+      "Niyamtabad Road",
+      "Mehnagar"
+    ],
+    "key_industries": [
+      "Silk and powerloom weaving (Mubarakpur silk)",
+      "Black pottery (GI tag)",
+      "Agro-processing",
+      "Government services",
+      "Education"
+    ],
+    "intro_note": "Eastern UP's commercial hub — Azamgarh is famous for Mubarakpur's silk sarees, the GI-tagged Azamgarh black pottery, and is a major agricultural trading and government services centre.",
+    "nearby_cities": [
+      "Varanasi",
+      "Mau",
+      "Jaunpur",
+      "Ballia"
+    ],
+    "company_note": "Azamgarh (ROC Kanpur) sees incorporation in silk weaving businesses, pottery exporters, agro-trading firms, and government contractors.",
+    "gst_note": "Azamgarh's silk weaving businesses need careful GST rate classification between raw silk, yarn, and finished fabric. Black pottery exporters need LUT filing for handicraft exports."
+  },
+  {
+    "city": "Jaunpur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "jaunpur",
+    "commissionerate": "CGST Commissionerate, Varanasi",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Industrial Area Jaunpur",
+      "Mariahu Sugar Belt",
+      "Kerakat",
+      "Machhali Shahar",
+      "NH-56 Corridor"
+    ],
+    "key_industries": [
+      "Sugar mills",
+      "Itr (fragrance) trading",
+      "Agro-processing",
+      "Education (VBS Purvanchal University)",
+      "Handloom weaving"
+    ],
+    "intro_note": "The Shirazi of the East — Jaunpur is a historically significant city on the Gomti river, a major sugar processing hub, and known for its fragrance ittar trading and VBS Purvanchal University.",
+    "nearby_cities": [
+      "Varanasi",
+      "Allahabad",
+      "Azamgarh",
+      "Sultanpur"
+    ],
+    "company_note": "Jaunpur (ROC Kanpur) sees incorporation in sugar mills, ittar businesses, agro-processing companies, and educational institutions.",
+    "gst_note": "Jaunpur's sugar mills apply specific agricultural-to-processed product GST. Ittar manufacturers need careful GST classification between natural and synthetic fragrances. Education institutions apply GST exemption rules."
+  },
+  {
+    "city": "Ballia",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "ballia",
+    "commissionerate": "CGST Commissionerate, Varanasi",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Sugar Mill Areas",
+      "Rasra Industrial Area",
+      "NH-31 Corridor",
+      "Bansdih",
+      "Sikandarpur"
+    ],
+    "key_industries": [
+      "Sugar manufacturing",
+      "Agro-processing (paddy, wheat)",
+      "Jaggery production",
+      "Trading",
+      "Government services"
+    ],
+    "intro_note": "UP's easternmost district and Mangal Pandey's birthplace — Ballia is a major sugar and jaggery producing hub on the Ganga-Ghaghra river plains, known as the first district to hoist the national flag during 1942 revolt.",
+    "nearby_cities": [
+      "Varanasi",
+      "Mau",
+      "Azamgarh",
+      "Buxar (Bihar)"
+    ],
+    "company_note": "Ballia (ROC Kanpur) sees incorporation in sugar mills, jaggery manufacturers, agro-trading businesses, and government contractors.",
+    "gst_note": "Ballia's sugar mills have specific GST provisions on sugarcane and by-products. Jaggery production involves careful raw cane versus finished jaggery GST classification."
+  },
+  {
+    "city": "Sultanpur",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "sultanpur",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Industrial Area Sultanpur",
+      "NH-730 Corridor",
+      "Purwa Sugar Belt",
+      "Lambhua",
+      "Musafirkhana"
+    ],
+    "key_industries": [
+      "Sugar mills",
+      "Agro-processing (paddy, wheat, mustard)",
+      "Government services",
+      "Textile trading",
+      "Real estate"
+    ],
+    "intro_note": "Central UP's agricultural hub — Sultanpur is a major sugar and paddy processing centre on the Gomti river, an important transit district between Lucknow and Varanasi, and a growing real estate market.",
+    "nearby_cities": [
+      "Lucknow",
+      "Allahabad",
+      "Amethi",
+      "Faizabad"
+    ],
+    "company_note": "Sultanpur (ROC Kanpur) sees incorporation in sugar mills, agro-processing businesses, government contractors, and real estate developers.",
+    "gst_note": "Sultanpur's sugar mills apply specific GST on sugarcane and sugar products. Paddy and wheat processors manage agricultural exemption boundaries. Textile traders need correct fabric GST classification."
+  },
+  {
+    "city": "Bahraich",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "bahraich",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Industrial Area Bahraich",
+      "Nepal Border Trade Area Rupaidiha",
+      "Nanpara Sugar Belt",
+      "Kaiserganj",
+      "Mihinpurwa"
+    ],
+    "key_industries": [
+      "Sugar manufacturing",
+      "Border trade (Nepal via Rupaidiha)",
+      "Agro-processing",
+      "Timber (Terai forests)",
+      "Government services"
+    ],
+    "intro_note": "UP's gateway to Nepal via Rupaidiha border — Bahraich is an important Nepal border trade district, major sugar producer, and gateway to the Katarniaghat Wildlife Sanctuary in the Terai region.",
+    "nearby_cities": [
+      "Lucknow",
+      "Gonda",
+      "Lakhimpur Kheri",
+      "Rupaidia (Nepal border)"
+    ],
+    "company_note": "Bahraich (ROC Kanpur) sees incorporation in sugar mills, border trade businesses, timber traders, and agro-processing companies.",
+    "gst_note": "Bahraich's border trade companies handling exports to Nepal need careful export documentation and LUT compliance. Sugar mills apply specific agricultural-to-processed product GST. Timber businesses apply forest produce GST rules."
+  },
+  {
+    "city": "Gonda",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "gonda",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Industrial Area Gonda",
+      "Mankapur Sugar Belt",
+      "Itiyathok",
+      "Utraula",
+      "Paraspur"
+    ],
+    "key_industries": [
+      "Sugar manufacturing (Gonda-Basti sugar belt)",
+      "Agro-processing (paddy, wheat)",
+      "Timber",
+      "Government services",
+      "Pilgrimage tourism (Shravan Nath temple)"
+    ],
+    "intro_note": "Western Awadh's agricultural hub — Gonda is a major sugar producing district in the Gonda-Basti sugar belt, an important agro-processing and timber centre, and gateway to Ayodhya.",
+    "nearby_cities": [
+      "Lucknow",
+      "Faizabad",
+      "Bahraich",
+      "Basti"
+    ],
+    "company_note": "Gonda (ROC Kanpur) sees incorporation in sugar mills, agro-processing businesses, timber traders, and government contractors.",
+    "gst_note": "Gonda's sugar mills have specific GST provisions on sugarcane, sugar output, and by-products. Timber businesses apply forest produce and plywood GST rules. Agro-processors manage agricultural exemption boundaries."
+  },
+  {
+    "city": "Faizabad",
+    "state": "Uttar Pradesh",
+    "state_code": "IN-UP",
+    "slug": "faizabad",
+    "commissionerate": "CGST Commissionerate, Lucknow",
+    "zone": "Lucknow Zone",
+    "local_areas": [
+      "Ayodhya Ram Mandir Area",
+      "Faizabad Market",
+      "Industrial Area Faizabad",
+      "Sahadatganj",
+      "Bikapur"
+    ],
+    "key_industries": [
+      "Religious tourism (Ayodhya Ram Temple — world's largest pilgrimage)",
+      "Agro-processing",
+      "Handloom weaving",
+      "Government services",
+      "Real estate (Ayodhya development boom)"
+    ],
+    "intro_note": "Gateway to Ayodhya and Lord Ram's birthplace — Faizabad-Ayodhya is experiencing a massive tourism and real estate boom following the Ram Temple consecration, attracting pilgrims from across the world.",
+    "nearby_cities": [
+      "Lucknow",
+      "Gonda",
+      "Sultanpur",
+      "Ambedkarnagar"
+    ],
+    "company_note": "Faizabad (ROC Kanpur) sees high incorporation in tourism and hospitality businesses, real estate developers, religious trust entities, and government contractors due to Ayodhya development.",
+    "gst_note": "Faizabad's booming hospitality sector requires hotel and restaurant GST compliance. Religious trusts have specific GST exemption status. Real estate developers apply GST on construction services."
+  },
+  {
+    "city": "Port Blair",
+    "state": "Andaman & Nicobar Islands",
+    "state_code": "IN-AN",
+    "slug": "port-blair",
+    "commissionerate": "CGST Commissionerate, Chennai (North)",
+    "zone": "Chennai Zone",
+    "local_areas": [
+      "Aberdeen Bazaar",
+      "Haddo",
+      "Prothrapur",
+      "Minnie Bay",
+      "Chatham Saw Mill Area"
+    ],
+    "key_industries": [
+      "Tourism and hospitality",
+      "Government and administration",
+      "Fishing and seafood",
+      "Timber (limited, protected forests)",
+      "Defence (strategic naval base)"
+    ],
+    "intro_note": "India's island paradise and strategic naval base — Port Blair is the capital of the Andaman and Nicobar Islands, India's premier eco-tourism destination, and home to a significant defence establishment.",
+    "nearby_cities": [
+      "Chennai",
+      "Kolkata",
+      "Visakhapatnam (nearest mainland)"
+    ],
+    "company_note": "Port Blair (ROC Tamil Nadu) sees incorporation in tourism businesses, hospitality companies, seafood exporters, and government contractors.",
+    "gst_note": "Port Blair's tourism businesses require hotel and restaurant GST compliance. Seafood exporters need LUT filing. Government contractors deal with TDS under GST provisions."
+  },
+  {
+    "city": "Kavaratti",
+    "state": "Lakshadweep",
+    "state_code": "IN-LD",
+    "slug": "kavaratti",
+    "commissionerate": "CGST Commissionerate, Kochi",
+    "zone": "Kochi Zone",
+    "local_areas": [
+      "Kavaratti Island",
+      "Administrative Area",
+      "Fishing Jetty",
+      "Agatti Island (airport)"
+    ],
+    "key_industries": [
+      "Tourism and eco-tourism",
+      "Fishing and seafood exports",
+      "Coir products",
+      "Government administration",
+      "Coconut products"
+    ],
+    "intro_note": "The coral island capital — Kavaratti is the administrative capital of India's smallest Union Territory by area, a pristine eco-tourism destination, and a major fishing and coir products hub.",
+    "nearby_cities": [
+      "Kochi",
+      "Kozhikode",
+      "Kannur"
+    ],
+    "company_note": "Kavaratti (ROC Kerala) sees incorporation in tourism businesses, fishing companies, coir product firms, and government contractors.",
+    "gst_note": "Kavaratti's tourism businesses require hotel and service GST compliance. Fishing and seafood businesses apply aquaculture GST provisions. Coir product exporters need LUT filing for natural coir exports."
+  },
+  {
+    "city": "Leh",
+    "state": "Ladakh",
+    "state_code": "IN-LA",
+    "slug": "leh",
+    "commissionerate": "CGST Commissionerate, Jammu",
+    "zone": "Chandigarh Zone",
+    "local_areas": [
+      "Leh Main Bazaar",
+      "Changspa",
+      "Choglamsar",
+      "Spituk",
+      "Shey",
+      "Khardung La Tourism Area"
+    ],
+    "key_industries": [
+      "Tourism and adventure sports (world's highest motorable pass)",
+      "Government and defence (Siachen proximity)",
+      "Agriculture (apricots, apples at high altitude)",
+      "Handicrafts (Ladakhi shawls, thangkas)",
+      "Renewable energy (solar in cold desert)"
+    ],
+    "intro_note": "The land of high passes — Leh is India's highest large town, a world-famous adventure tourism destination, a strategic defence hub, and the cultural heart of the Buddhist Ladakhi civilization.",
+    "nearby_cities": [
+      "Kargil",
+      "Srinagar",
+      "Manali"
+    ],
+    "company_note": "Leh (ROC J&K) sees incorporation in tourism and adventure sports businesses, handicraft exporters, agricultural companies, and defence ancillary firms.",
+    "gst_note": "Leh's tourism businesses require hotel and restaurant GST compliance. Handicraft exporters need LUT filing. Agricultural produce from high-altitude farming applies standard agricultural exemption rules."
+  },
+  {
+    "city": "Tiruvannamalai",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "tiruvannamalai",
+    "commissionerate": "CGST Commissionerate, Chennai (North)",
+    "zone": "Chennai Zone",
+    "local_areas": [
+      "Girivalam Road",
+      "Industrial Estate Tiruvannamalai",
+      "Arulmigu Arunachaleswarar Temple Area",
+      "Polur Road",
+      "Venbakkam"
+    ],
+    "key_industries": [
+      "Tourism and pilgrimage (Arunachaleswarar Temple)",
+      "Mango and agro-processing",
+      "Granite quarrying",
+      "Handloom weaving",
+      "Education"
+    ],
+    "intro_note": "The city of the sacred fire hill — Tiruvannamalai is home to the ancient Arunachaleswarar temple, one of Tamil Nadu's most visited pilgrimage sites, and a major granite quarrying and mango processing hub.",
+    "nearby_cities": [
+      "Chennai",
+      "Vellore",
+      "Salem",
+      "Villupuram"
+    ],
+    "company_note": "Tiruvannamalai (ROC Tamil Nadu) sees incorporation in tourism and hospitality businesses, granite quarrying companies, mango exporters, and educational institutions.",
+    "gst_note": "Tiruvannamalai's tourism sector requires hotel and restaurant GST compliance near the temple. Granite quarrying businesses manage mineral extraction and finished product GST. Mango exporters need LUT filing."
+  },
+  {
+    "city": "Dindigul",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "dindigul",
+    "commissionerate": "CGST Commissionerate, Madurai",
+    "zone": "Madurai Zone",
+    "local_areas": [
+      "SIPCOT Industrial Estate",
+      "Palani Road",
+      "NH-44 Corridor",
+      "Batlagundu",
+      "Lock Factory Area"
+    ],
+    "key_industries": [
+      "Locks and lock manufacturing (Dindigul lock — India's most trusted)",
+      "Tanning and leather",
+      "Granite quarrying",
+      "Textile spinning",
+      "Agro-processing"
+    ],
+    "intro_note": "Tamil Nadu's lock city — Dindigul is world-famous for the Dindigul lock, India's most trusted lock brand, and is also a major leather tanning, granite, and textile spinning hub.",
+    "nearby_cities": [
+      "Madurai",
+      "Coimbatore",
+      "Palani",
+      "Kodaikanal"
+    ],
+    "company_note": "Dindigul (ROC Tamil Nadu) sees incorporation in lock manufacturers, tanneries, granite businesses, and textile spinning companies.",
+    "gst_note": "Dindigul's lock manufacturers need careful HSN classification between different lock types and security mechanisms. Leather tanneries deal with raw hide exemptions versus processed leather GST. Granite exporters need LUT filing."
+  },
+  {
+    "city": "Nagapattinam",
+    "state": "Tamil Nadu",
+    "state_code": "IN-TN",
+    "slug": "nagapattinam",
+    "commissionerate": "CGST Commissionerate, Madurai",
+    "zone": "Madurai Zone",
+    "local_areas": [
+      "Nagapattinam Port Area",
+      "Velankanni Pilgrimage Area",
+      "ONGC Nagapattinam",
+      "Sirkazhi",
+      "Mayiladuthurai"
+    ],
+    "key_industries": [
+      "Petroleum (ONGC offshore)",
+      "Fishing and seafood exports",
+      "Tourism (Velankanni — Our Lady's Shrine)",
+      "Agriculture (paddy, banana)",
+      "Cauvery delta agro-processing"
+    ],
+    "intro_note": "Tamil Nadu's port and pilgrimage city — Nagapattinam is home to ONGC's offshore operations, the world-famous Velankanni Our Lady's Shrine attracting millions of pilgrims, and a major fishing port.",
+    "nearby_cities": [
+      "Thanjavur",
+      "Tiruchirappalli",
+      "Cuddalore",
+      "Karaikal"
+    ],
+    "company_note": "Nagapattinam (ROC Tamil Nadu) sees incorporation in petroleum ancillary businesses, seafood exporters, tourism companies, and agro-processing firms.",
+    "gst_note": "Nagapattinam's ONGC ancillary businesses deal with upstream petroleum GST. Seafood exporters require LUT filing. Velankanni tourism businesses need hotel and service GST compliance."
+  },
+  {
+    "city": "Shimoga",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "shimoga",
+    "commissionerate": "CGST Commissionerate, Bangalore (North)",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "Industrial Area Shimoga",
+      "Bhadravati Steel Area",
+      "NH-206 Corridor",
+      "Sagar Road",
+      "Shivamogga Airport Area"
+    ],
+    "key_industries": [
+      "Steel manufacturing (Visvesvaraya Iron and Steel Plant, Bhadravati)",
+      "Arecanut and spice trading (Malnad belt)",
+      "Agro-processing",
+      "Tourism (Jog Falls)",
+      "Education"
+    ],
+    "intro_note": "Karnataka's Malnad gateway and steel hub — Shimoga is the commercial centre for Karnataka's Western Ghats region, home to the historic Visvesvaraya Iron and Steel Plant at Bhadravati, and gateway to Jog Falls.",
+    "nearby_cities": [
+      "Davangere",
+      "Chitradurga",
+      "Udupi",
+      "Chikkamagaluru"
+    ],
+    "company_note": "Shimoga (ROC Karnataka) sees incorporation in steel ancillary companies, arecanut traders, tourism businesses, and agro-processing firms.",
+    "gst_note": "Shimoga's steel plant vendors deal with capital goods ITC. Arecanut traders apply agricultural exemption rules. Tourism businesses near Jog Falls need hotel and service GST compliance."
+  },
+  {
+    "city": "Hassan",
+    "state": "Karnataka",
+    "state_code": "IN-KA",
+    "slug": "hassan",
+    "commissionerate": "CGST Commissionerate, Bangalore (North)",
+    "zone": "Bangalore Zone",
+    "local_areas": [
+      "Hassan Industrial Area KIADB",
+      "Sakleshpur Coffee Belt",
+      "Holenarasipur",
+      "Belur Road",
+      "Arsikere Junction"
+    ],
+    "key_industries": [
+      "Coffee cultivation and processing (Sakleshpur-Hassan coffee belt)",
+      "Arecanut and coconut",
+      "Tourism (Hoysala temples — UNESCO)",
+      "Silk weaving",
+      "Agro-processing"
+    ],
+    "intro_note": "Karnataka's coffee and heritage corridor — Hassan district is the heart of Karnataka's coffee growing region, gateway to the exquisite UNESCO-listed Hoysala temples at Belur and Halebidu, and a major arecanut hub.",
+    "nearby_cities": [
+      "Mysuru",
+      "Mangaluru",
+      "Shimoga",
+      "Bangalore"
+    ],
+    "company_note": "Hassan (ROC Karnataka) sees incorporation in coffee exporters, agro-processing businesses, tourism companies, and silk weaving firms.",
+    "gst_note": "Hassan's coffee exporters need LUT filing and IGST refund management on coffee exports. Arecanut traders apply agricultural exemption rules. Tourism businesses near Hoysala temples need hotel GST compliance."
   }
 ]
