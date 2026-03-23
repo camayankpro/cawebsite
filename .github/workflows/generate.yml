@@ -19,71 +19,78 @@ on:
     - cron: '30 3 1 * *'
 
   # 3. Manually from GitHub → Actions tab → "Run workflow" button
-  #    Use this when you update your Google Sheet and want to regenerate
   workflow_dispatch:
     inputs:
       services:
-        description: 'Which services to generate? Comma-separated, e.g. gst,itr or leave blank for all 24'
+        description: 'Services to generate (comma-separated, e.g. gst,itr) — leave blank for all 24'
         required: false
         default: ''
       use_ai:
-        description: 'Use AI for unique city intros? New pages only (true or false)'
+        description: 'AI intros for new pages only? (true/false)'
         required: false
         default: 'false'
       force_ai:
-        description: 'Force AI intros on ALL pages including existing ones? (true or false)'
+        description: 'Force AI intros on ALL pages including existing? (true/false)'
         required: false
         default: 'false'
 
 # ════════════════════════════════════════════════════════════
-#  GOOGLE SHEET SETUP (read carefully)
+#  GOOGLE SHEET SETUP
 # ════════════════════════════════════════════════════════════
 #
-#  To use Google Sheet as your cities database instead of cities.json:
+#  Your cities database lives in Google Sheets — 202 cities, 12 columns.
 #
-#  Step 1 — Create a Google Sheet with these EXACT column headers in row 1:
+#  If you ever need to update the sheet URL:
+#  Step 1 — Open your Google Sheet
+#  Step 2 — File → Share → Publish to web
+#           → Select your sheet tab → Select "Comma-separated values (.csv)"
+#           → Click Publish → Copy the URL
+#  Step 3 — GitHub repo → Settings → Secrets → Actions
+#           → Update secret: SHEET_CSV_URL → paste new URL
+#
+#  Required columns (row 1 headers):
 #    city | state | state_code | slug | commissionerate | zone |
 #    local_areas | key_industries | intro_note | nearby_cities |
 #    company_note | gst_note
 #
-#  Step 2 — For local_areas, key_industries, nearby_cities columns:
+#  For local_areas, key_industries, nearby_cities:
 #    Separate multiple values with a pipe |
-#    Example in a cell: Whitefield|Electronic City|Koramangala
+#    Example: Whitefield|Electronic City|Koramangala
 #
-#  Step 3 — Publish the sheet as CSV:
-#    File → Share → Publish to web
-#    → Select your sheet tab → Select "Comma-separated values (.csv)"
-#    → Click Publish → Copy the URL shown
+# ════════════════════════════════════════════════════════════
+#  AI INTROS SETUP (Google Gemini — Free)
+# ════════════════════════════════════════════════════════════
 #
-#  Step 4 — Save that URL as a GitHub Secret:
-#    Your repo → Settings → Secrets and variables → Actions
-#    → New repository secret
-#    → Name:  SHEET_CSV_URL
-#    → Value: paste the Google Sheet CSV URL
-#    → Click "Add secret"
+#  1. Go to aistudio.google.com (use a fresh Google account)
+#  2. Click "Get API key" → "Create API key" → copy the key
+#  3. GitHub repo → Settings → Secrets → Actions
+#     → Add secret: GEMINI_API_KEY → paste key
+#  4. Run workflow with force_ai = true
 #
-#  That's it! The workflow will automatically read from your Google Sheet.
-#  When you add a new row in the sheet → click "Run workflow" below → done.
+#  Free limits: 1,500 requests/day, 15 req/min
+#  With 202 cities: run 4 services/day safely (808 requests)
+#  Full AI intros across all 24 services takes ~6 days
+#  Run after 12:30 PM IST (Gemini quota resets at midnight US Pacific)
+#
+#  DAY-WISE SCHEDULE (after 12:30 PM IST each day):
+#  Day 1:  gst,company,itr,trademark
+#  Day 2:  msme,llp,partnership,roc
+#  Day 3:  iec,gst-return,tds,gst-cancellation
+#  Day 4:  gst-notice,business-loan,itr-freelancers,itr-doctors
+#  Day 5:  ecommerce-gst,capital-gains,itr-creators,restaurant-gst
+#  Day 6:  export-lut,gst-pharma,accounting-it,tds-contractors
 #
 # ════════════════════════════════════════════════════════════
 #  BING WEBMASTER TOOLS SETUP (covers Yahoo + DuckDuckGo)
 # ════════════════════════════════════════════════════════════
 #
-#  Yahoo and DuckDuckGo both use Bing's search index.
-#  Submitting your sitemap to Bing covers all three automatically.
-#
 #  Step 1 — Go to: https://www.bing.com/webmasters
 #  Step 2 — Sign in with a Microsoft account (free)
-#  Step 3 — Click "Add a site" → enter https://taxamc.com
-#  Step 4 — Verify ownership (easiest: add the HTML meta tag to your index.html)
-#  Step 5 — Go to "Sitemaps" → Submit → type: sitemap-cities.xml → Submit
+#  Step 3 — Add site → enter https://taxamc.com
+#  Step 4 — Verify ownership (add the HTML meta tag to index.html)
+#  Step 5 — Sitemaps → Submit → sitemap-cities.xml
 #
-#  After this, every ping to Bing in this workflow also refreshes
-#  your pages on Yahoo and DuckDuckGo. No further action needed.
-#
-#  OPTIONAL — Save your Bing API key for programmatic submission:
-#    Settings → API Access → Generate API Key
-#    Save as GitHub Secret named: BING_API_KEY
+#  OPTIONAL — Save Bing API key as GitHub Secret: BING_API_KEY
 #
 # ════════════════════════════════════════════════════════════
 
@@ -112,7 +119,7 @@ jobs:
       # ── 4. Run the generator ──────────────────────────────
       - name: Generate city pages
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PYTHONUNBUFFERED: "1"
         run: |
           CMD="python generate.py"
@@ -120,8 +127,7 @@ jobs:
           CMD="$CMD --cities cities.json"
           CMD="$CMD --templates templates"
 
-          # If a specific services list was provided via manual trigger, use it.
-          # Otherwise omit --services entirely so generate.py uses its own default (all 24).
+          # Use specific services if provided, otherwise generate all 24
           SVCS="${{ github.event.inputs.services }}"
           if [ -n "$SVCS" ]; then
             CMD="$CMD --services \"$SVCS\""
@@ -129,7 +135,7 @@ jobs:
 
           CMD="$CMD --ping"
 
-          # Use Google Sheet if the secret is set
+          # Use Google Sheet if the secret is set (recommended — 202 cities)
           SHEET="${{ secrets.SHEET_CSV_URL }}"
           if [ -n "$SHEET" ]; then
             echo "📊 Google Sheet URL found — reading cities from sheet"
@@ -138,17 +144,20 @@ jobs:
             echo "📄 No Google Sheet URL set — using cities.json"
           fi
 
-          # Enable AI intros if requested
-          if [ "${{ github.event.inputs.force_ai }}" = "true" ]; then
+          # AI intros — case-insensitive true/false handling
+          FORCE_AI=$(echo "${{ github.event.inputs.force_ai }}" | tr '[:upper:]' '[:lower:]')
+          USE_AI=$(echo "${{ github.event.inputs.use_ai }}" | tr '[:upper:]' '[:lower:]')
+
+          if [ "$FORCE_AI" = "true" ]; then
             CMD="$CMD --force-ai"
-          elif [ "${{ github.event.inputs.use_ai }}" = "true" ]; then
+          elif [ "$USE_AI" = "true" ]; then
             CMD="$CMD --ai"
           fi
 
           echo "Running: $CMD"
           eval $CMD
 
-      # ── 5. Also ping Bing with API key if available ───────
+      # ── 5. Ping Bing with API key if available ────────────
       - name: Ping Bing Webmaster API (covers Yahoo + DuckDuckGo)
         run: |
           BING_KEY="${{ secrets.BING_API_KEY }}"
@@ -161,16 +170,14 @@ jobs:
             echo "✓ Bing API submission done (covers Yahoo + DuckDuckGo)"
           else
             echo "No BING_API_KEY secret set — skipping API submission"
-            echo "(Bing was already pinged via URL ping in the generator)"
           fi
 
-      # ── 6. Commit all generated files back to your repo ───
+      # ── 6. Commit all generated files back to repo ────────
       - name: Commit and push generated pages
         run: |
           git config --local user.email "generator@taxamc.com"
           git config --local user.name "TaxAMC Generator Bot"
 
-          # Add ALL generated article pages (covers all 24 services × 74 cities)
           git add article-*.html                       2>/dev/null || true
           git add sitemap-cities.xml                   2>/dev/null || true
           git add _generated_pages.csv                 2>/dev/null || true
