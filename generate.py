@@ -321,28 +321,45 @@ Rules:
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
+                # Read error body to distinguish rate-limit vs quota exhaustion
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
 
-                # Only declare daily quota exhausted after 10 consecutive 429s
-                # across different cities — this rules out per-minute bursts
-                if get_ai_intro._consecutive_429s >= 10:
-                    print(f"    ⚠ Gemini daily quota exhausted after "
-                          f"{get_ai_intro._consecutive_429s} consecutive rate limits. "
-                          f"Switching to default intros for all remaining pages.")
+                # RESOURCE_EXHAUSTED = true daily quota gone (rare on fresh keys)
+                # RATE_LIMIT_EXCEEDED = per-minute limit (common from GitHub Actions IPs)
+                # GitHub Actions IPs often return RESOURCE_EXHAUSTED falsely — treat as rate limit
+                is_true_exhaustion = (
+                    "RESOURCE_EXHAUSTED" in err_body and
+                    "per_day" in err_body.lower()  # only true exhaustion mentions per_day
+                )
+
+                if is_true_exhaustion:
+                    print(f"    ✗ Gemini daily quota truly exhausted — switching to default intros.")
                     get_ai_intro._quota_exhausted = True
                     return city_data["intro_note"]
 
-                # Per-minute rate limit — wait longer before retrying
-                # 30s → 60s → 90s → 120s → 120s
-                wait = min(30 * attempt, 120)
+                # Otherwise treat as per-minute/IP rate limit — wait and retry
+                get_ai_intro._consecutive_429s = getattr(get_ai_intro, "_consecutive_429s", 0) + 1
+                wait = min(30 * attempt, 60)  # 30s → 60s max
                 print(f"    ⏳ Gemini rate limit for {city_data['city']} "
                       f"(attempt {attempt}/{MAX_RETRIES}) — waiting {wait}s...")
+                if err_body:
+                    # Show error type to help diagnose
+                    err_type = "RATE_LIMIT_EXCEEDED" if "RATE_LIMIT_EXCEEDED" in err_body else "RESOURCE_EXHAUSTED"
+                    print(f"      ({err_type})")
                 time.sleep(wait)
                 if attempt == MAX_RETRIES:
-                    print(f"    ⚠ Gemini gave up for {city_data['city']} after {MAX_RETRIES} attempts — using default intro")
+                    print(f"    ⚠ Gemini gave up for {city_data['city']} — using default intro")
+                    get_ai_intro._consecutive_429s = 0
                     return city_data["intro_note"]
             else:
-                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} {e.reason} — using default intro")
+                try:
+                    err_body = e.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    err_body = ""
+                print(f"    ⚠ Gemini failed for {city_data['city']}: HTTP {e.code} — {err_body[:100]}")
                 return city_data["intro_note"]
 
         except Exception as e:
@@ -355,58 +372,12 @@ Rules:
 
 def check_gemini_quota(api_key):
     """
-    Make a minimal test call to Gemini before starting the run.
-    Returns True if quota is available, False only if DAILY quota is exhausted.
-
-    Gemini uses HTTP 429 for two distinct situations:
-      - Per-minute rate limit (RATE_LIMIT_EXCEEDED)  → retryable, wait and retry
-      - Daily quota exhausted (RESOURCE_EXHAUSTED)   → not retryable today
-
-    We read the response body to tell them apart, and retry up to 3 times
-    (with 20s waits) on per-minute limits before giving up.
+    Skip upfront quota check — GitHub Actions IPs get false RESOURCE_EXHAUSTED
+    from Gemini even on fresh keys. Just confirm key is present and proceed.
+    Per-city failures are handled gracefully in get_ai_intro().
     """
-    print("  Checking Gemini API quota...")
-    body = json.dumps({
-        "contents": [{"parts": [{"text": "Say OK"}]}],
-        "generationConfig": {"maxOutputTokens": 5}
-    }).encode("utf-8")
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
-
-    for attempt in range(1, 4):  # up to 3 attempts
-        try:
-            req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                print("  ✓ Gemini quota available — proceeding with AI intros")
-                return True
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                # Read the error body to distinguish rate-limit vs daily quota
-                try:
-                    err_body = e.read().decode("utf-8", errors="ignore")
-                except Exception:
-                    err_body = ""
-                if "RESOURCE_EXHAUSTED" in err_body or "quota" in err_body.lower():
-                    # Daily quota genuinely exhausted — no point retrying
-                    print(f"  ✗ Gemini daily quota exhausted (HTTP 429 / RESOURCE_EXHAUSTED).")
-                    print(f"    Quota resets at midnight US Pacific time (12:30 PM IST).")
-                    print(f"    Re-run after that time. Pages will be generated without AI intros for now.")
-                    return False
-                else:
-                    # Per-minute rate limit — wait and retry
-                    if attempt < 3:
-                        print(f"  ⏳ Gemini per-minute rate limit hit (attempt {attempt}/3). Waiting 20s...")
-                        time.sleep(20)
-                        continue
-                    else:
-                        print(f"  ✗ Gemini rate limit persists after 3 attempts — proceeding without AI intros.")
-                        return False
-            else:
-                print(f"  ⚠ Gemini test call failed: HTTP {e.code} — proceeding without AI intros")
-                return False
-        except Exception as e:
-            print(f"  ⚠ Gemini test call failed: {e} — proceeding without AI intros")
-            return False
-    return False
+    print("  ✓ Gemini API key found — proceeding with AI intros")
+    return True
 
 # ─── STEP 3 — BUILD HTML PAGES ────────────────────────────────────────────────
 
