@@ -651,6 +651,8 @@ def main():
             args.ai = args.force_ai = False
             api_key = None
 
+    cities    = load_cities(args.cities, args.sheet)
+
     print(f"\n{'='*60}")
     print(f"  TaxAMC Static Site Generator")
     print(f"  Services   : {', '.join(services)} ({len(services)} services × {len(cities)} cities = {len(services)*len(cities)} pages)")
@@ -658,8 +660,6 @@ def main():
     print(f"  Data source: {'Google Sheet' if args.sheet else 'cities.json'}")
     print(f"  AI intros  : {'Force (all pages)' if args.force_ai else 'Yes (new pages only)' if args.ai else 'No'}")
     print(f"{'='*60}")
-
-    cities    = load_cities(args.cities, args.sheet)
     env       = build_env(args.templates)
     generated = generate_pages(cities, env, args.output, services, args.ai, api_key, force_ai=args.force_ai)
 
