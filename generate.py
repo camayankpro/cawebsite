@@ -177,6 +177,36 @@ SERVICES = {
         "label":       "TDS for Contractors",
         "priority":    "0.7",
     },
+    "itr-salaried": {
+        "template":    "itr-salaried.html",
+        "slug_prefix": "article-itr-salaried",
+        "label":       "ITR for Salaried Employees",
+        "priority":    "0.7",
+    },
+    "gst-composition": {
+        "template":    "gst-composition.html",
+        "slug_prefix": "article-gst-composition",
+        "label":       "GST Composition Scheme",
+        "priority":    "0.7",
+    },
+    "itr-business-owners": {
+        "template":    "itr-business-owners.html",
+        "slug_prefix": "article-itr-business-owners",
+        "label":       "ITR for Business Owners",
+        "priority":    "0.7",
+    },
+    "pan-card": {
+        "template":    "pan-card-city.html",
+        "slug_prefix": "article-pan-card",
+        "label":       "PAN Card Services",
+        "priority":    "0.7",
+    },
+    "itr-nri": {
+        "template":    "itr-nri-city.html",
+        "slug_prefix": "article-itr-nri",
+        "label":       "NRI Income Tax",
+        "priority":    "0.7",
+    },
 }
 
 # ─── STEP 1 — LOAD CITIES DATA ────────────────────────────────────────────────
@@ -302,7 +332,7 @@ Rules:
         "generationConfig": {"maxOutputTokens": 300, "temperature": 0.7}
     }).encode("utf-8")
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent?key={api_key}"
 
     # Per-minute limit: wait up to 5 minutes with increasing delays
     # Daily quota: if STILL failing after 5 long retries, give up for the whole run
