@@ -1,0 +1,139 @@
+name: TaxAMC — Generate Industry-Specific Pages
+
+# ════════════════════════════════════════════════════════════
+#  WHEN DOES THIS RUN?
+# ════════════════════════════════════════════════════════════
+on:
+
+  # 1. Automatically when you push changes to these files
+  push:
+    branches: [ main ]
+    paths:
+      - 'industries.json'
+      - 'templates/industry.html'
+      - 'generate_industry.py'
+
+  # 2. Automatically on the 3rd of every month at 9:00 AM IST
+  schedule:
+    - cron: '30 3 3 * *'
+
+  # 3. Manually from GitHub → Actions → "Run workflow"
+  workflow_dispatch:
+    inputs:
+      ping:
+        description: 'Ping search engines after generation? (true/false)'
+        required: false
+        default: 'true'
+
+# ════════════════════════════════════════════════════════════
+#  HOW TO ADD MORE INDUSTRIES
+# ════════════════════════════════════════════════════════════
+#
+#  1. Open industries.json in your repo
+#  2. Add a new entry following the same format:
+#     {
+#       "slug": "your-industry-slug",
+#       "name": "Full Industry Name",
+#       "short_name": "Short Name",
+#       "hsn_codes": ["1234", "5678"],
+#       "gst_rates": "18% on most products...",
+#       "key_industries": ["Sub-sector 1", "Sub-sector 2"],
+#       "hubs": ["City 1", "City 2", "City 3"],
+#       "specific_issues": ["Issue 1", "Issue 2", "Issue 3"],
+#       "deductions": ["Deduction 1", "Deduction 2"],
+#       "intro": "Opening paragraph about this industry..."
+#     }
+#  3. Commit and push — this workflow runs automatically
+#
+#  Each industry generates 1 page:
+#    - article-industry-{slug}.html
+#
+#  Suggested industries to add next:
+#    - Dairy Farming & Processing
+#    - Brick & Tile Manufacturers
+#    - Mining & Quarrying
+#    - Aquaculture & Fisheries
+#    - Solar Energy Companies
+#    - Healthcare & Hospitals
+#    - Education Institutions
+#    - NBFCs & Microfinance
+#
+# ════════════════════════════════════════════════════════════
+
+jobs:
+  generate-industry:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ── 1. Download repository ────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 2. Install Python ─────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── 3. Install dependencies ───────────────────────────
+      - name: Install dependencies
+        run: pip install jinja2
+
+      # ── 4. Run the industry page generator ────────────────
+      - name: Generate industry-specific pages
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          echo "🏭 Starting Industry Page Generator..."
+          python generate_industry.py \
+            --output . \
+            --industries industries.json \
+            --templates templates
+          echo "✅ Industry pages generated"
+
+      # ── 5. Ping search engines ────────────────────────────
+      - name: Ping search engines
+        run: |
+          PING="${{ github.event.inputs.ping }}"
+          PING=$(echo "${PING:-true}" | tr '[:upper:]' '[:lower:]')
+          if [ "$PING" = "true" ]; then
+            SITEMAP="https://taxamc.com/sitemap-industry.xml"
+            ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${SITEMAP}', safe=''))")
+
+            echo "Pinging Google..."
+            curl -s "https://www.google.com/ping?sitemap=${ENCODED}" -o /dev/null -w "  Google: HTTP %{http_code}\n"
+
+            echo "Pinging Bing..."
+            curl -s "https://www.bing.com/ping?sitemap=${ENCODED}" -o /dev/null -w "  Bing: HTTP %{http_code}\n"
+
+            BING_KEY="${{ secrets.BING_API_KEY }}"
+            if [ -n "$BING_KEY" ]; then
+              curl -s -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitSitemap?apikey=${BING_KEY}" \
+                -H "Content-Type: application/json; charset=utf-8" \
+                -d "{\"siteUrl\":\"https://taxamc.com\",\"sitemap\":\"${SITEMAP}\"}" > /dev/null
+              echo "  ✓ Bing API submission done"
+            fi
+          else
+            echo "Skipping search engine ping"
+          fi
+
+      # ── 6. Commit and push generated files ────────────────
+      - name: Commit and push industry pages
+        run: |
+          git config --local user.email "generator@taxamc.com"
+          git config --local user.name "TaxAMC Generator Bot"
+
+          git add article-industry-*.html                  2>/dev/null || true
+          git add sitemap-industry.xml                     2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "✓ No changes — all industry pages already up to date."
+          else
+            PAGE_COUNT=$(git diff --staged --name-only | grep -c "\.html$" || echo "0")
+            git commit -m "🏭 Auto-generated ${PAGE_COUNT} industry pages [$(date '+%d %b %Y')]"
+            git push
+            echo "✅ Committed and pushed ${PAGE_COUNT} industry pages."
+          fi

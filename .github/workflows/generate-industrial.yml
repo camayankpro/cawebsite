@@ -1,0 +1,137 @@
+name: TaxAMC — Generate Industrial Area Pages
+
+# ════════════════════════════════════════════════════════════
+#  WHEN DOES THIS RUN?
+# ════════════════════════════════════════════════════════════
+on:
+
+  # 1. Automatically when you push changes to these files
+  push:
+    branches: [ main ]
+    paths:
+      - 'industrial_areas.json'
+      - 'templates/industrial-area.html'
+      - 'generate_industrial.py'
+
+  # 2. Automatically on the 2nd of every month at 9:00 AM IST
+  schedule:
+    - cron: '30 3 2 * *'
+
+  # 3. Manually from GitHub → Actions → "Run workflow"
+  workflow_dispatch:
+    inputs:
+      ping:
+        description: 'Ping search engines after generation? (true/false)'
+        required: false
+        default: 'true'
+
+# ════════════════════════════════════════════════════════════
+#  HOW TO ADD MORE INDUSTRIAL AREAS
+# ════════════════════════════════════════════════════════════
+#
+#  1. Open industrial_areas.json in your repo
+#  2. Add a new entry following the same format:
+#     {
+#       "name": "XYZ Industrial Area",
+#       "slug": "xyz-industrial",
+#       "city": "City Name",
+#       "district": "District Name",
+#       "state": "State Name",
+#       "state_code": "IN-XX",
+#       "key_industries": ["Industry 1", "Industry 2"],
+#       "nearby_areas": ["Nearby 1", "Nearby 2"],
+#       "intro_note": "Description of the industrial area..."
+#     }
+#  3. Commit and push — this workflow runs automatically
+#
+#  Each area generates 5 pages:
+#    - article-ca-{slug}.html       (combined all-services page)
+#    - article-gst-{slug}.html      (GST registration & returns)
+#    - article-msme-{slug}.html     (MSME registration)
+#    - article-itr-business-owners-{slug}.html (ITR for business owners)
+#    - article-tds-contractors-{slug}.html     (TDS for contractors)
+#
+# ════════════════════════════════════════════════════════════
+
+jobs:
+  generate-industrial:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ── 1. Download repository ────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 2. Install Python ─────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── 3. Install dependencies ───────────────────────────
+      - name: Install dependencies
+        run: pip install jinja2
+
+      # ── 4. Run the industrial area generator ──────────────
+      - name: Generate industrial area pages
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          echo "🏭 Starting Industrial Area Page Generator..."
+          python generate_industrial.py \
+            --output . \
+            --areas industrial_areas.json \
+            --templates templates
+          echo "✅ Industrial area pages generated"
+
+      # ── 5. Ping search engines ────────────────────────────
+      - name: Ping search engines
+        run: |
+          PING="${{ github.event.inputs.ping }}"
+          PING=$(echo "${PING:-true}" | tr '[:upper:]' '[:lower:]')
+          if [ "$PING" = "true" ]; then
+            SITEMAP="https://taxamc.com/sitemap-industrial.xml"
+            ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${SITEMAP}', safe=''))")
+
+            echo "Pinging Google..."
+            curl -s "https://www.google.com/ping?sitemap=${ENCODED}" -o /dev/null -w "  Google: HTTP %{http_code}\n"
+
+            echo "Pinging Bing..."
+            curl -s "https://www.bing.com/ping?sitemap=${ENCODED}" -o /dev/null -w "  Bing: HTTP %{http_code}\n"
+
+            BING_KEY="${{ secrets.BING_API_KEY }}"
+            if [ -n "$BING_KEY" ]; then
+              curl -s -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitSitemap?apikey=${BING_KEY}" \
+                -H "Content-Type: application/json; charset=utf-8" \
+                -d "{\"siteUrl\":\"https://taxamc.com\",\"sitemap\":\"${SITEMAP}\"}" > /dev/null
+              echo "  ✓ Bing API submission done"
+            fi
+          else
+            echo "Skipping search engine ping"
+          fi
+
+      # ── 6. Commit and push generated files ────────────────
+      - name: Commit and push industrial area pages
+        run: |
+          git config --local user.email "generator@taxamc.com"
+          git config --local user.name "TaxAMC Generator Bot"
+
+          git add article-ca-*.html                        2>/dev/null || true
+          git add article-gst-*.html                       2>/dev/null || true
+          git add article-msme-*.html                      2>/dev/null || true
+          git add article-itr-business-owners-*.html       2>/dev/null || true
+          git add article-tds-contractors-*.html           2>/dev/null || true
+          git add sitemap-industrial.xml                   2>/dev/null || true
+          git add _industrial_pages.csv                    2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "✓ No changes — all industrial area pages already up to date."
+          else
+            PAGE_COUNT=$(git diff --staged --name-only | grep -c "\.html$" || echo "0")
+            git commit -m "🏭 Auto-generated ${PAGE_COUNT} industrial area pages [$(date '+%d %b %Y')]"
+            git push
+            echo "✅ Committed and pushed ${PAGE_COUNT} industrial area pages."
+          fi
