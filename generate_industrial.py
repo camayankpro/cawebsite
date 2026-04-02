@@ -28,14 +28,14 @@ SERVICE_PAGES = [
     {
         "key":          "gst",
         "template":     "gst-registration.html",
-        "slug_prefix":  "article-gst",
+        "slug_prefix":  "article-gst-registration",
         "label":        "GST Registration & Returns",
         "priority":     "0.8",
     },
     {
         "key":          "msme",
         "template":     "msme-registration.html",
-        "slug_prefix":  "article-msme",
+        "slug_prefix":  "article-msme-registration",
         "label":        "MSME Registration",
         "priority":     "0.7",
     },
