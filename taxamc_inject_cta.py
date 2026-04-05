@@ -147,7 +147,7 @@ def build_ctas(title):
   <div style="{CONTENT}">
     <p style="{LABEL}">Agarwal Mayank &amp; Company</p>
     <h3 style="{HEAD}">Ready to get started? We&rsquo;ll handle everything.</h3>
-    <p style="{SUB}">Expert CA services &mdash; GST, ITR, Audit, Trademark &amp; more.<br>Based in Hapur, UP &bull; Available online across India.</p>
+    <p style="{SUB}">Expert CA services &mdash; GST, ITR, Audit, Trademark &amp; more.<br>&bull; Available online across India.</p>
   </div>
   <div style="{BTNS}">
     <a href="https://wa.me/{WHATSAPP_NUMBER}?text={wa_msg_bottom}" target="_blank" rel="noopener" style="{BTN_WA}">
