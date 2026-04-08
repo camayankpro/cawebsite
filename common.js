@@ -117,6 +117,7 @@
           '<a href="articles.html">Articles</a>' +
           '<a href="index.html#contact">Contact Us</a>' +
           '<a href="disclaimer.html">Disclaimer</a>' +
+	  '<a href="sitemap.html">Sitemap</a>' +
         '</div>' +
         '<div class="footer-section">' +
           '<h3>Contact Us</h3>' +
