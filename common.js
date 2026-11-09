@@ -394,3 +394,53 @@ var TX_BASE = (function () {
   document.addEventListener('click', addPageLink, true);
   document.addEventListener('auxclick', addPageLink, true);
 })();
+
+/* ── CLIENT REVIEWS STRIP (moving, shared on all pages without a testimonials section) ── */
+(function () {
+  var REVIEWS = [
+    { q: '\u201CMr. Agarwal was very knowledgeable and guided me correctly at the right time. He was always available, on text and call, whenever I needed help.\u201D', n: 'Krishnan Pillai', r: 'ITR filing' },
+    { q: '\u201CGreat service by CA. Mayank Agarwal. Have been associated with him for long. Thanks for handling my taxes and finances.\u201D', n: 'Prasoon Vashishtha', r: 'Long-term client' },
+    { q: '\u201CThe team is knowledgeable, professional, and always ready to assist. Their timely service and clear guidance made the entire process smooth.\u201D', n: 'Aniket Singhal', r: 'GST, accounting, ITR and project report' },
+    { q: '\u201CI started my business and got company registration, GST registration and accounting services from them. Fully satisfied.\u201D', n: 'Jasmeet Singh', r: 'Business setup' },
+    { q: '\u201CMr. Mayank is a highly knowledgeable, supportive, methodical and painstaking person. My work is always done before time.\u201D', n: 'Maalik', r: 'Accounting and compliance' },
+    { q: '\u201CFast working, professional approach. Would definitely recommend.\u201D', n: 'Gaurav Kumar', r: 'Professional services' }
+  ];
+  var css =
+    '.tm-wrap{background:#f8fafc;padding:56px 0;overflow:hidden}' +
+    '.tm-head{text-align:center;margin-bottom:28px;font-family:Poppins,sans-serif}' +
+    '.tm-head p{color:#FF3333;font-weight:600;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;margin:0 0 6px}' +
+    '.tm-head h2{color:#111;font-size:1.6rem;font-weight:700;margin:0}' +
+    '.tm-track{display:flex;gap:20px;width:max-content;animation:tm-scroll 45s linear infinite;padding:4px 10px}' +
+    '.tm-wrap:hover .tm-track{animation-play-state:paused}' +
+    '.tm-card{width:330px;flex-shrink:0;background:#fff;border-radius:12px;padding:22px 24px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-top:3px solid #FF3333;font-family:Poppins,sans-serif;margin:0}' +
+    '.tm-stars{color:#FF3333;letter-spacing:2px;margin-bottom:10px}' +
+    '.tm-card blockquote{margin:0 0 14px;color:#444;font-size:.92rem;line-height:1.7}' +
+    '.tm-card figcaption strong{display:block;color:#111;font-size:.95rem}' +
+    '.tm-card figcaption span{color:#777;font-size:.8rem}' +
+    '@keyframes tm-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}' +
+    '@media (max-width:600px){.tm-card{width:280px}}' +
+    '@media (prefers-reduced-motion:reduce){.tm-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}.tm-dup{display:none}}';
+  function card(x, dup) {
+    return '<figure class="tm-card' + (dup ? ' tm-dup" aria-hidden="true"' : '"') + '>' +
+      '<div class="tm-stars" aria-label="5 out of 5 stars">\u2605\u2605\u2605\u2605\u2605</div>' +
+      '<blockquote>' + x.q + '</blockquote>' +
+      '<figcaption><strong>' + x.n + '</strong><span>' + x.r + '</span></figcaption></figure>';
+  }
+  var cards = REVIEWS.map(function (x) { return card(x, false); }).join('');
+  var dupCards = REVIEWS.map(function (x) { return card(x, true); }).join('');
+  var html =
+    '<section class="tm-wrap" aria-label="Client reviews">' +
+      '<div class="tm-head"><p>Client Reviews</p><h2>What our clients say</h2></div>' +
+      '<div class="tm-track">' + cards + dupCards + '</div>' +
+    '</section>';
+  var style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+  if (document.getElementById('testimonials') || document.querySelector('.tm-wrap')) return;
+  function mount() {
+    var ft = document.getElementById('site-footer');
+    if (ft) ft.insertAdjacentHTML('beforebegin', html);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
