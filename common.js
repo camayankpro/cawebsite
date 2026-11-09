@@ -156,6 +156,7 @@ var TX_BASE = (function () {
           '<a href="' + TX_BASE + 'main/articles.html">Articles</a>' +
           '<a href="' + TX_BASE + 'index.html#contact">Contact Us</a>' +
           '<a href="' + TX_BASE + 'main/disclaimer.html">Disclaimer</a>' +
+          '<a href="' + TX_BASE + 'main/sitemap.html">Sitemap</a>' +
         '</div>' +
         '<div class="footer-section">' +
           '<h3>Contact Us</h3>' +
