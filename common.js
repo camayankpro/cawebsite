@@ -199,7 +199,7 @@ var TX_BASE = (function () {
 
   /* ── BURGER MENU ────────────────────────────────────────── */
   var burger = document.getElementById('burgerMenu');
-  if (burger) {
+  if (burger && document.getElementById('site-nav')) {
     burger.addEventListener('click', function () {
       this.classList.toggle('active');
       document.getElementById('navLinks').classList.toggle('active');
@@ -275,7 +275,7 @@ var TX_BASE = (function () {
     function inject() {
         /* Desktop nav button */
         var burger = document.getElementById('burgerMenu');
-        if (burger && !document.querySelector('.navbar-actions')) {
+        if (burger && document.getElementById('site-nav') && !document.querySelector('.navbar-actions')) {
             var actions = document.createElement('div');
             actions.className = 'navbar-actions';
             var navBtn = document.createElement('a');
