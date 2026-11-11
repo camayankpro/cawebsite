@@ -199,13 +199,6 @@ var TX_BASE = (function () {
   document.body.insertAdjacentHTML('beforeend', POPUP_HTML);
 
   /* ── BURGER MENU ────────────────────────────────────────── */
-  var burger = document.getElementById('burgerMenu');
-  if (burger && document.getElementById('site-nav')) {
-    burger.addEventListener('click', function () {
-      this.classList.toggle('active');
-      document.getElementById('navLinks').classList.toggle('active');
-    });
-  }
 
   /* ── AUTO-HIGHLIGHT ACTIVE NAV LINK ──────────────────────── */
   var page = window.location.pathname.split('/').pop() || 'index.html';
@@ -447,4 +440,33 @@ var TX_BASE = (function () {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();
+})();
+
+
+/* ── BURGER MENU (works whatever the timing of the navbar injection) ── */
+(function () {
+  if (!document.getElementById('site-nav') && !document.querySelector('#burgerMenu')) return;
+  var st = document.createElement('style');
+  st.textContent =
+    '@media (max-width:968px){.burger-menu{display:flex !important;cursor:pointer;margin-left:12px;flex-shrink:0}}' +
+    '.navbar{flex-wrap:nowrap}';
+  document.head.appendChild(st);
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('#burgerMenu') : null;
+    if (b) {
+      /* index.html has its own burger script; skip it here to avoid double toggling */
+      if (document.getElementById('burgerMenu') && window.__ownBurger) return;
+      b.classList.toggle('active');
+      var n = document.getElementById('navLinks');
+      if (n) n.classList.toggle('active');
+      return;
+    }
+    var l = e.target.closest ? e.target.closest('.nav-links a') : null;
+    if (l) {
+      var bm = document.getElementById('burgerMenu');
+      var nl = document.getElementById('navLinks');
+      if (bm) bm.classList.remove('active');
+      if (nl) nl.classList.remove('active');
+    }
+  });
 })();
