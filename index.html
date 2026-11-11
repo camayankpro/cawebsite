@@ -1335,6 +1335,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#specialised">Specialised</a></li>
                 <li><a href="main/articles.html" class="nav-articles-link">Articles</a></li>
             </ul>
             <div class="navbar-actions">
@@ -1572,7 +1573,39 @@
                 <a href="services/service-industry.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
             </div>
         </div>
-    </section>
+    
+        <div id="specialised" style="max-width:1200px;margin:48px auto 0;padding:0 24px;">
+            <p class="tkicker" style="text-align:center;">Specialised Services</p>
+            <h2 style="text-align:center;margin-bottom:24px;">Company and LLP Closures &amp; Conversions</h2>
+            <div class="services-grid reveal-stagger">
+            <div class="service-card" style="cursor:pointer;" onclick="window.location.href='services/service-company-closure-not-commenced.html'">
+                <div class="sc-head"><span class="sc-icon">&#9878;</span><h3>Close a Company Not Commenced</h3></div>
+                <p class="service-description">Strike-off for companies that never started business.</p>
+                <a href="services/service-company-closure-not-commenced.html" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
+            </div>
+            <div class="service-card" style="cursor:pointer;" onclick="window.location.href='services/service-company-closure-not-filed.html'">
+                <div class="sc-head"><span class="sc-icon">&#9878;</span><h3>Close a Company with Unfiled Forms</h3></div>
+                <p class="service-description">Catch-up filings, then strike-off with the ROC.</p>
+                <a href="services/service-company-closure-not-filed.html" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
+            </div>
+            <div class="service-card" style="cursor:pointer;" onclick="window.location.href='services/service-company-closure-filed.html'">
+                <div class="sc-head"><span class="sc-icon">&#9878;</span><h3>Close a Pvt Ltd Company</h3></div>
+                <p class="service-description">Strike-off for companies that have filed all forms.</p>
+                <a href="services/service-company-closure-filed.html" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
+            </div>
+            <div class="service-card" style="cursor:pointer;" onclick="window.location.href='services/service-llp-change-partner.html'">
+                <div class="sc-head"><span class="sc-icon">&#9878;</span><h3>LLP Change of Partner</h3></div>
+                <p class="service-description">Filing for partners who join, leave or change role.</p>
+                <a href="services/service-llp-change-partner.html" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
+            </div>
+            <div class="service-card" style="cursor:pointer;" onclick="window.location.href='services/service-llp-to-pvt-ltd.html'">
+                <div class="sc-head"><span class="sc-icon">&#9878;</span><h3>LLP to Pvt Ltd Conversion</h3></div>
+                <p class="service-description">Convert your LLP into a private limited company.</p>
+                <a href="services/service-llp-to-pvt-ltd.html" style="display:inline-block;margin-top:14px;color:var(--primary);font-size:0.78rem;font-weight:600;text-decoration:none;">Know more &rarr;</a>
+            </div>
+            </div>
+        </div>
+</section>
 
     <!-- Stats Section -->
     <section class="stats">
@@ -1653,6 +1686,7 @@
 
     <section class="tm-wrap" id="testimonials" aria-label="Client reviews">
         <div class="tm-head"><p>Client Reviews</p><h2>What our clients say</h2></div>
+        <button type="button" class="tm-pause" aria-pressed="false" onclick="var t=this.parentNode.querySelector('.tm-track');var p=this.getAttribute('aria-pressed')==='true';t.style.animationPlayState=p?'running':'paused';this.setAttribute('aria-pressed',p?'false':'true');this.textContent=p?'Pause':'Play';">Pause</button>
         <div class="tm-track">
             <figure class="tm-card">
                 <div class="tm-stars" aria-label="5 out of 5 stars">★★★★★</div>

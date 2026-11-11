@@ -103,6 +103,7 @@ var TX_BASE = (function () {
           '<li><a href="' + TX_BASE + 'index.html">Home</a></li>' +
           '<li><a href="' + TX_BASE + 'index.html#about">About</a></li>' +
           '<li><a href="' + TX_BASE + 'index.html#services">Services</a></li>' +
+          '<li><a href="' + TX_BASE + 'index.html#specialised">Specialised</a></li>' +
           '<li><a href="' + TX_BASE + 'main/articles.html" class="nav-articles-link">Articles</a></li>' +
           '<li><a href="' + TX_BASE + 'index.html#contact">Contact Us</a></li>' +
         '</ul>' +
@@ -411,6 +412,8 @@ var TX_BASE = (function () {
     '.tm-head p{color:#FF3333;font-weight:600;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;margin:0 0 6px}' +
     '.tm-head h2{color:#111;font-size:1.6rem;font-weight:700;margin:0}' +
     '.tm-track{display:flex;gap:20px;width:max-content;animation:tm-scroll 45s linear infinite;padding:4px 10px}' +
+    '.tm-pause{display:block;margin:0 auto 16px;background:#111;color:#fff;border:0;border-radius:50px;padding:8px 18px;font-family:Poppins,sans-serif;font-size:.8rem;cursor:pointer}' +
+    '.tm-pause:focus-visible{outline:3px solid #FF3333;outline-offset:2px}' +
     '.tm-wrap:hover .tm-track{animation-play-state:paused}' +
     '.tm-card{width:330px;flex-shrink:0;background:#fff;border-radius:12px;padding:22px 24px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-top:3px solid #FF3333;font-family:Poppins,sans-serif;margin:0}' +
     '.tm-stars{color:#FF3333;letter-spacing:2px;margin-bottom:10px}' +
@@ -431,6 +434,7 @@ var TX_BASE = (function () {
   var html =
     '<section class="tm-wrap" aria-label="Client reviews">' +
       '<div class="tm-head"><p>Client Reviews</p><h2>What our clients say</h2></div>' +
+      '<button type="button" class="tm-pause" aria-pressed="false" onclick="var t=this.parentNode.querySelector(\'.tm-track\');var p=this.getAttribute(\'aria-pressed\')===\'true\';t.style.animationPlayState=p?\'running\':\'paused\';this.setAttribute(\'aria-pressed\',p?\'false\':\'true\');this.textContent=p?\'Pause\':\'Play\';">Pause</button>' +
       '<div class="tm-track">' + cards + dupCards + '</div>' +
     '</section>';
   var style = document.createElement('style');
