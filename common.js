@@ -448,8 +448,21 @@ var TX_BASE = (function () {
   if (!document.getElementById('site-nav') && !document.querySelector('#burgerMenu')) return;
   var st = document.createElement('style');
   st.textContent =
-    '@media (max-width:968px){.burger-menu{display:flex !important;cursor:pointer;margin-left:12px;flex-shrink:0}}' +
-    '.navbar{flex-wrap:nowrap}';
+    '@media (max-width:968px){' +
+      '.burger-menu{display:flex !important;cursor:pointer;margin-left:12px;flex-shrink:0}' +
+      '.navbar{max-width:100%;box-sizing:border-box;overflow:hidden}' +
+      '.navbar-text{min-width:0;flex:1 1 auto;overflow:hidden}' +
+      '.navbar-logo{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+      '.navbar-actions{flex-shrink:0}' +
+    '}' +
+    '@media (max-width:600px){' +
+      '.navbar-subtitle{font-size:.62rem;line-height:1.3;white-space:normal;display:block;margin-top:2px}' +
+      '.navbar-logo{line-height:1.2}' +
+      '.navbar-logo{font-size:.95rem}' +
+      '.ca-logo{height:36px;width:auto}' +
+    '}' +
+    '@media (max-width:768px){.navbar{padding:10px 16px}}' +
+    'html,body{max-width:100%;overflow-x:hidden}';
   document.head.appendChild(st);
   document.addEventListener('click', function (e) {
     var b = e.target.closest ? e.target.closest('#burgerMenu') : null;
